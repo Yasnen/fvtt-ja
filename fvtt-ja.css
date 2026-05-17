@@ -1,0 +1,4 @@
+/* インストール画面、マニュフェストURL横のボタン */
+#install-package > section > footer > button > span {
+    white-space: nowrap; /* 改行を禁止する */
+}

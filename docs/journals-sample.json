@@ -1,0 +1,29 @@
+{
+  "label": "Core Journals",
+  "mapping": {
+    "pages": {
+      "path": "pages",
+      "converter": "fvttJaJournalPages"
+    }
+  },
+  "entries": {
+    "The Enemy Within": {
+      "name": "宿敵なる者",
+      "_id": "xxxxxxxxxxxxxxxx",
+      "pages": {
+        "Introduction": {
+          "name": "はじめに",
+          "text": "<p>翻訳済み本文</p>",
+          "_id": "yyyyyyyyyyyyyyyy",
+          "_text": "<p>原文本文（ソース変更検出用）</p>"
+        },
+        "未翻訳ページ": {
+          "name": "未翻訳ページ",
+          "text": "<p>原文テキスト（未翻訳）</p>",
+          "_id": "zzzzzzzzzzzzzzzz",
+          "_text": "<p>原文テキスト（未翻訳）</p>"
+        }
+      }
+    }
+  }
+}

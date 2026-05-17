@@ -1,0 +1,50 @@
+{
+  "id": "fvtt-ja",
+  "title": "日本語：FVTT（MRyas私家版）",
+  "description": "FVTT環境を日本語化するモジュール（MRyas私家版）",
+  "authors": [
+    {
+      "name": "MRyas.jp",
+      "discord": "mryasjp",
+      "flags": {}
+    }
+  ],
+  "version": "13.351.6",
+  "coreTranslation": true,
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.351",
+    "maximum": "13"
+  },
+  "languages": [
+    {
+      "lang": "ja",
+      "name": "日本語",
+      "path": "lang/core.json",
+      "flags": {}
+    },
+    {
+      "lang": "ja",
+      "name": "日本語（fvtt-ja）",
+      "path": "lang/fvtt-ja.json",
+      "flags": {}
+    }
+  ],
+  "styles": [
+    "fvtt-ja.css"
+  ],
+  "esmodules": [
+    "script/fvtt-ja.js"
+  ],
+  "relationships": {
+    "optional": [
+      {
+        "id": "babele",
+        "type": "module"
+      }
+    ]
+  },
+  "url": "https://github.com/Yasnen/fvtt-ja",
+  "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v13.351.6.zip",
+  "manifest": "https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json"
+}
