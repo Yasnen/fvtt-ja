@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - FVTT v13 系コア UI の日本語翻訳（lang/core.json）
 - fvtt-ja モジュール固有 UI の翻訳（lang/fvtt-ja.json）
 - wfrp4e-ja-jp との連携機能（script/journal/ — ジャーナルコンバータ）
-- バグ修正・翻訳更新のみ。v13 向け wfrp4e-ja-jp 連携を除く新機能追加は v14 ライン（fvtt-ja/fvtt-ja/）で実施。
+- バグ修正・翻訳更新のみ。v13 向け wfrp4e-ja-jp 連携を除く新機能追加は v14 ライン（fvtt-ja-gitlab/）で実施。
 
 ## Overview
 
@@ -36,11 +36,10 @@ When releasing a new version, update all of the following in sync:
 2. **`README.md`** — Add a changelog entry at the top of the history section.
 3. **Commit** with the version string as the message (e.g., `13.351.6`).
 4. **Tag** the commit as `v{version}` (e.g., `v13.351.6`).
-5. **Push**: `git push github github-main:main && git push github v{version}`
+5. **Push**: `git push origin main && git push origin v{version}`
    - `manifest` は `raw.githubusercontent.com/main` を参照するため push 後すぐ有効
    - `download` は GitHub がタグから自動生成する archive ZIP なので追加作業不要
    - GitHub Release の作成は任意（リリースノートを付けたい場合のみ）
-   - remote 名は `github`、ローカルブランチ名は `github-main`（GitHub の `main` ブランチに push）
 
 ## module.json URL Pattern
 
