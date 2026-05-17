@@ -1,5 +1,10 @@
 # CLAUDE.md
 
+> **スコープ制約**: このファイルはリモートリポジトリ（GitHub）に含まれます。
+> リポジトリ内部のパス・URL・API 規約のみ記述すること。
+> ローカルのディレクトリ名・symlink・隣接リポジトリへの参照を含めてはなりません。
+> ローカル環境固有の情報は上位の CLAUDE.md（`dev/fvtt-ja/` または `trpg/`）に記述してください。
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## このブランチのスコープ
