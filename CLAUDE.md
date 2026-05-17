@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - FVTT v13 系コア UI の日本語翻訳（lang/core.json）
 - fvtt-ja モジュール固有 UI の翻訳（lang/fvtt-ja.json）
 - wfrp4e-ja-jp との連携機能（script/journal/ — ジャーナルコンバータ）
-- バグ修正・翻訳更新のみ。v13 向け wfrp4e-ja-jp 連携を除く新機能追加は v14 ライン（fvtt-ja-gitlab/）で実施。
+- バグ修正・翻訳更新のみ。v13 向け wfrp4e-ja-jp 連携を除く新機能追加は v14 リポジトリ（gitlab.com/MRyas.jp/fvtt-ja）で実施。
 
 ## Overview
 
