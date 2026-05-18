@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          MODULE_VERSION=$(jq -r '.version' module.json)
+          DOWNLOAD_URL=$(jq -r '.download' module.json)
+          EXPECTED_DOWNLOAD="https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v${VERSION}.zip"
+          VERIFIED=$(jq -r '.compatibility.verified' module.json)
+
+          if [ "$MODULE_VERSION" != "$VERSION" ]; then
+            echo "Error: module.json version ($MODULE_VERSION) != tag ($VERSION)"
+            exit 1
+          fi
+          if [ "$DOWNLOAD_URL" != "$EXPECTED_DOWNLOAD" ]; then
+            echo "Error: download URL ($DOWNLOAD_URL) != expected ($EXPECTED_DOWNLOAD)"
+            exit 1
+          fi
+          EXPECTED_VERIFIED="${VERSION%.*}"
+          if [ "$VERIFIED" != "$EXPECTED_VERIFIED" ]; then
+            echo "Warning: compatibility.verified ($VERIFIED) != $EXPECTED_VERIFIED"
+          fi
+          echo "OK: $VERSION"
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes
+
+      - name: Publish to Foundry VTT
+        uses: cs96and/FoundryVTT-release-package@v2
+        with:
+          package-token: ${{ secrets.FVTT_PACKAGE_TOKEN }}
+          manifest-url: https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
