@@ -32,19 +32,23 @@ Versions follow FVTT's own version/build numbers: `{fvtt-major}.{fvtt-build}.{pa
 
 Example: `13.351.0` = FVTT v13 build 351, patch 0.
 
-## Release Process
+## リリース手順
 
-When releasing a new version, update all of the following in sync:
+新バージョンをリリースする際は以下をすべて同期して更新すること:
 
-1. **`module.json`** — Update `version`, `compatibility.verified`, `download` URL.
-   - `download` の `{version}` 部分をタグ名に合わせて更新する（例: `v13.351.6`）
-2. **`README.md`** — Add a changelog entry at the top of the history section.
-3. **Commit** with the version string as the message (e.g., `13.351.6`).
-4. **Tag** the commit as `v{version}` (e.g., `v13.351.6`).
+1. **`module.json`** — `version`・`compatibility.verified`・`download` URL を更新する。
+   - `download` の `{version}` 部分をタグ名に合わせる（例: `v13.351.6`）
+   - `compatibility.verified` の更新漏れは Actions で警告されるが失敗にはならない
+2. **`README.md`** — 履歴セクションの先頭に変更履歴を追記する。
+3. バージョン文字列をメッセージにして**コミット**する（例: `13.351.6`）。
+4. `v{version}` 形式で**タグ**を打つ（例: `v13.351.6`）。
 5. **Push**: `git push origin main && git push origin v{version}`
-   - `manifest` は `raw.githubusercontent.com/main` を参照するため push 後すぐ有効
-   - `download` は GitHub がタグから自動生成する archive ZIP なので追加作業不要
-   - GitHub Release の作成は任意（リリースノートを付けたい場合のみ）
+
+タグ push 後、`.github/workflows/release.yml` が自動で以下を実行する:
+- タグと `module.json` の `version` 一致チェック（不一致の場合は失敗）
+- タグと `module.json` の `download` URL 内バージョン一致チェック（不一致の場合は失敗）
+- GitHub Release の作成（コミット差分からリリースノート自動生成）
+- FVTT 公式レジストリへのバージョン通知（要: `FVTT_PACKAGE_TOKEN` シークレット）
 
 ## module.json URL Pattern
 
