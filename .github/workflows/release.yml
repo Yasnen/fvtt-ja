@@ -49,3 +49,4 @@ jobs:
         with:
           package-token: ${{ secrets.FVTT_PACKAGE_TOKEN }}
           manifest-url: https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
+          notes-url: https://github.com/Yasnen/fvtt-ja/releases/tag/${{ github.ref_name }}
