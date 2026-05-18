@@ -45,7 +45,7 @@ jobs:
             --generate-notes
 
       - name: Publish to Foundry VTT
-        uses: cs96and/FoundryVTT-release-package@v2
+        uses: cs96and/FoundryVTT-release-package@v1.0.3
         with:
           package-token: ${{ secrets.FVTT_PACKAGE_TOKEN }}
           manifest-url: https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
