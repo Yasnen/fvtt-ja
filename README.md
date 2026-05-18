@@ -29,3 +29,8 @@ Babele のコンバータ `fvttJaJournalPages` を使ってジャーナルエン
 | ソース更新チェック | 有効 |
 
 翻訳テンプレートはコンソールで `await FVTTJa_collectJournals()` → `FVTTJa_exportJournals()` を実行してエクスポートできます。詳細は [docs/journal.md](docs/journal.md) を参照してください。
+
+# 更新履歴
+
+## 13.351.7
+- リポジトリを GitHub へ移行し GitHub アクションに対応

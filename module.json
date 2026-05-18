@@ -9,7 +9,7 @@
       "flags": {}
     }
   ],
-  "version": "13.351.6",
+  "version": "13.351.7",
   "coreTranslation": true,
   "compatibility": {
     "minimum": "13",
@@ -45,6 +45,6 @@
     ]
   },
   "url": "https://github.com/Yasnen/fvtt-ja",
-  "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v13.351.6.zip",
+  "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v13.351.7.zip",
   "manifest": "https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json"
 }
