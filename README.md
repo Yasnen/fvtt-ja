@@ -1,7 +1,7 @@
 # fvtt-ja
 Foundry Virtual Tabletop 日本語翻訳（MRyas私家版）
 
-インストール：FoundryVTTの設定とセットアップで、アドオンモジュールのモジュールインストールから以下のマニフェスト URL を指定してインストールしてください。
+インストール：FoundryVTTの設定とセットアップで、アドオンモジュールのモジュールインストールから「fvtt-ja」を検索してインストールしてください。以下のマニフェスト URL を指定してインストールすることも可能です。
 
 ```
 https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
