@@ -46,5 +46,5 @@
   },
   "url": "https://github.com/Yasnen/fvtt-ja",
   "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v13.351.7.zip",
-  "manifest": "https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json"
+  "manifest": "https://github.com/Yasnen/fvtt-ja/releases/download/v13.351.7/module.json"
 }

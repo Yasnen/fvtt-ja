@@ -41,6 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
+            module.json \
             --title "$GITHUB_REF_NAME" \
             --generate-notes
 
@@ -48,5 +49,5 @@ jobs:
         uses: cs96and/FoundryVTT-release-package@v1.0.3
         with:
           package-token: ${{ secrets.FVTT_PACKAGE_TOKEN }}
-          manifest-url: https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
+          manifest-url: https://github.com/Yasnen/fvtt-ja/releases/download/${{ github.ref_name }}/module.json
           notes-url: https://github.com/Yasnen/fvtt-ja/releases/tag/${{ github.ref_name }}

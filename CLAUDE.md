@@ -55,8 +55,11 @@ Example: `13.351.0` = FVTT v13 build 351, patch 0.
 ```json
 "url": "https://github.com/Yasnen/fvtt-ja",
 "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v{version}.zip",
-"manifest": "https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json"
+"manifest": "https://github.com/Yasnen/fvtt-ja/releases/download/v{version}/module.json"
 ```
+
+`manifest` はリリースごとにタグ固定URLを使用すること（`main` ブランチ参照・`latest` URL は禁止）。
+リリース時は `module.json` 自体をリリースアセットとして添付する（workflow の `gh release create` に `module.json` を含める）。
 
 ## Coding Conventions (FVTT API)
 
