@@ -496,12 +496,7 @@ class FvttJa {
         return keys;
     }
 
-    static log(message) {
-        if (typeof message === "string") {
-            console.log("fvtt-ja | " + message)
-        } else {
-            console.log("fvtt-ja ⇒");
-            console.log(message)
-        }
+    static get log() {
+        return console.log.bind(console, "fvtt-ja |");
     }
 }
