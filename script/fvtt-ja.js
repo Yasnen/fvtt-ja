@@ -268,6 +268,8 @@ Hooks.once("init", async () => {
             JournalExporter.collectAll.bind(JournalExporter);
         globalThis.FVTTJa_exportJournals =
             JournalExporter.export.bind(JournalExporter);
+        globalThis.FVTTJa_listUpdated =
+            JournalCollector.listUpdated.bind(JournalCollector);
 
         Hooks.callAll("fvtt-ja.journalReady");
         FvttJa.log("Babele検出：ジャーナルコンバータ登録完了");

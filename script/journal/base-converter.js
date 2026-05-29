@@ -24,10 +24,10 @@ export class BaseJournalConverter {
      * @returns {object[]} 翻訳適用後のページ配列
      */
     convert(pages, translations, context, tc) {
-        const entryName      = context?.name                    ?? "unknown";
-        const entryId        = context?._id                     ?? "unknown";
-        const packCollection = context?.pack?.collection        ?? "unknown";
-        const packLabel      = context?.pack?.metadata?.label   ?? "Journals";
+        const entryName      = context?.name             ?? "unknown";
+        const entryId        = context?._id              ?? "unknown";
+        const packCollection = tc?.metadata?.id ?? tc?.metadata?.name ?? "unknown";
+        const packLabel      = tc?.metadata?.label                  ?? "Journals";
         const transPages     = translations ?? {};
 
         return pages.map(page => {

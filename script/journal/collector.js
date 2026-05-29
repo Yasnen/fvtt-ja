@@ -80,7 +80,8 @@ function _scheduleSummary() {
         console.warn(
             `fvtt-ja | ソース更新検出：合計 ${total} 件` +
             `（_textなし：${_noTextCount} 件、更新：${_updatedCount} 件）\n` +
-            "  更新手順：1. FVTTJa_collectJournals() → 2. FVTTJa_exportJournals() でJSONをダウンロード → 3. 翻訳ファイルの text・_text を更新"
+            "  更新箇所を確認 → FVTTJa_listUpdated()\n" +
+            "  更新手順：1. FVTTJa_collectJournals() → 2. FVTTJa_exportJournals({ changedOnly: true }) でJSONをダウンロード → 3. 翻訳ファイルの text・_text を更新"
         );
     }, 0);
 }
@@ -140,6 +141,7 @@ export const JournalCollector = {
         // ソース更新検出（checkSourceUpdate設定が有効な場合のみカウント）
         if (pageTrans && page.type === "text" && game.settings.get("fvtt-ja", "checkSourceUpdate")) {
             if (!pageTrans._text) {
+                pageData._noText = true;
                 _noTextCount++;
                 _scheduleSummary();
             } else if (pageTrans._text !== page.text.content) {
@@ -156,6 +158,39 @@ export const JournalCollector = {
      */
     getAll() {
         return _collected;
+    },
+
+    /**
+     * ソース更新・_textなし・IDが変化したページを一覧表示する。
+     * コンソールから手動で呼び出して更新箇所を確認するために使う。
+     */
+    listUpdated() {
+        let found = 0;
+        for (const [packCollection, { label, entries }] of _collected) {
+            const lines = [];
+            for (const [entryName, { _id: entryId, pages }] of Object.entries(entries)) {
+                for (const [pageName, pageData] of Object.entries(pages)) {
+                    const reasons = [];
+                    if (pageData.text_)   reasons.push("ソース更新");
+                    if (pageData._noText) reasons.push("_textなし");
+                    if (pageData.new_id)  reasons.push("ID変更");
+                    if (reasons.length === 0) continue;
+                    const pageId = pageData.new_id
+                        ? `${pageData._id}→${pageData.new_id}`
+                        : pageData._id;
+                    lines.push(`    [${reasons.join("・")}] ${entryName} (${entryId}) > ${pageName} (${pageId})`);
+                    found++;
+                }
+            }
+            if (lines.length > 0) {
+                console.log(`fvtt-ja | ${label} (${packCollection})\n${lines.join("\n")}`);
+            }
+        }
+        if (found === 0) {
+            console.log("fvtt-ja | listUpdated: 更新箇所なし（または未収集）");
+        } else {
+            console.log(`fvtt-ja | listUpdated: 合計 ${found} ページ`);
+        }
     },
 
     /**
