@@ -30,6 +30,18 @@ Babele のコンバータ `fvttJaJournalPages` を使ってジャーナルエン
 
 翻訳テンプレートはコンソールで `await FVTTJa_collectJournals()` → `FVTTJa_exportJournals()` を実行してエクスポートできます。詳細は [docs/journal.md](docs/journal.md) を参照してください。
 
+## モジュール設定翻訳
+
+i18n に対応していないモジュールの設定画面（名前・ヒント・ボタンラベル）を JSON ファイルで上書きしてローカライズする機能です。
+
+| 設定名 | デフォルト |
+|--------|---------|
+| モジュール設定翻訳 | 有効 |
+| モジュール設定翻訳：変更時動作 | 原文を表示 |
+| モジュール設定翻訳：追加ファイル | （未設定） |
+
+翻訳対象モジュールのテンプレートはコンソールで `FvttJa.generateSettingOverrideTemplate()` を実行してダウンロードできます。詳細は [docs/module-setting-overrides.md](docs/module-setting-overrides.md) を参照してください。
+
 # 更新履歴
 
 ## 13.351.7

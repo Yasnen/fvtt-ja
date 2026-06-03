@@ -1,0 +1,14 @@
+{
+  "image-hover": {
+    "permissionOnHover": {
+      "name": {
+        "original": "Required actor permission",
+        "translation": "アクターの必要権限"
+      },
+      "hint": {
+        "original": "Required permission level of Actor to see handout.",
+        "translation": "ハンドアウトを表示するために必要なアクターの権限レベル。"
+      }
+    }
+  }
+}

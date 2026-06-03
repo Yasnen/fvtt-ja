@@ -29,6 +29,38 @@ Hooks.once("init", async () => {
         scope: 'world',
         config: true
     });
+    // settingOverrideEnabled：モジュール設定翻訳の有効/無効
+    game.settings.register("fvtt-ja", "settingOverrideEnabled", {
+        name: "FVTTJa.Settings.settingOverrideEnabled.name",
+        hint: "FVTTJa.Settings.settingOverrideEnabled.hint",
+        type: Boolean,
+        default: true,
+        scope: 'world',
+        config: true
+    });
+    // settingOverrideMismatch：モジュール設定の原文変更時の動作
+    game.settings.register("fvtt-ja", "settingOverrideMismatch", {
+        name: "FVTTJa.Settings.settingOverrideMismatch.name",
+        hint: "FVTTJa.Settings.settingOverrideMismatch.hint",
+        type: String,
+        choices: {
+            "original": "FVTTJa.Settings.settingOverrideMismatch.original",
+            "translate": "FVTTJa.Settings.settingOverrideMismatch.translate"
+        },
+        default: "original",
+        scope: 'world',
+        config: true
+    });
+    // settingOverrideUserFile：追加設定翻訳ファイル（ユーザー定義）
+    game.settings.register("fvtt-ja", "settingOverrideUserFile", {
+        name: "FVTTJa.Settings.settingOverrideUserFile.name",
+        hint: "FVTTJa.Settings.settingOverrideUserFile.hint",
+        type: String,
+        default: "",
+        scope: 'world',
+        config: true,
+        filePicker: "any"
+    });
 
     // ready フックで processLangFileAdditions に渡すキュー（サブフォルダ方式・完全一致なし）
     FvttJa._additionQueue = [];
@@ -276,7 +308,7 @@ Hooks.once("init", async () => {
     }
 });
 
-// ready：言語ファイルフォルダの変更検知 → 言語ファイル追加機能の実行
+// ready：言語ファイルフォルダの変更検知 → 言語ファイル追加機能 → 設定オーバーライドの実行
 Hooks.on("ready", async () => {
     let langPath = game.settings.get("fvtt-ja", "langPath");
     FvttJa.resetLangFiles(langPath, false);
@@ -284,6 +316,8 @@ Hooks.on("ready", async () => {
     if (game.settings.get("fvtt-ja", "langFileAddition")) {
         await FvttJa.processLangFileAdditions();
     }
+
+    await FvttJa.applySettingOverrides();
 });
 
 class FvttJa {
@@ -498,6 +532,116 @@ class FvttJa {
         return keys;
     }
 
+    // サードパーティモジュールの設定 name/hint を翻訳データで日本語化する
+    // 組み込みデータ（lang/module-setting-overrides.json）と settingOverrideUserFile の設定で
+    // 指定されたユーザーファイルをディープマージして適用する
+    static async applySettingOverrides() {
+        if (!game.settings.get('fvtt-ja', 'settingOverrideEnabled')) return;
+        const builtinRes = await fetch('modules/fvtt-ja/lang/module-setting-overrides.json').catch(() => null);
+        let overrides = builtinRes?.ok ? await builtinRes.json() : {};
+
+        const userFilePath = game.settings.get('fvtt-ja', 'settingOverrideUserFile');
+        if (userFilePath) {
+            const userRes = await fetch(userFilePath).catch(() => null);
+            if (userRes?.ok) {
+                overrides = FvttJa._deepMerge(overrides, await userRes.json());
+            }
+        }
+
+        const mismatchBehavior = game.settings.get('fvtt-ja', 'settingOverrideMismatch');
+        const mismatches = [];
+
+        for (const [moduleId, settings] of Object.entries(overrides)) {
+            if (!game.modules.get(moduleId)?.active) continue;
+            for (const [settingKey, fields] of Object.entries(settings)) {
+                // settings と menus の両方を対象にする
+                const entry = game.settings.settings.get(`${moduleId}.${settingKey}`)
+                           ?? game.settings.menus?.get(`${moduleId}.${settingKey}`);
+                if (!entry) continue;
+                for (const [field, data] of Object.entries(fields)) {
+                    if (!data.translation) continue; // 翻訳が空の場合はスキップ（original のまま）
+                    const current = entry[field];
+                    if (current === data.original) {
+                        entry[field] = data.translation;
+                    } else {
+                        mismatches.push(`${moduleId}.${settingKey}.${field}`);
+                        if (mismatchBehavior === 'translate') entry[field] = data.translation;
+                    }
+                }
+            }
+        }
+
+        if (mismatches.length > 0) {
+            const msg = game.i18n.format('FVTTJa.SettingOverride.mismatchWarning', { keys: mismatches.join(', ') });
+            FvttJa.warn(msg);
+        }
+    }
+
+    // アクティブモジュールの未翻訳設定をスキャンしてオーバーライドテンプレート JSON を生成する
+    // 使い方: ブラウザコンソールで FvttJa.generateSettingOverrideTemplate() を実行
+    // 結果は module-setting-overrides-template.json としてブラウザのダウンロードフォルダへ保存する
+    static async generateSettingOverrideTemplate() {
+        const builtinRes = await fetch('modules/fvtt-ja/lang/module-setting-overrides.json').catch(() => null);
+        const builtinData = builtinRes?.ok ? await builtinRes.json() : {};
+
+        const userFilePath = game.settings.get('fvtt-ja', 'settingOverrideUserFile');
+        let userData = {};
+        if (userFilePath) {
+            const userRes = await fetch(userFilePath).catch(() => null);
+            if (userRes?.ok) userData = await userRes.json();
+        }
+
+        const template = {};
+
+        const addEntries = (moduleId, map, fieldNames) => {
+            for (const [fullKey, entry] of map.entries()) {
+                if (!fullKey.startsWith(`${moduleId}.`)) continue;
+                if ('config' in entry && !entry.config) continue;
+                const entryKey = fullKey.slice(moduleId.length + 1);
+                const fields = {};
+                for (const field of fieldNames) {
+                    const val = entry[field];
+                    if (!val || game.i18n.localize(val) !== val) continue;
+                    // 非ASCII文字を含む場合は既に翻訳済み（登録前にlocalize解決済み）→スキップ
+                    if (/[^ -]/.test(val)) continue;
+                    // 組み込みデータまたはユーザーファイルに既存エントリがあればスキップ
+                    if (builtinData[moduleId]?.[entryKey]?.[field]) continue;
+                    if (userData[moduleId]?.[entryKey]?.[field]) continue;
+                    fields[field] = { original: val, translation: "" };
+                }
+                if (Object.keys(fields).length > 0) {
+                    template[moduleId] ??= {};
+                    template[moduleId][entryKey] = fields;
+                }
+            }
+        };
+
+        for (const [moduleId, mod] of game.modules.entries()) {
+            if (!mod.active || moduleId === 'fvtt-ja') continue;
+            // 通常設定（name, hint）
+            addEntries(moduleId, game.settings.settings, ['name', 'hint']);
+            // 設定メニュー（name, hint, label）
+            if (game.settings.menus) addEntries(moduleId, game.settings.menus, ['name', 'hint', 'label']);
+        }
+
+        const json = JSON.stringify(template, null, 2);
+        console.log('[fvtt-ja] Setting Override Template:\n', json);
+
+        foundry.utils.saveDataToFile(json, 'application/json', 'module-setting-overrides-template.json');
+        FvttJa.log('設定翻訳テンプレートをダウンロードしました: module-setting-overrides-template.json');
+    }
+
+    // ディープマージ（override のキーが base を上書き）
+    static _deepMerge(base, override) {
+        const result = { ...base };
+        for (const [k, v] of Object.entries(override)) {
+            result[k] = (v && typeof v === 'object' && !Array.isArray(v) && result[k] && typeof result[k] === 'object')
+                ? FvttJa._deepMerge(result[k], v)
+                : v;
+        }
+        return result;
+    }
+
     static get log() {
         return console.log.bind(console, "fvtt-ja |");
     }
@@ -506,3 +650,6 @@ class FvttJa {
         return console.warn.bind(console, "fvtt-ja |");
     }
 }
+
+// コンソールからアクセスできるよう FvttJa クラスをグローバルに公開
+globalThis.FvttJa = FvttJa;

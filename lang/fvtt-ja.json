@@ -16,7 +16,24 @@
       "checkSourceUpdate": {
         "name": "ジャーナルソース更新検出",
         "hint": "翻訳データに保存された原文と現在のソースが異なる場合、コンソールに警告を出力します。"
+      },
+      "settingOverrideEnabled": {
+        "name": "モジュール設定翻訳",
+        "hint": "i18n非対応の設定画面をオーバーライドしてローカライズする。"
+      },
+      "settingOverrideMismatch": {
+        "name": "モジュール設定翻訳：変更時動作",
+        "hint": "fvtt-ja が翻訳対象としているモジュール設定の原文が、モジュール更新等で変更されていた場合の動作を選択します。",
+        "original": "原文を表示（翻訳を適用しない）",
+        "translate": "翻訳を適用（原文変更を無視）"
+      },
+      "settingOverrideUserFile": {
+        "name": "モジュール設定翻訳：追加ファイル",
+        "hint": "組み込みの設定翻訳データを補完・上書きするユーザー定義 JSON ファイルを指定します。テンプレートはコンソールで FvttJa.generateSettingOverrideTemplate() を実行するとダウンロードできます。"
       }
+    },
+    "SettingOverride": {
+      "mismatchWarning": "fvtt-ja: 以下のモジュール設定の原文が変更されています（翻訳が古い可能性）: {keys}"
     }
   },
   "FVTTJa.Orphan":"以下、コアの翻訳キーで、翻訳データに存在しないもの（孤児キー）です。翻訳データの更新に役立ててください。",
