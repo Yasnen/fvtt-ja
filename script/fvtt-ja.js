@@ -501,4 +501,8 @@ class FvttJa {
     static get log() {
         return console.log.bind(console, "fvtt-ja |");
     }
+
+    static get warn() {
+        return console.warn.bind(console, "fvtt-ja |");
+    }
 }
