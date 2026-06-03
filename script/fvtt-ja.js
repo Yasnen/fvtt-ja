@@ -603,7 +603,7 @@ class FvttJa {
                     const val = entry[field];
                     if (!val || game.i18n.localize(val) !== val) continue;
                     // 非ASCII文字を含む場合は既に翻訳済み（登録前にlocalize解決済み）→スキップ
-                    if (/[^ -]/.test(val)) continue;
+                    if (/[^\x00-\x7f]/.test(val)) continue;
                     // 組み込みデータまたはユーザーファイルに既存エントリがあればスキップ
                     if (builtinData[moduleId]?.[entryKey]?.[field]) continue;
                     if (userData[moduleId]?.[entryKey]?.[field]) continue;
