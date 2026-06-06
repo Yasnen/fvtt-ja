@@ -451,8 +451,9 @@ class FvttJa {
     }
 
     // バージョン文字列を数値配列へ変換（例：「13.351」→ [13, 351]）
+    // 先頭の "v"/"V" 接頭辞は除去する（module.json が "v9.2.0" のように宣言する場合に対応）。
     static parseVersion(vStr) {
-        return String(vStr).split('.').map(n => parseInt(n, 10) || 0);
+        return String(vStr).replace(/^[vV]/, '').split('.').map(n => parseInt(n, 10) || 0);
     }
 
     // バージョン文字列を比較：a < b → -1, a === b → 0, a > b → 1
