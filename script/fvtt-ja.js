@@ -1,311 +1,10 @@
-// init：設定登録 → 独自言語ファイルをモジュール／システムへ注入 → 動作環境チェック
+// init：設定登録 → 独自言語ファイルをモジュール／システムへ注入 → 動作環境チェック → ジャーナルコンバータ初期化
+// 各責務は FvttJa の静的メソッドへ抽出済み（挙動は分割前と同一。実行順も維持すること）
 Hooks.once("init", async () => {
-    // langFiles：言語ファイルフォルダのファイルパス一覧（内部管理用、設定画面非表示）
-    game.settings.register("fvtt-ja", "langFiles", {
-        type: Array,
-        default: [],
-        scope: 'world',
-        config: false
-    });
-    // langPath：独自言語ファイルを格納するフォルダ（ユーザー設定）
-    game.settings.register("fvtt-ja", 'langPath', {
-        name: "FVTTJa.Settings.langPath.name",
-        hint: "FVTTJa.Settings.langPath.hint",
-        type: String,
-        default: "",
-        scope: 'world',
-        config: true,
-        filePicker: "folder",
-        onChange: directory => {
-            FvttJa.resetLangFiles(directory, true)
-        }
-    });
-    // langFileAddition：英語元ファイルに差分キーがある場合に参照用コピーを自動作成するオプション
-    game.settings.register("fvtt-ja", "langFileAddition", {
-        name: "FVTTJa.Settings.langFileAddition.name",
-        hint: "FVTTJa.Settings.langFileAddition.hint",
-        type: Boolean,
-        default: false,
-        scope: 'world',
-        config: true
-    });
-    // settingOverrideEnabled：モジュール設定翻訳の有効/無効
-    game.settings.register("fvtt-ja", "settingOverrideEnabled", {
-        name: "FVTTJa.Settings.settingOverrideEnabled.name",
-        hint: "FVTTJa.Settings.settingOverrideEnabled.hint",
-        type: Boolean,
-        default: true,
-        scope: 'world',
-        config: true
-    });
-    // settingOverrideMismatch：モジュール設定の原文変更時の動作
-    game.settings.register("fvtt-ja", "settingOverrideMismatch", {
-        name: "FVTTJa.Settings.settingOverrideMismatch.name",
-        hint: "FVTTJa.Settings.settingOverrideMismatch.hint",
-        type: String,
-        choices: {
-            "original": "FVTTJa.Settings.settingOverrideMismatch.original",
-            "translate": "FVTTJa.Settings.settingOverrideMismatch.translate"
-        },
-        default: "original",
-        scope: 'world',
-        config: true
-    });
-    // settingOverrideUserFile：追加設定翻訳ファイル（ユーザー定義）
-    game.settings.register("fvtt-ja", "settingOverrideUserFile", {
-        name: "FVTTJa.Settings.settingOverrideUserFile.name",
-        hint: "FVTTJa.Settings.settingOverrideUserFile.hint",
-        type: String,
-        default: "",
-        scope: 'world',
-        config: true,
-        filePicker: "any"
-    });
-
-    // ready フックで processLangFileAdditions に渡すキュー（サブフォルダ方式・完全一致なし）
-    FvttJa._additionQueue = [];
-
-    let langPath = game.settings.get("fvtt-ja", "langPath");
-    if (langPath != "") {
-        let langFiles = game.settings.get("fvtt-ja", "langFiles");
-
-        // langFiles をサブフォルダ方式とフラット方式に分類
-        // サブフォルダ方式：{langPath}/{modId}/ 以下のファイル（-ja 必須、それ以外はスキップ）
-        //   subfolderMap の構造: { modId: { [suffix]: [{path, version}] } }
-        //   suffix = "" が主ファイル（ja.json / ja-{ver}.json）、それ以外が副ファイル（ja-compendium.json 等）
-        // フラット方式：{langPath}/ 直下のファイル（-ja.json 必須）
-        const subfolderMap = {};
-        const flatFiles = [];
-
-        langFiles.forEach(fname => {
-            if (!fname.endsWith(".json")) return;
-            const relPath = fname.slice(langPath.length).replace(/^\//, '');
-            const parts = relPath.split('/');
-            if (parts.length >= 2) {
-                const modId = parts[0];
-                const basename = parts[parts.length - 1];
-                const parsed = FvttJa.extractVersion(basename, modId);
-                if (parsed === false) return; // -ja なし（英語参照ファイル等）→ スキップ
-                const { suffix, version } = parsed;
-                if (!subfolderMap[modId]) subfolderMap[modId] = {};
-                if (!subfolderMap[modId][suffix]) subfolderMap[modId][suffix] = [];
-                subfolderMap[modId][suffix].push({ path: fname, version });
-            } else {
-                if (fname.endsWith("-ja.json")) flatFiles.push(fname);
-            }
-        });
-
-        // ── サブフォルダ方式 ──────────────────────────────────────────────────────
-        for (const [modId, suffixGroups] of Object.entries(subfolderMap)) {
-            const mod = game.modules.get(modId);
-            const isSystem = modId === game.system.id || (!game.system.id && modId === game.system.name);
-
-            let modVersion;
-            if (mod) {
-                modVersion = mod.version ?? "0";
-            } else if (isSystem) {
-                modVersion = game.system.version ?? "0";
-            } else {
-                continue; // 対応するモジュール／システムが存在しない
-            }
-
-            // 言語ファイル追加機能用：選択した全日本語ファイルパスと完全一致の有無を追跡
-            const selectedPaths = [];
-            let hasAllExactVersions = true;
-
-            if (mod) {
-                const lang = game.i18n.lang;
-                let ja = mod.languages.filter(l => l.lang == lang);
-                if (ja.size > 0) {
-                    // 元ファイルのサフィックスに対応するグループを 1:1 でマッチング
-                    // 対応グループがない元ファイルは置き換えない
-                    ja.forEach(l => {
-                        const suffix = FvttJa._origFileSuffix(l.path, lang);
-                        if (suffix === null) return; // 命名規則外 → 置き換えない
-                        const group = suffixGroups[suffix];
-                        if (!group) return; // 対応グループなし → 置き換えない
-                        const bestFile = FvttJa.selectBestFile(group, modVersion);
-                        if (!bestFile) return;
-                        const hasExact = group.some(f =>
-                            f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
-                        );
-                        if (!hasExact) hasAllExactVersions = false;
-                        selectedPaths.push(bestFile);
-                        FvttJa.log(`言語ファイル置換（サブフォルダ v${modVersion}${suffix ? ` suffix="${suffix}"` : ''}）「${l.path}」⇒「${bestFile}」`);
-                        l.path = bestFile;
-                    });
-                } else {
-                    // ja ファイルなし → suffix '' のグループ（主ファイル）のみ追加
-                    const group = suffixGroups[''];
-                    if (group) {
-                        const bestFile = FvttJa.selectBestFile(group, modVersion);
-                        if (bestFile) {
-                            FvttJa.log(`言語ファイル追加（サブフォルダ v${modVersion}）「${bestFile}」`);
-                            mod.languages.add({ "lang": lang, "name": "日本語", "path": bestFile });
-                            selectedPaths.push(bestFile);
-                            const hasExact = group.some(f =>
-                                f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
-                            );
-                            if (!hasExact) hasAllExactVersions = false;
-                        }
-                    }
-                }
-            } else { // isSystem
-                let ja = game.system.languages.filter(l => l.lang == "ja");
-                if (ja.size > 0) {
-                    ja.forEach(l => {
-                        const suffix = FvttJa._origFileSuffix(l.path, "ja");
-                        if (suffix === null) return;
-                        const group = suffixGroups[suffix];
-                        if (!group) return;
-                        const bestFile = FvttJa.selectBestFile(group, modVersion);
-                        if (!bestFile) return;
-                        const hasExact = group.some(f =>
-                            f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
-                        );
-                        if (!hasExact) hasAllExactVersions = false;
-                        selectedPaths.push(bestFile);
-                        FvttJa.log(`システム言語ファイル置換（サブフォルダ v${modVersion}${suffix ? ` suffix="${suffix}"` : ''}）「${l.path}」⇒「${bestFile}」`);
-                        l.path = bestFile;
-                    });
-                } else {
-                    const group = suffixGroups[''];
-                    if (group) {
-                        const bestFile = FvttJa.selectBestFile(group, modVersion);
-                        if (bestFile) {
-                            FvttJa.log(`システム言語ファイル追加（サブフォルダ v${modVersion}）「${bestFile}」`);
-                            game.system.languages.add({ "lang": "ja", "name": "日本語", "path": `${bestFile}` });
-                            selectedPaths.push(bestFile);
-                            const hasExact = group.some(f =>
-                                f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
-                            );
-                            if (!hasExact) hasAllExactVersions = false;
-                        }
-                    }
-                }
-            }
-
-            // 言語ファイル追加機能：選択ファイルがあり、かつ完全一致でないものがある場合にキューへ積む
-            if (selectedPaths.length > 0 && !hasAllExactVersions) {
-                const langSrc = mod ? mod.languages : game.system.languages;
-                const origEnPaths = langSrc
-                    .filter(l => l.lang === "en")
-                    .map(l => l.path)
-                    .filter(Boolean);
-                if (origEnPaths.length > 0) {
-                    FvttJa._additionQueue.push({ modId, modVersion, langPath, origEnPaths, selectedPaths });
-                }
-            }
-        }
-
-        // ── フラット方式（サブフォルダ方式で処理済みのモジュールはスキップ）────────
-        // 注意：複数の日本語ファイルを持つモジュールの場合、すべて同一ファイルに置き換わる
-        flatFiles.forEach(fname => {
-            let mod_name = fname.slice(fname.lastIndexOf('/') + 1, fname.lastIndexOf("-ja.json"));
-            if (subfolderMap[mod_name]) return;
-
-            let mod = game.modules.get(mod_name);
-            if (mod) {
-                let ja = mod.languages.filter(lang => lang.lang == game.i18n.lang);
-                if (ja.size > 0) {
-                    ja.forEach(lang => {
-                        FvttJa.log(`言語ファイル置換「${lang.path}」⇒「${fname}」`);
-                        lang.path = fname;
-                    });
-                } else {
-                    FvttJa.log(`言語ファイル追加「${fname}」`);
-                    mod.languages.add({
-                        "lang": game.i18n.lang,
-                        "name": "日本語",
-                        "path": fname
-                    })
-                }
-            } else if (mod_name == game.system.id || (!game.system.id && mod_name == game.system.name)) {
-                let ja = game.system.languages.filter(lang => lang.lang == "ja");
-                if (ja.size > 0) {
-                    ja.forEach(lang => {
-                        FvttJa.log(`システム言語ファイル置換「${lang.path}」⇒「${fname}」`);
-                        lang.path = fname;
-                    });
-                } else {
-                    FvttJa.log(`システム言語ファイル追加「${fname}」`);
-                    game.system.languages.add({ "lang": "ja", "name": "日本語", "path": `${fname}` });
-                }
-            } else {
-//                FvttJa.log(`言語ファイル「${fname}」に対応するモジュール「${mod_name}」が有りません`);
-            }
-        });
-    }
-
-    // ── 動作環境チェック ──────────────────────────────────────────────────────────
-    // このモジュールがデフォルト言語モジュールに設定されていない場合は警告して停止
-    if (game.i18n.defaultModule !== "fvtt-ja") {
-        window.alert("fvtt-ja：本モジュールを使用する場合\nFVTT本体の設定で、デフォルト言語に「日本語：Foundry VTT（MRyas私家版）」に設定してください。");
-        game.shutDown();
-        game.logOut();
-    } else {
-        // 競合モジュール foundryVTTja が導入されている場合は警告して停止
-        game.modules.forEach(module => {
-            if (module.id === "foundryVTTja") {
-                window.alert("fvtt-ja：You must uninstall foundryVTTja to use fvtt-ja.");
-                game.shutDown();
-                game.logOut();
-            }
-        })
-    }
-
-    // ── ジャーナルコンバータ初期化（Babeleがある場合のみ）──
-    if (game.modules.get("babele")?.active) {
-        const { JournalConverterRegistry } =
-            await import("./journal/converter-registry.js");
-        const { BaseJournalConverter } =
-            await import("./journal/base-converter.js");
-        const { JournalCollector } =
-            await import("./journal/collector.js");
-        const { JournalExporter } =
-            await import("./journal/exporter.js");
-
-        game.settings.register("fvtt-ja", "bilingualJournal", {
-            name: "FVTTJa.Settings.bilingualJournal.name",
-            hint: "FVTTJa.Settings.bilingualJournal.hint",
-            type: Boolean,
-            scope: "world",
-            default: false,
-            config: true
-        });
-        game.settings.register("fvtt-ja", "checkSourceUpdate", {
-            name: "FVTTJa.Settings.checkSourceUpdate.name",
-            hint: "FVTTJa.Settings.checkSourceUpdate.hint",
-            type: Boolean,
-            scope: "world",
-            default: true,
-            config: true
-        });
-
-        JournalConverterRegistry.register(
-            "generic", new BaseJournalConverter("generic")
-        );
-        JournalConverterRegistry.registerToBabele();
-
-        globalThis.FVTTJa = {
-            journal: {
-                BaseJournalConverter,
-                JournalConverterRegistry,
-                JournalCollector,
-                JournalExporter
-            }
-        };
-
-        globalThis.FVTTJa_collectJournals =
-            JournalExporter.collectAll.bind(JournalExporter);
-        globalThis.FVTTJa_exportJournals =
-            JournalExporter.export.bind(JournalExporter);
-        globalThis.FVTTJa_listUpdated =
-            JournalCollector.listUpdated.bind(JournalCollector);
-
-        Hooks.callAll("fvtt-ja.journalReady");
-        FvttJa.log("Babele検出：ジャーナルコンバータ登録完了");
-    }
+    FvttJa.registerSettings();
+    FvttJa.injectLanguageFiles();
+    FvttJa.enforceEnvironment();
+    await FvttJa.initJournalConverter();
 });
 
 // ready：言語ファイルフォルダの変更検知 → 言語ファイル追加機能 → 設定オーバーライドの実行
@@ -321,6 +20,337 @@ Hooks.on("ready", async () => {
 });
 
 class FvttJa {
+    // ── init から抽出した初期化メソッド群 ─────────────────────────────────────────
+
+    // 設定登録：設定画面に表示する設定と内部管理用設定を登録する
+    static registerSettings() {
+        // langFiles：言語ファイルフォルダのファイルパス一覧（内部管理用、設定画面非表示）
+        game.settings.register("fvtt-ja", "langFiles", {
+            type: Array,
+            default: [],
+            scope: 'world',
+            config: false
+        });
+        // langPath：独自言語ファイルを格納するフォルダ（ユーザー設定）
+        game.settings.register("fvtt-ja", 'langPath', {
+            name: "FVTTJa.Settings.langPath.name",
+            hint: "FVTTJa.Settings.langPath.hint",
+            type: String,
+            default: "",
+            scope: 'world',
+            config: true,
+            filePicker: "folder",
+            onChange: directory => {
+                FvttJa.resetLangFiles(directory, true)
+            }
+        });
+        // langFileAddition：英語元ファイルに差分キーがある場合に参照用コピーを自動作成するオプション
+        game.settings.register("fvtt-ja", "langFileAddition", {
+            name: "FVTTJa.Settings.langFileAddition.name",
+            hint: "FVTTJa.Settings.langFileAddition.hint",
+            type: Boolean,
+            default: false,
+            scope: 'world',
+            config: true
+        });
+        // settingOverrideEnabled：モジュール設定翻訳の有効/無効
+        game.settings.register("fvtt-ja", "settingOverrideEnabled", {
+            name: "FVTTJa.Settings.settingOverrideEnabled.name",
+            hint: "FVTTJa.Settings.settingOverrideEnabled.hint",
+            type: Boolean,
+            default: true,
+            scope: 'world',
+            config: true
+        });
+        // settingOverrideMismatch：モジュール設定の原文変更時の動作
+        game.settings.register("fvtt-ja", "settingOverrideMismatch", {
+            name: "FVTTJa.Settings.settingOverrideMismatch.name",
+            hint: "FVTTJa.Settings.settingOverrideMismatch.hint",
+            type: String,
+            choices: {
+                "original": "FVTTJa.Settings.settingOverrideMismatch.original",
+                "translate": "FVTTJa.Settings.settingOverrideMismatch.translate"
+            },
+            default: "original",
+            scope: 'world',
+            config: true
+        });
+        // settingOverrideUserFile：追加設定翻訳ファイル（ユーザー定義）
+        game.settings.register("fvtt-ja", "settingOverrideUserFile", {
+            name: "FVTTJa.Settings.settingOverrideUserFile.name",
+            hint: "FVTTJa.Settings.settingOverrideUserFile.hint",
+            type: String,
+            default: "",
+            scope: 'world',
+            config: true,
+            filePicker: "any"
+        });
+    }
+
+    // 言語ファイル注入：設定フォルダの言語ファイルを各モジュール／システムへ反映する
+    static injectLanguageFiles() {
+        // ready フックで processLangFileAdditions に渡すキュー（サブフォルダ方式・完全一致なし）
+        FvttJa._additionQueue = [];
+
+        let langPath = game.settings.get("fvtt-ja", "langPath");
+        if (langPath != "") {
+            let langFiles = game.settings.get("fvtt-ja", "langFiles");
+
+            // langFiles をサブフォルダ方式とフラット方式に分類
+            // サブフォルダ方式：{langPath}/{modId}/ 以下のファイル（-ja 必須、それ以外はスキップ）
+            //   subfolderMap の構造: { modId: { [suffix]: [{path, version}] } }
+            //   suffix = "" が主ファイル（ja.json / ja-{ver}.json）、それ以外が副ファイル（ja-compendium.json 等）
+            // フラット方式：{langPath}/ 直下のファイル（-ja.json 必須）
+            const subfolderMap = {};
+            const flatFiles = [];
+
+            langFiles.forEach(fname => {
+                if (!fname.endsWith(".json")) return;
+                const relPath = fname.slice(langPath.length).replace(/^\//, '');
+                const parts = relPath.split('/');
+                if (parts.length >= 2) {
+                    const modId = parts[0];
+                    const basename = parts[parts.length - 1];
+                    const parsed = FvttJa.extractVersion(basename, modId);
+                    if (parsed === false) return; // -ja なし（英語参照ファイル等）→ スキップ
+                    const { suffix, version } = parsed;
+                    if (!subfolderMap[modId]) subfolderMap[modId] = {};
+                    if (!subfolderMap[modId][suffix]) subfolderMap[modId][suffix] = [];
+                    subfolderMap[modId][suffix].push({ path: fname, version });
+                } else {
+                    if (fname.endsWith("-ja.json")) flatFiles.push(fname);
+                }
+            });
+
+            // ── サブフォルダ方式 ──────────────────────────────────────────────────────
+            for (const [modId, suffixGroups] of Object.entries(subfolderMap)) {
+                const mod = game.modules.get(modId);
+                const isSystem = modId === game.system.id || (!game.system.id && modId === game.system.name);
+
+                let modVersion;
+                if (mod) {
+                    modVersion = mod.version ?? "0";
+                } else if (isSystem) {
+                    modVersion = game.system.version ?? "0";
+                } else {
+                    continue; // 対応するモジュール／システムが存在しない
+                }
+
+                // 言語ファイル追加機能用：選択した全日本語ファイルパスと完全一致の有無を追跡
+                const selectedPaths = [];
+                let hasAllExactVersions = true;
+
+                if (mod) {
+                    const lang = game.i18n.lang;
+                    let ja = mod.languages.filter(l => l.lang == lang);
+                    if (ja.size > 0) {
+                        // 元ファイルのサフィックスに対応するグループを 1:1 でマッチング
+                        // 対応グループがない元ファイルは置き換えない
+                        ja.forEach(l => {
+                            const suffix = FvttJa._origFileSuffix(l.path, lang);
+                            if (suffix === null) return; // 命名規則外 → 置き換えない
+                            const group = suffixGroups[suffix];
+                            if (!group) return; // 対応グループなし → 置き換えない
+                            const bestFile = FvttJa.selectBestFile(group, modVersion);
+                            if (!bestFile) return;
+                            const hasExact = group.some(f =>
+                                f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
+                            );
+                            if (!hasExact) hasAllExactVersions = false;
+                            selectedPaths.push(bestFile);
+                            FvttJa.log(`言語ファイル置換（サブフォルダ v${modVersion}${suffix ? ` suffix="${suffix}"` : ''}）「${l.path}」⇒「${bestFile}」`);
+                            l.path = bestFile;
+                        });
+                    } else {
+                        // ja ファイルなし → suffix '' のグループ（主ファイル）のみ追加
+                        const group = suffixGroups[''];
+                        if (group) {
+                            const bestFile = FvttJa.selectBestFile(group, modVersion);
+                            if (bestFile) {
+                                FvttJa.log(`言語ファイル追加（サブフォルダ v${modVersion}）「${bestFile}」`);
+                                mod.languages.add({ "lang": lang, "name": "日本語", "path": bestFile });
+                                selectedPaths.push(bestFile);
+                                const hasExact = group.some(f =>
+                                    f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
+                                );
+                                if (!hasExact) hasAllExactVersions = false;
+                            }
+                        }
+                    }
+                } else { // isSystem
+                    // 検討（今後判断）：上の mod 分岐とほぼ重複。差分は言語ソース
+                    //   （mod.languages / game.system.languages）と lang 値のみ。
+                    //   (langSource, lang) を取るヘルパーへ統合可能。
+                    //   なお mod 側は game.i18n.lang、システム側は "ja" 固定という非対称がある点に注意。
+                    let ja = game.system.languages.filter(l => l.lang == "ja");
+                    if (ja.size > 0) {
+                        ja.forEach(l => {
+                            const suffix = FvttJa._origFileSuffix(l.path, "ja");
+                            if (suffix === null) return;
+                            const group = suffixGroups[suffix];
+                            if (!group) return;
+                            const bestFile = FvttJa.selectBestFile(group, modVersion);
+                            if (!bestFile) return;
+                            const hasExact = group.some(f =>
+                                f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
+                            );
+                            if (!hasExact) hasAllExactVersions = false;
+                            selectedPaths.push(bestFile);
+                            FvttJa.log(`システム言語ファイル置換（サブフォルダ v${modVersion}${suffix ? ` suffix="${suffix}"` : ''}）「${l.path}」⇒「${bestFile}」`);
+                            l.path = bestFile;
+                        });
+                    } else {
+                        const group = suffixGroups[''];
+                        if (group) {
+                            const bestFile = FvttJa.selectBestFile(group, modVersion);
+                            if (bestFile) {
+                                FvttJa.log(`システム言語ファイル追加（サブフォルダ v${modVersion}）「${bestFile}」`);
+                                game.system.languages.add({ "lang": "ja", "name": "日本語", "path": `${bestFile}` });
+                                selectedPaths.push(bestFile);
+                                const hasExact = group.some(f =>
+                                    f.version !== null && FvttJa.compareVersions(f.version, modVersion) === 0
+                                );
+                                if (!hasExact) hasAllExactVersions = false;
+                            }
+                        }
+                    }
+                }
+
+                // 言語ファイル追加機能：選択ファイルがあり、かつ完全一致でないものがある場合にキューへ積む
+                if (selectedPaths.length > 0 && !hasAllExactVersions) {
+                    const langSrc = mod ? mod.languages : game.system.languages;
+                    const origEnPaths = langSrc
+                        .filter(l => l.lang === "en")
+                        .map(l => l.path)
+                        .filter(Boolean);
+                    if (origEnPaths.length > 0) {
+                        FvttJa._additionQueue.push({ modId, modVersion, langPath, origEnPaths, selectedPaths });
+                    }
+                }
+            }
+
+            // ── フラット方式（サブフォルダ方式で処理済みのモジュールはスキップ）────────
+            // 注意：複数の日本語ファイルを持つモジュールの場合、すべて同一ファイルに置き換わる
+            flatFiles.forEach(fname => {
+                let mod_name = fname.slice(fname.lastIndexOf('/') + 1, fname.lastIndexOf("-ja.json"));
+                if (subfolderMap[mod_name]) return;
+
+                let mod = game.modules.get(mod_name);
+                if (mod) {
+                    let ja = mod.languages.filter(lang => lang.lang == game.i18n.lang);
+                    if (ja.size > 0) {
+                        ja.forEach(lang => {
+                            FvttJa.log(`言語ファイル置換「${lang.path}」⇒「${fname}」`);
+                            lang.path = fname;
+                        });
+                    } else {
+                        FvttJa.log(`言語ファイル追加「${fname}」`);
+                        mod.languages.add({
+                            "lang": game.i18n.lang,
+                            "name": "日本語",
+                            "path": fname
+                        })
+                    }
+                } else if (mod_name == game.system.id || (!game.system.id && mod_name == game.system.name)) {
+                    let ja = game.system.languages.filter(lang => lang.lang == "ja");
+                    if (ja.size > 0) {
+                        ja.forEach(lang => {
+                            FvttJa.log(`システム言語ファイル置換「${lang.path}」⇒「${fname}」`);
+                            lang.path = fname;
+                        });
+                    } else {
+                        FvttJa.log(`システム言語ファイル追加「${fname}」`);
+                        game.system.languages.add({ "lang": "ja", "name": "日本語", "path": `${fname}` });
+                    }
+                } else {
+//                    FvttJa.log(`言語ファイル「${fname}」に対応するモジュール「${mod_name}」が有りません`);
+                }
+            });
+        }
+    }
+
+    // 動作環境チェック：本モジュールが正しく使われているか検証し、不適合なら停止する
+    // 検討（今後判断）：現在は injectLanguageFiles の後に実行している。
+    //   不適合環境では言語注入が無駄になるため、init 先頭への移動を将来検討。
+    static enforceEnvironment() {
+        // このモジュールがデフォルト言語モジュールに設定されていない場合は警告して停止
+        if (game.i18n.defaultModule !== "fvtt-ja") {
+            window.alert("fvtt-ja：本モジュールを使用する場合\nFVTT本体の設定で、デフォルト言語に「日本語：Foundry VTT（MRyas私家版）」に設定してください。");
+            game.shutDown();
+            game.logOut();
+        } else {
+            // 競合モジュール foundryVTTja が導入されている場合は警告して停止
+            // 検討（今後判断）：game.modules.get("foundryVTTja") で直引きに簡略化可能。
+            game.modules.forEach(module => {
+                if (module.id === "foundryVTTja") {
+                    window.alert("fvtt-ja：You must uninstall foundryVTTja to use fvtt-ja.");
+                    game.shutDown();
+                    game.logOut();
+                }
+            })
+        }
+    }
+
+    // ジャーナルコンバータ初期化（Babeleがある場合のみ）
+    // 注意（今後判断）：init フックのハンドラ Promise は core に await されない。
+    //   末尾の registerToBabele / journalReady は init 完了後に解決し得るため、
+    //   babele 側の登録タイミングへの依存が崩れていないか変更時に確認すること。
+    static async initJournalConverter() {
+        if (game.modules.get("babele")?.active) {
+            const { JournalConverterRegistry } =
+                await import("./journal/converter-registry.js");
+            const { BaseJournalConverter } =
+                await import("./journal/base-converter.js");
+            const { JournalCollector } =
+                await import("./journal/collector.js");
+            const { JournalExporter } =
+                await import("./journal/exporter.js");
+
+            game.settings.register("fvtt-ja", "bilingualJournal", {
+                name: "FVTTJa.Settings.bilingualJournal.name",
+                hint: "FVTTJa.Settings.bilingualJournal.hint",
+                type: Boolean,
+                scope: "world",
+                default: false,
+                config: true
+            });
+            game.settings.register("fvtt-ja", "checkSourceUpdate", {
+                name: "FVTTJa.Settings.checkSourceUpdate.name",
+                hint: "FVTTJa.Settings.checkSourceUpdate.hint",
+                type: Boolean,
+                scope: "world",
+                default: true,
+                config: true
+            });
+
+            JournalConverterRegistry.register(
+                "generic", new BaseJournalConverter("generic")
+            );
+            JournalConverterRegistry.registerToBabele();
+
+            globalThis.FVTTJa = {
+                journal: {
+                    BaseJournalConverter,
+                    JournalConverterRegistry,
+                    JournalCollector,
+                    JournalExporter
+                }
+            };
+
+            globalThis.FVTTJa_collectJournals =
+                JournalExporter.collectAll.bind(JournalExporter);
+            globalThis.FVTTJa_exportJournals =
+                JournalExporter.export.bind(JournalExporter);
+            globalThis.FVTTJa_listUpdated =
+                JournalCollector.listUpdated.bind(JournalCollector);
+
+            Hooks.callAll("fvtt-ja.journalReady");
+            FvttJa.log("Babele検出：ジャーナルコンバータ登録完了");
+        }
+    }
+
+    // ── 既存メソッド群 ────────────────────────────────────────────────────────────
+
     // 言語ファイルフォルダをスキャンし、前回からの変更があれば設定を更新してリロードを促す
     // フォルダ直下（フラット）とサブフォルダ1段階（モジュールIDフォルダ）を対象とする
     static async resetLangFiles(directory, reload = false) {
