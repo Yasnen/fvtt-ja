@@ -51,6 +51,7 @@ export class BaseJournalConverter {
      * @returns {object} マージ後のページ
      */
     mergePageTranslation(page, pageTrans) {
+        const sourceName = page.name;
         const result = foundry.utils.deepClone(page);
 
         if (pageTrans.name) {
@@ -64,22 +65,25 @@ export class BaseJournalConverter {
         }
         result.translated = true;
 
-        return this.transformPage(result, pageTrans);
+        return this.transformPage(result, pageTrans, sourceName);
     }
 
     /**
      * ページの追加変換処理。
      * - bilingualJournal 設定が有効な場合に原文（_text）を翻訳後テキストへ付加
      *
-     * @param {object} page      - mergePageTranslation() 適用後のページ
-     * @param {object} pageTrans - 翻訳データ
+     * @param {object} page       - mergePageTranslation() 適用後のページ
+     * @param {object} pageTrans  - 翻訳データ
+     * @param {string} [sourceName] - 翻訳前の英語ページ名
      * @returns {object} 変換後のページ
      */
-    transformPage(page, pageTrans) {
+    transformPage(page, pageTrans, sourceName) {
         if (page.type !== "text" || !page.text?.content) return page;
 
         if (game.settings.get("fvtt-ja", "bilingualJournal") && pageTrans?._text) {
-            page.text.content += `<br /><hr />${pageTrans._text}`;
+            const name = sourceName ?? page.name;
+            const heading = name ? `<h3>${name}</h3>` : '';
+            page.text.content += `<br /><hr />${heading}${pageTrans._text}`;
         }
 
         return page;
