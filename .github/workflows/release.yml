@@ -40,10 +40,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          README_URL="https://github.com/${{ github.repository }}/blob/$GITHUB_REF_NAME/README.md"
+          GENERATED=$(gh api "repos/${{ github.repository }}/releases/generate-notes" \
+            -f tag_name="$GITHUB_REF_NAME" \
+            --jq '.body')
+          NOTES="**変更履歴**: [README.md（${GITHUB_REF_NAME}）](${README_URL})
+
+${GENERATED}"
           gh release create "$GITHUB_REF_NAME" \
             module.json \
             --title "$GITHUB_REF_NAME" \
-            --generate-notes
+            --notes "$NOTES"
 
       - name: Publish to Foundry VTT
         uses: cs96and/FoundryVTT-release-package@v1.0.3
