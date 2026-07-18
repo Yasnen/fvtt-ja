@@ -1806,7 +1806,7 @@
 "PLAYLIST.SoundStop": "サウンドの再生停止",
 "PLAYLIST.BulkImport": {
   "Title": "サウンドの一括インポート",
-  "Hint": "Select a folder containing the sounds to be imported.---(???D???)---",
+  "Hint": "インポートするサウンドを選択してください。",
   "Button": "一括インポート",
   "Warning": "要求したディレクトリ「{path}」から、適切なプレイリストサウンドがインポートできませんでした"
 },
