@@ -1,11 +1,7 @@
 # fvtt-ja
 Foundry Virtual Tabletop 日本語翻訳（MRyas私家版）
 
-インストール：FoundryVTTの設定とセットアップで、アドオンモジュールのモジュールインストールから「fvtt-ja」を検索してインストールしてください。以下のマニフェスト URL を指定してインストールすることも可能です。
-
-```
-https://raw.githubusercontent.com/Yasnen/fvtt-ja/main/module.json
-```
+インストール：FoundryVTTの設定とセットアップで、アドオンモジュールのモジュールインストールから「fvtt-ja」を検索してインストールしてください。
 
 ## 使用にあたってのお願い
 本モジュールはMRyasがWFRP4eシステムをFVTTで遊ぶために作成した私家版です。FVTT上での使用には制限しませんので、ご自由にお使いください。その他の使用（ソースコードの流用など）については現状では許可しません。
@@ -43,6 +39,11 @@ i18n に対応していないモジュールの設定画面（名前・ヒント
 翻訳対象モジュールのテンプレートはコンソールで `FvttJa.generateSettingOverrideTemplate()` を実行してダウンロードできます。詳細は [docs/module-setting-overrides.md](docs/module-setting-overrides.md) を参照してください。
 
 # 更新履歴
+
+## 14.365.0
+- FVTT v14 対応（トランクを v14 化。v13 は `v13` ブランチで保守）
+- 翻訳：v14 コア UI の新規未翻訳文字列 59件を翻訳（Region Behavior・Combat名前編集・Token画像サイクル等）
+- 独自ブランディング表記（`Foundry Virtual Tabletop` 上書き）を `COMMON.FoundryVirtualTabletop` の新キー位置へ移設
 
 ## 13.351.9
 - ジャーナル：二言語表示で原文セクションに元ページ名を見出しとして付加

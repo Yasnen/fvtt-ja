@@ -9,11 +9,11 @@
       "flags": {}
     }
   ],
-  "version": "14.360.1",
+  "version": "14.365.0",
   "coreTranslation": true,
   "compatibility": {
     "minimum": "14",
-    "verified": "14.360"
+    "verified": "14.365"
   },
   "languages": [
     {
@@ -44,6 +44,6 @@
     ]
   },
   "url": "https://github.com/Yasnen/fvtt-ja",
-  "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v14.360.1.zip",
-  "manifest": "https://github.com/Yasnen/fvtt-ja/releases/download/v14.360.1/module.json"
+  "download": "https://github.com/Yasnen/fvtt-ja/archive/refs/tags/v14.365.0.zip",
+  "manifest": "https://github.com/Yasnen/fvtt-ja/releases/download/v14.365.0/module.json"
 }

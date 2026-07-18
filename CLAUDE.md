@@ -72,9 +72,21 @@ fvtt-tools sync-lang <新しいen.jsonのパス> --ja lang/core.json \
 
 過去に `---(...)---` 形式や `.NNN` 区切りが混在している箇所があるが、今後の新規プレースホルダは上記形式（`===` 囲み・`<build><versionLetter>` 区切り）に統一する。
 
+## module.json フィールドの変更タイミング（重要）
+
+`compatibility.verified` と `version`/`download`/`manifest` はライフサイクルが異なるため、**分離して運用する**。
+
+| フィールド | 性質 | 変更してよいタイミング |
+|---|---|---|
+| `compatibility.verified` | コスメティック（バッジ表示のみ・インストール可否に影響しない） | **開発中いつでも自由に変更してよい**。実際にテストした FVTT build に随時追従させる。リリース（タグ）不要 |
+| `compatibility.minimum` / `maximum` | FVTT コアがハード強制するインストール可否ゲート | 全ユーザーのインストール可否に影響する実質的な仕様変更。**必ずリリース（タグ）を伴わせる**。先行してコミットしない |
+| `version` / `download` / `manifest` | 配布URLと直結（3者は同じバージョン文字列で連動） | **タグ・pushを直後に実行できる状態になって初めて変更する**。「準備として先に編集しておく」運用はしない |
+
+**理由**：`download`/`manifest` はタグ固定URL（例 `releases/download/v14.360.1/...`）のため、対応するタグ・リリースが存在しない間はこれらのURLが404になる。この状態で `main` を（symlink 等で）実機に読み込ませていると、FVTT の定期的な更新チェックがそのままエラーになる。したがって version 系3フィールドの変更は、コミット→タグ→push を**同一作業内で連続して**行い、未タグの状態で `main` に置きっぱなしにしないこと。
+
 ## リリース手順
 
-新バージョンをリリースする際は以下をすべて同期して更新すること:
+新バージョンをリリースする際は以下をすべて同期して更新すること（version系3フィールドは上表の通りリリース直前まで変更しない）:
 
 1. **`module.json`** — `version`・`compatibility.verified`・`download` URL を更新する。
    - `download` の `{version}` 部分をタグ名に合わせる（例: `v13.351.6`）
@@ -83,6 +95,8 @@ fvtt-tools sync-lang <新しいen.jsonのパス> --ja lang/core.json \
 3. バージョン文字列をメッセージにして**コミット**する（例: `13.351.6`）。
 4. `v{version}` 形式で**タグ**を打つ（例: `v13.351.6`）。
 5. **Push**: `git push origin main && git push origin v{version}`
+
+Step 3〜5 は連続して実行し、間を空けない（コミットしたままタグ・pushを翌日以降に持ち越さない）。
 
 タグ push 後、`.github/workflows/release.yml` が自動で以下を実行する:
 - タグと `module.json` の `version` 一致チェック（不一致の場合は失敗）
