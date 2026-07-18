@@ -9,10 +9,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## このブランチのスコープ
 
-- FVTT v13 系コア UI の日本語翻訳（lang/core.json）
+- `main` = FVTT v14 トランク。FVTT v14 系コア UI の日本語翻訳（lang/core.json）
 - fvtt-ja モジュール固有 UI の翻訳（lang/fvtt-ja.json）
 - wfrp4e-ja-jp との連携機能（script/journal/ — ジャーナルコンバータ）
-- バグ修正・翻訳更新のみ。v13 向け wfrp4e-ja-jp 連携を除く新機能追加は v14 リポジトリ（gitlab.com/MRyas.jp/fvtt-ja）で実施。
+- v13 系は `v13` ブランチで保守（個別 backport のみ）。新機能・翻訳更新はまず `main`（v14）に対して行い、必要なもののみ `v13` へ cherry-pick する。
+- コミット規約: **`script` の変更と `lang` の変更は同一コミットに混ぜない**（`v13` への cherry-pick 可搬性を確保するため）。
 
 ## Overview
 
@@ -30,7 +31,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Versions follow FVTT's own version/build numbers: `{fvtt-major}.{fvtt-build}.{patch}`
 
-Example: `13.351.0` = FVTT v13 build 351, patch 0.
+Example: `14.360.0` = FVTT v14 build 360, patch 0.
+
+## 上流 en.json との同期（fvtt-tools）
+
+`lang/core.json` は FVTT コア本体の `lang/en.json` に追従する翻訳ファイル。コアがビルド更新された際は `@yasnen/fvtt-tools`（`github:Yasnen/fvtt-tools`）の `sync-lang` コマンドで三方向マージ同期する。
+
+```bash
+fvtt-tools sync-lang <新しいen.jsonのパス> \
+  --ja lang/core.json \
+  --placeholder-sep "<build><versionLetter>" \
+  --placeholder-mark "===" \
+  --placeholder-digits 3 \
+  --dry-run   # 差分確認後、問題なければ --dry-run を外して適用
+
+# 適用時は --update-base を付けて lang/en-base.json も更新する
+fvtt-tools sync-lang <新しいen.jsonのパス> --ja lang/core.json \
+  --placeholder-sep "<build><versionLetter>" --placeholder-mark "===" --placeholder-digits 3 \
+  --update-base
+```
+
+- `lang/en-base.json`：前回同期時点の en.json スナップショット。**リポジトリにコミットして管理する**（次回同期時の `[CHANGED]`＝英語原文変更検知に必須）。
+- 出力は新 en.json の構造・キー順をそのまま使うため、独自の並べ替えや全文書き換えをしないこと。
+- 新規キーには自動でプレースホルダが付与され未翻訳として可視化される。削除された upstream キー（ORPHAN）は自動で出力から除外される。
+- 独自追加キー（upstream に存在しない fvtt-ja 固有キー、例: ブランディング用の `COMMON.FoundryVirtualTabletop` 上書き）は ORPHAN 判定で消えるため、同期後に手動で復元・確認すること。
+
+### プレースホルダ規約
+
+未翻訳文字列には `===(<build><versionLetter><seq>)===` 形式のプレースホルダを付与する（`<seq>` は3桁連番）。
+
+`<versionLetter>` は FVTT メジャーバージョンをアルファベットに対応させたもの：
+
+| FVTT メジャーバージョン | 文字 |
+|---|---|
+| v12 | C |
+| v13 | D |
+| v14 | E |
+
+例: FVTT v14 build 365 由来の1件目の新規未翻訳文字列 → `===(365E001)===`
+
+過去に `---(...)---` 形式や `.NNN` 区切りが混在している箇所があるが、今後の新規プレースホルダは上記形式（`===` 囲み・`<build><versionLetter>` 区切り）に統一する。
 
 ## リリース手順
 

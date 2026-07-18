@@ -1,5 +1,4 @@
 {
-"Foundry Virtual Tabletop": "FVTT（MRyas私家版）",
 "ADVENTURE": {
   "ImportSubmit": "アドベンチャーをインポート",
   "ImportProgress": "インポート中",
@@ -404,8 +403,6 @@
   "NavLabel": "Combat Encounters Navigation---(056)---",
   "Begin": "戦闘開始",
   "Create": "遭遇の作成",
-  "Delete": "遭遇の削除",
-  "Encounter": "遭遇",
   "EncounterPrevious": "前の遭遇を有効化する",
   "EncounterNext": "次の遭遇を有効化する",
   "End": "戦闘終了",
@@ -439,10 +436,16 @@
   "TurnPrev": "前のターン",
   "CannotLinkToScene": "戦闘を、参加中の全ての戦闘参加者が含まれていないシーンにリンクすることはできません。",
   "ACTIONS": {
+    "EditName": "名前を編集",
+    "EditNameTitle": "遭遇名の編集",
     "LinkToScene": "表示中のシーンにリンク",
     "UnlinkFromScene": "シーンからリンク解除"
   },
   "FIELDS": {
+    "name": {
+      "label": "遭遇名",
+      "hint": "この戦闘遭遇を識別しやすくするための短い名前を入力します。"
+    },
     "round": {
       "label": "ラウンド"
     },
@@ -500,8 +503,10 @@
   "Unknown": "Unknown Combatant---(355E026)---",
   "PanTo": "Pan to Combatant---(355E027)---",
   "Ping": "Ping Token---(355E028)---",
-  "ToggleVis": "視界切替",
-  "ToggleDead": "Mark Defeated---(355E030)---",
+  "Hide": "非表示",
+  "Show": "表示",
+  "MarkDefeated": "撃破済みにする",
+  "UnmarkDefeated": "撃破済みを解除",
   "MovementHistoryCleared": "Cleared movement history for Token \"{name}\".---(355E031)---",
   "WarnNonVisibleToken": "This Combatant is not visible to you.---(355E032)---",
 
@@ -531,6 +536,7 @@
   "Confirm": "Confirm---(355E048)---",
   "Default": "既定値",
   "Delete": "Delete---(355E050)---",
+  "FoundryVirtualTabletop": "FVTT（MRyas私家版）",
   "Invalid": "Invalid---(355E051)---",
   "No": "いいえ",
   "None": "なし",
@@ -568,6 +574,10 @@
     "Start": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート中です。しばらくお待ちください。",
     "Finish": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート完了しました。"
   },
+  "ImportFolder": {
+    "InvalidDocument": "{collection}百科事典のフォルダコレクションへ{type}ドキュメントをインポートすることはできません。",
+    "InvalidDocuments": "{collection}百科事典のフォルダコレクションへは、フォルダドキュメントのみインポートできます。"
+  },
   "ImportEntry": "項目をインポート",
   "Locked": "{title} [Locked]---(345D043)---",
   "Migration": {
@@ -578,17 +588,20 @@
   "Type": "ドキュメントの種類",
   "TypeHint": "百科事典にはそれぞれ決まった種類のドキュメントが格納されます。",
   "ToggleLocked": {
-    "Option": "書込禁止の切替",
     "Title": "書込禁止の切替：{compendium}",
+    "Lock": "ロック",
     "Unlock": "ロック解除",
     "Warning": "このワールドに属さない事典を編集するためにロックを解除しようとしています。この百科事典への変更した内容は、登録されているシステムやモジュールが更新された場合、失われる可能性があります。代わりに事典をワールドに複製することを推奨しますが、ロックを解除しますか？"
   },
   "CannotViewWarning": "You do not have sufficient permission to view this Compendium pack.---(015)b299",
+  "ModifyLocked": "この百科事典はロックされているため、内容を変更できません。",
+  "ModifyPermissionDenied": "この百科事典を変更する権限がありません。",
   "OwnershipInheritBelow": "以下から継承",
   "OwnershipReset": "既定値に戻す",
   "ART": {
     "CONFIG": {
       "Hint": "矢印を使用して、アート・ソースの優先順位を調整します。一つのアクターに複数のソースから提供されたアートがある場合、最も優先順位の高いものが使用されます。",
+      "Items": "アイテム",
       "Portraits": "ポートレイト",
       "PriorityDecrease": "優先度を下げる",
       "PriorityIncrease": "優先度を上げる",
@@ -1070,6 +1083,7 @@
   "StatusUpgrade": "強化",
   "Submit": "Submit Changes---(355E095)---",
   "CHANGES": {
+    "Unregistered": "変更タイプ「{type}」は登録されていません。",
     "PHASES": {
       "initial": {
         "label": "Initial---(355E096)---",
@@ -1399,6 +1413,7 @@
   "TitleImageVideo": "画像・動画ブラウザ",
   "TitleImage": "イメージブラウザ",
   "TitleVideo": "Video Browser.---(160)---",
+  "TitleTexture": "テクスチャブラウザ",
   "TitleAudio": "音声ブラウザ",
   "TitleText": "ドキュメントブラウザ",
   "TitleGraphics": "3D Browser---(103)b299",
@@ -1475,10 +1490,14 @@
   "OpenConfig": "設定を開く",
   "AssignStatusEffects": "状態・効果の設定",
   "SelectMovementAction": "移動アクション選択",
-  "ToggleTargetState": "ターゲット状態切替",
-  "ToggleCombatState": "コンバットトラッカー登録トグル",
-  "ToggleVis": "トークン表示状態の切替",
-  "ToggleLock": "ロック状態の切替",
+  "Target": "ターゲット",
+  "Untarget": "ターゲット解除",
+  "EnterCombat": "戦闘に参加",
+  "ExitCombat": "戦闘から離脱",
+  "Hide": "非表示",
+  "Show": "表示",
+  "Lock": "ロック",
+  "Unlock": "ロック解除",
   "ToFrontOrBack": "手前に出す／後ろに送る",
   "TilePlay": "タイル動画の再生",
   "TilePause": "タイル動画の一時停止",
@@ -1819,6 +1838,9 @@
   "Bugs": "バグや問題の報告",
   "DeactivateAll": "全モジュールを選択解除",
   "Readme": "モジュールの説明",
+  "Author": "作成者",
+  "Authors": "作成者",
+  "URL": "URL",
   "Title": "モジュール管理",
   "Instructions": "現在のワールドで有効にするモジュールを設定します。モジュール設定を保存すると、セッションは再読み込みされます。",
   "View": "現在のワールドで有効になっているモジュールの一覧。",
@@ -1911,8 +1933,6 @@
   "FPS": "FPS"
 },
 
-"PLAYLIST.Delete": "Delete Playlist---(196)---",
-"PLAYLIST.Edit": "プレイリスト編集",
 "PLAYLIST.DefaultChannel": "プレイリストのオーディオ・チャネル",
 "PLAYLIST.CurrentlyPlaying": "現在再生中",
 "PLAYLIST.ModeDisabled": "サウンドボードのみ",
@@ -1929,7 +1949,7 @@
 "PLAYLIST.Update": "プレイリスト更新",
 "PLAYLIST.SortAlphabetical": "アルファベット順",
 "PLAYLIST.SortManual": "手動",
-"PLAYLIST.SoundCreate": "サウンド作成",
+"PLAYLIST.SoundAdd": "サウンドの追加",
 "PLAYLIST.SoundEdit": "サウンドの編集",
 "PLAYLIST.SoundDelete": "サウンドの削除",
 "PLAYLIST.SoundLoop": "サウンドを繰り返し",
@@ -1939,6 +1959,7 @@
 "PLAYLIST.SoundPreload": "サウンドのプリロード",
 "PLAYLIST.SoundResume": "Resume Sound---(199)---",
 "PLAYLIST.SoundStop": "サウンドの再生停止",
+"PLAYLIST.Preload": "サウンドの事前読込",
 "PLAYLIST.BulkImport": {
   "Title": "サウンドの一括インポート",
   "Hint": "インポートするサウンドを選択してください。",
@@ -1960,6 +1981,7 @@
   "TOOLTIP": "音量：{volume}%"
 },
 
+"PLAYLIST_SOUND.Create": "サウンドの作成",
 "PLAYLIST_SOUND.Update": "トラック更新",
 "PLAYLIST_SOUND.FIELDS": {
   "name.label": "トラック名",
@@ -1979,7 +2001,6 @@
 "SCENE.BackgroundScale": "背景画像の倍率",
 "SCENE.BackgroundScaleHint": "Shift＋マウスホイールかShift＋↑キーとShift＋↓キーで背景画像サイズを調節する。",
 "SCENE.CaptureInitialViewPosition": "シーン設定で初期表示位置としてキャンバスの位置を取り込み。",
-"SCENE.Configure": "設定",
 "SCENE.CurrentLevel": "現在の階層",
 "SCENE.Darkness": "暗さ",
 "SCENE.Details": "詳細",
@@ -2034,6 +2055,7 @@
 "SCENE.Properties": "シーンの設定情報",
 "SCENE.View": "View Scene",
 "SCENE.ShiftBG": "シフト",
+"SCENE.PullEveryone": "全員の表示をこのシーンに同期",
 "SCENE.ToggleNav": "ナビゲーション表示切替",
 "SCENE.FogModeChangeMessage": "Fog exploration mode has changed. This will reload fog exploration and reset vision.---(355E209)---",
 "SCENE.Transition": {
@@ -2225,11 +2247,8 @@
       "hint": "シーンは複数の垂直な階層をレサポートします。新しいレベルを追加すると、このシーンは複数階層シーンに変換されます。",
       "label": "Add Level---(355E242)---"
     },
-    "Down": "Down one level---(355E243)---",
     "Edit": "Edit level---(355E244)---",
-    "Remove": "Remove level---(355E245)---",
-    "Up": "Up one level---(355E246)---",
-    "View": "View level---(355E247)---"
+    "Delete": "レベルを削除"
   },
   "FIELDS": {
     "background": {
@@ -2255,8 +2274,7 @@
     },
     "fog": {
       "label": "霧の探索",
-      "src.label": "未探索のテクスチャ",
-      "tint.label": "テクスチャ色調"
+      "src.label": "未探索のテクスチャ"
     },
     "textures": {
       "label": "Positioning---(355E263)---",
@@ -2279,7 +2297,8 @@
         "hint": "この階層から完全または部分的に見える他の階層群を設定する。"
       }
     }
-  }
+  },
+  "CannotDeleteOnlyLevel": "このシーンで唯一のレベルは削除できません。"
 },
 
 "SCENE_NAVIGATION": {
@@ -3246,6 +3265,7 @@
 
 "PLACEABLE_PALETTE": {
   "Apply": "Apply---(355E259)---",
+  "CannotApplyToLocked": "ロックされたオブジェクトにはパレットを適用できません。",
   "CloneSettings": "Clone---(355E260)---",
   "MultipleValues": "<Multiple Values>---(355E261)---",
   "Selected": "「{document}」パレット[{count}]",
@@ -3282,6 +3302,10 @@
       "top": {
         "label": "天井",
         "hint": "高度の範囲の天井"
+      },
+      "topInclusive": {
+        "label": "天井を含む",
+        "hint": "高度の範囲に天井を含めるかどうか。"
       }
     },
     "attachment": {
@@ -3319,7 +3343,7 @@
     "create": "領域を作成",
     "update": "領域を更新",
     "delete": "領域を削除",
-    "behaviorCreate": "振る舞いを作成する",
+    "behaviorAdd": "振る舞いを追加する",
     "behaviorEdit": "振る舞いを編集する",
     "behaviorDelete": "振る舞いを削除する",
     "behaviorEnable": "振る舞いを有効にする",
@@ -3510,11 +3534,21 @@
       }
     },
     "changeLevel": {
+      "FIELDS": {
+        "movementActions": {
+          "label": "許可する移動アクション",
+          "hint": "レベルを変更する際にトークンが使用できる移動アクションを定義します。何も選択しない場合、すべての移動アクションが許可されます。"
+        }
+      },
+      "Level": "移動先レベル",
+      "MovementAction": "移動アクション",
       "Confirm": "「{token}」を「{level}」へ移動しますか？",
       "ConfirmSelect": "「{token}」を移動するレベルを選択してください。",
+      "ConfirmDisabled": "{token}は現在の位置から他のレベルへ移動できません。",
       "Move": "移動",
       "MoveDown": "下のレベルへ",
-      "MoveUp": "上のレベルへ"
+      "MoveUp": "上のレベルへ",
+      "DoNotMove": "移動しない"
     },
     "defineSurface": {
       "FIELDS": {
@@ -3530,6 +3564,10 @@
         "exposure": {
           "label": "高架サーフェスの部分表示",
           "hint": "このサーフェスの可視エリアを、サーフェスの下や外にいる観測者に部分的に表示する。表示範囲は観測者とサーフェス境界の角度によって変わり、角度が急なほど狭くなる。屋根・バルコニー・その他の頭上プラットフォームに有効。"
+        },
+        "culling": {
+          "label": "トークンのカリング",
+          "hint": "GM視点で、または「トークンの視界」が無効な場合に、現在表示中のレベル外にある未制御のトークンを非表示にします。背景に配置されたサーフェスはその下にあるトークンを、前景に配置されたサーフェスはその上または同じ高さにあるトークンを非表示にします。"
         }
       },
       "PLACEMENTS": {
@@ -3637,10 +3675,13 @@
         "relative.label": "相対位置"
       },
       "Confirm": "「{token}」を転送しますか？",
+      "ConfirmDisabled": "{token}は現在の位置から転送できません。",
       "ConfirmRevealed": "「{token}」を{region}に転送しますか？",
       "ConfirmSelectSameScene": "{token}が転送する先を{scene}内の転送先で選択する。",
       "ConfirmSelectDifferentScene": "{token}が転送する先を選択する。",
-      "ConfirmSelectOption": "{scene}内の{region}"
+      "ConfirmSelectOption": "{scene}内の{region}",
+      "Teleport": "転送",
+      "DoNotTeleport": "転送しない"
     },
     "toggleBehavior": {
       "FIELDS": {
@@ -3679,6 +3720,7 @@
 "SIDEBAR.CollapseToggle": "折り畳む／開く",
 "SIDEBAR.Delete": "削除",
 "SIDEBAR.DeleteWarning": "この{type}は完全に削除され元に戻せません。",
+"SIDEBAR.DeleteManyWarning": "{count}件の{type}が完全に削除され、復元できなくなります。",
 "SIDEBAR.Duplicate": "複製",
 "SIDEBAR.Edit": "編集",
 "SIDEBAR.Export": "データエクスポート",
@@ -3712,9 +3754,6 @@
   "ACTIONS": {
     "ChangeLevel": "Change Level---(355E317)---",
     "Clear": "クリア",
-    "Configure": "設定",
-    "Create": "Create {name}---(355E320)---",
-    "Delete": "削除",
     "Hidden": "Hidden---(355E322)---",
     "Hide": "隠す",
     "InLevel": "Included in Level---(355E324)---",
@@ -3744,7 +3783,8 @@
     "Title": "高度なフィルター",
     "Level": "Filter by Level===(359E044)===",
     "Tooltip": "高度なフィルター。右クリックでクリア",
-    "Top": "Top---(355E341)---"
+    "Top": "Top---(355E341)---",
+    "Viewed": "閲覧中のみ"
   },
   "Search": {
     "placeholder": "フィルター「{name}」"
@@ -3757,7 +3797,8 @@
     "normal": "通常の壁",
     "secret": "隠し扉",
     "terrain": "地形壁",
-    "window": "窓"
+    "window": "窓",
+    "blank": "空白の壁"
   }
 },
 
@@ -3834,7 +3875,9 @@
   "AnimateSettingHint": "ロール表から描画するときに、ルーレット形式のアニメーションを表示する。",
   "DrawFlavor": "ロール表「{name}」を振った結果",
   "DrawFlavorPlural": "ロール表「{name}」から{number}枚の結果を引いた",
+  "DrawMaximumIterations": "テーブル「{name}」から利用可能な項目を抽選できませんでした（最大試行回数に到達）。",
   "NoAvailableResults": "このロール表にはロール可能な内容がありません。",
+  "NoPossibleResults": "このテーブルと計算式では抽選可能な結果がありません。",
   "Result": "Result---(325C305)---",
   "ResultDescription": "結果の説明",
   "SHEETS": {
@@ -4022,6 +4065,10 @@
 "TOKEN.Anchor": "アンカー",
 "TOKEN.AnchorHint": "アンカーで固定する場所の既定は(0.5, 0.5)でトークン画像の中央です。",
 "TOKEN.ImageAlts": "代替アクタートークン",
+"TOKEN.ImageCycleNext": "次のトークン画像",
+"TOKEN.ImageCyclePrev": "前のトークン画像",
+"TOKEN.ImagePreview": "トークン画像プレビュー",
+"TOKEN.ImagePathOverridden": "この画像はダイナミックトークンリングのサブジェクトテクスチャによって上書きされています。",
 "TOKEN.Mirror": "反転",
 "TOKEN.MirrorX": "水平方向",
 "TOKEN.MirrorY": "垂直方向",
@@ -4057,6 +4104,7 @@
   "depth.label": "Z-Size===(359E060)===",
   "level.label": "階層",
   "movementAction.label": "移動アクション",
+  "movementAction.hint": "「既定」が選択されている場合、このトークンの移動アクションは自動的に決定されます。",
   "actorId.label": "表示元アクター",
   "actorLink.label": "アクターデータとリンク",
   "displayName.label": "トークン名表示",
