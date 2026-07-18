@@ -1,113 +1,16 @@
 {
-"Activate": "有効化",
-"all": "all---(901)---",
-"Anchor": "アンカー",
-"Angle": "角度",
-"Author": "作成者",
-"AuthorPl": "作成者",
-"AreYouSure": "本気か？",
-"and": "最大",
-"authorized": "authorized---(902)---",
-"Between": "最小",
-"Cancel": "取消",
-"Character": "キャラクター",
-"Configure": "設定",
-"Confirm": "実行",
-"Command": "コマンド",
-"Collapse": "折畳む",
-"Coordinates": "座標",
-"Close": "閉じる",
-"Deactivate": "無効化",
-"Degrees": "度",
-"Default": "既定値",
-"Delete": "削除",
-"DeleteSelected": "選択を削除",
-"Description": "説明",
-"Distance": "距離",
-"Display": "表示",
-"Direction": "方向",
-"Documentation": "ドキュメンテーション",
-"Duplicate": "複製",
-"Error": "エラー",
-"Errors": "エラー",
-"Expand": "開く",
-"GridUnits": "グリッド単位",
-"GridSpaces": "マス目",
-"Install": "インストール",
-"Elevation": "高度",
-"Sort": "ソート（並び替え？）",
 "Foundry Virtual Tabletop": "FVTT（MRyas私家版）",
-"File Path": "ファイル格納場所",
-"Height": "高さ",
-"Hidden": "非表示",
-"Hold": "Hold---(005)---",
-"Information": "情報",
-"Light": "Light",
-"Name": "名前",
-"Next": "Next---(006)---",
-"No": "いいえ",
-"Notes": "注記",
-"Preload": "Preload---(007)---",
-"Previous": "Previous---(008)---",
-"Token": "トークン",
-"Minimum": "Minimum---(009)---",
-"Maximum": "Maximum---(010)---",
-"Image": "画像",
-"Invalid": "Invalid---(860)---",
-"None": "なし",
-"Path": "パス",
-"Packs": "Packs---(012)---",
-"Permissions": "権限",
-"Position": "Position---(013)---",
-"Pixels": "ピクセル",
-"Preview": "プレビュー",
-"Ratio": "比率",
-"Reset": "リセット",
-"Resources": "リソース",
-"Result": "結果",
-"Resize": "Resize---(002)b299",
-"Rotation": "回転",
-"Roll Formula": "ロール式",
-"Commit Change": "Commit Changes---(014)---",
-"Reset Changes": "Reset Changes---(015)---",
-"Save": "保存",
-"Save Changes": "変更内容を保存",
-"Scale": "倍率",
-"Scope": "スコープ",
-"Seconds": "秒",
-"selected": "選択された",
-"SelectAll": "全て選択",
-"Sight": "Sight---(003)b299",
-"Sheet": "シート",
-"System": "システム",
-"Software": "Software---(018)---",
-"Sound": "Sound---(004)b299",
-"spaces": "spaces---(005)b299",
-"Template": "型",
-"Type": "種類",
-"Uninstall": "Uninstall---(019)---",
-"units": "units---(288)---",
-"Unknown": "不明",
-"Update": "更新",
-"URL": "URL",
-"Vision": "Vision---(020)---",
-"Warning": "警告",
-"Warnings": "警告",
-"Width": "幅",
-"XCoord": "Ｘ座標",
-"YCoord": "Ｙ座標",
-"Yes": "はい",
-
 "ADVENTURE": {
   "ImportSubmit": "アドベンチャーをインポート",
   "ImportProgress": "インポート中",
   "ImportHeaderOverview": "概要",
   "ImportHeaderContents": "コンテンツ",
-  "ImportHeaderOptions": "Options",
+  "ImportHeaderOptions": "オプション",
   "ImportOverwriteTitle": "既存のコンテンツを上書きしますか？",
   "ImportOverwriteWarning": "アドベンチャー「{name}」の一部コンテンツは既にワールドに含まれています。このアドベンチャーをインポートするとそのコンテンツは上書きされます。続行しますか？",
   "ImportAll": "全てインポート",
   "ImportContent": "「{label}」をインポート",
+  "ImportLoading": "アドベンチャーデータ読み込み中……",
   "Importer": {
     "V1": "アドベンチャーインポーター(V1)",
     "V2": "アドベンチャーインポーター(V2)"
@@ -157,8 +60,6 @@
   }
 },
 
-"APP.NavigateBackConfirm": "本当にFoundry Virtual Tabletopのゲームを終了しますか？",
-
 "AMBIENT_LIGHT": {
   "ACTIONS": {
     "CREATE": "環境光を作成",
@@ -166,14 +67,9 @@
     "RESET": "高度なオプションをリセット"
   },
   "FIELDS": {
-    "x": {
-      "label": "X"
-    },
-    "y": {
-      "label": "Y"
-    },
-    "elevation": {
-      "label": "高度"
+    "name": {
+      "hint": "光源を識別しやすくするための任意の名前",
+      "label": "名前"
     },
     "rotation": {
       "label": "回転角度"
@@ -183,8 +79,8 @@
       "hint": "このオプションを有効にした光源はトークンにとって追加の視界ポイントとして機能する。このオプションを有効にすると、トークンが照らす領域が壁の後ろやトークンの視野の外にある場合でも、トークンは常にその領域を見ることができる。"
     },
     "walls": {
-      "label": "壁による遮蔽",
-      "hint": "この光源の効果範囲が近くの壁によって遮られるか設定する。"
+      "label": "壁とサーフェスによる遮蔽",
+      "hint": "この光源の効果範囲が近くの壁とサーフェスによって遮られるか設定する。"
     }
   },
   "LABELS": {
@@ -203,87 +99,98 @@
   }
 },
 
-
 "AMBIENT_SOUND": {
-"ACTIONS": {
-  "CREATE": "環境音の作成",
-  "UPDATE": "環境音の更新"
-},
-"FIELDS": {
-  "x": {
-    "label": "X"
+  "ACTIONS": {
+    "CREATE": "環境音の作成",
+    "UPDATE": "環境音の更新"
   },
-  "y": {
-    "label": "Y"
-  },
-  "elevation": {
-    "label": "高度"
-  },
-  "path": {
-    "label": "音源ファイルのパス",
-    "hint": "トークンが指定半径内に移動したときに音源を再生するように環境音を設定する。"
-  },
-  "radius": {
-    "label": "効果の半径"
-  },
-  "volume": {
-    "label": "最大音量",
-    "hint": "原点（軽減の場合）や範囲内の全ての場所での最大の音量を定義する。"
-  },
-  "easing": {
-    "label": "簡易の軽減",
-    "hint": "トークンと原点の距離に応じて音量を調整する。"
-  },
-  "hidden": {
-    "label": "隠す",
-    "hint": "この音源を一時的に無効にするかトグルする。"
-  },
-  "walls": {
-    "label": "壁による抑制",
-    "hint": "この音源が付近の壁で制限されるか設定する。"
-  },
-  "darkness": {
-    "label": "暗さによる有効化範囲",
-    "hint": "環境音が聞こえる暗さの範囲を指定できる。",
-    "min": {
-      "label": "最小"
+  "FIELDS": {
+    "name": {
+      "hint": "音源を識別しやすくするための任意の名前。",
+      "label": "名前"
     },
-    "max": {
-      "label": "最大"
+    "x": {
+      "label": "X"
+    },
+    "y": {
+      "label": "Y"
+    },
+    "path": {
+      "label": "音源ファイルパス",
+      "hint": "トークンが指定半径内に移動したときに音源を再生するように環境音を設定する。"
+    },
+    "radius": {
+      "label": "効果の半径"
+    },
+    "volume": {
+      "label": "最大音量",
+      "hint": "原点（軽減の場合）や範囲内の全ての場所での最大の音量を定義する。"
+    },
+    "easing": {
+      "label": "音量軽減",
+      "hint": "トークンと原点の距離に応じて音量を調整する。"
+    },
+    "hidden": {
+      "label": "隠す",
+      "hint": "この音源を一時的に無効にするかトグルする。"
+    },
+    "walls": {
+      "label": "壁とサーフェスによる抑制",
+      "hint": "この音源が付近の壁とサーフェスで制限されるか設定する。"
+    },
+    "darkness": {
+      "label": "暗さによる有効化範囲",
+      "hint": "環境音が聞こえる暗さの範囲を指定できる。",
+      "min": {
+        "label": "最小"
+      },
+      "max": {
+        "label": "最大"
+      }
+    },
+    "effects": {
+      "base": {
+        "type": {
+          "label": "基本効果"
+        },
+        "intensity": {
+          "label": "基本効果の強度"
+        },
+        "hint": "音にフィルタをかけたり、変換するオーディオエフェクトを適用する。"
+      },
+      "muffled": {
+        "type": {
+          "label": "消音効果"
+        },
+        "intensity": {
+          "label": "消音効果の強度"
+        },
+        "hint": "音が壁によって消音されたときに、基本効果を置き換える。壁に抑制されている場合は除く。"
+      }
     }
   },
-  "effects": {
-    "base": {
-      "type": {
-        "label": "基本効果"
-      },
-      "intensity": {
-        "label": "基本効果の強度"
-      },
-      "hint": "音にフィルタをかけたり、変換するオーディオエフェクトを適用する。"
-    },
-    "muffled": {
-      "type": {
-        "label": "消音効果"
-      },
-      "intensity": {
-        "label": "消音効果の強度"
-      },
-      "hint": "音が壁によって消音されたときに、基本効果を置き換える。壁に抑制されている場合は除く。"
-    }
+  "SECTIONS": {
+    "SOURCE": "音源",
+    "PLACEMENT": "場所",
+    "PLACEMENT_HINT": "音源の原点位置、高度および半径を設定する。高度はまだ使用されておらず参考として提供されている。",
+    "VOLUME": "音量",
+    "ACTIVATION": "有効化",
+    "EFFECTS": "特殊効果"
   }
-},
-"SECTIONS": {
-  "SOURCE": "音源",
-  "PLACEMENT": "場所",
-  "PLACEMENT_HINT": "音源の原点位置、高度および半径を設定する。高度はまだ使用されておらず参考として提供されている。",
-  "VOLUME": "音量",
-  "ACTIVATION": "有効化",
-  "EFFECTS": "特殊効果"
-}
 },
 
 "APPLICATION": {
+  "NavigateBackConfirm": "Are you sure you want to exit the Foundry Virtual Tabletop game?---(355E009)---",
+  "ACTIONS": {
+    "Attach": "ウィンドウを戻す",
+    "Detach": "ウィンドウの独立表示",
+    "Collapse": "折り畳む",
+    "Expand": "開く",
+    "Close": "閉じる",
+    "CopyUuid": "ドキュメントのUUIDをコピー",
+    "ImportDocument": "Import---(355E016)---",
+    "DeleteDocument": "Delete Document---(355E017)---"
+  },
   "TOOLS": {
     "ControlsMenu": "Application Controls---(325C057)---",
     "ToggleControls": "操作切替",
@@ -464,29 +371,34 @@
     }
 },
 
-"CHAT.Chat": "チャット",
-"CHAT.Clear": "チャットログの消去",
-"CHAT.Dismiss": "Dismiss---(345D021)---",
-"CHAT.EnterMessage": "メッセージを入力",
-"CHAT.Export": "チャットログの出力",
-"CHAT.FlushTitle": "チャットログの消去",
-"CHAT.FlushWarning": "チャットログのメッセージを完全に削除します。",
-"CHAT.InvalidCommand": "{command}は有効なチャット・メッセージコマンドではありません。",
-"CHAT.Title": "チャットログ",
-"CHAT.To": "送信先",
-"CHAT.PopoutMessage": "メッセージをポップアウトする",
-"CHAT.RevealMessage": "全員に公開する",
-"CHAT.ConcealMessage": "非公開にする",
-"CHAT.RollVisibility": "Roll Visibility---(000)b306",
-"CHAT.RollBlind": "GMにだけ送信",
-"CHAT.RollDefault": "ロールモードの既定値",
-"CHAT.RollPublic": "公開ロール",
-"CHAT.RollPrivate": "GMにだけロール送信",
-"CHAT.RollSelf": "自分だけでロール",
-"CHAT.RollTables": "ロール表",
-"CHAT.JumpToBottom": "最下行へ移動",
-"CHAT.PrivateRollContent": "{user}が秘密裏にサイコロを振った",
-"CHAT.UnknownUser": "不明なユーザ",
+"CHAT": {
+  "Chat": "チャット",
+  "Clear": "チャットログの消去",
+  "Dismiss": "Dismiss---(345D021)---",
+  "EnterMessage": "メッセージを入力",
+  "Export": "チャットログの出力",
+  "FlushTitle": "チャットログの消去",
+  "FlushWarning": "チャットログのメッセージを完全に削除します。",
+  "InvalidCommand": "{command}は有効なチャット・メッセージコマンドではありません。",
+  "Title": "チャットログ",
+  "To": "送信先",
+  "PopoutMessage": "メッセージをポップアウトする",
+  "RevealMessage": "全員に公開する",
+  "ConcealMessage": "非公開にする",
+  "RollVisibility": "Roll Visibility---(000)b306",
+  "RollTables": "ロール表",
+  "SendMessage": "メッセージを送信",
+  "JumpToBottom": "最下行へ移動",
+  "PrivateRollContent": "{user}が秘密裏にサイコロを振った",
+  "UnknownUser": "不明なユーザ",
+  "MODES": {
+    "blind": "非表示でGMに送信",
+    "gm": "GMに送信",
+    "ic": "キャラクターとして全体送信",
+    "public": "ユーザーとして全体送信",
+    "self": "自分にだけ表示"
+  }
+},
 
 "COMBAT": {
   "NavLabel": "Combat Encounters Navigation---(056)---",
@@ -500,16 +412,12 @@
   "InitiativeRoll": "イニシアチブをロールする",
   "InitiativeReset": "イニシアチブをリセット",
   "ClearMovementHistories": "移動履歴のクリア",
-  "InitiativeScore": "Initiative Score---(345D024)---",
   "EndTitle": "遭遇戦闘を終了",
   "EndConfirmation": "この遭遇戦闘を終了し、トラッカーをクリアしますか？",
   "None": "有効な遭遇なし",
   "NoneActive": "今のシーンにコンバットエンカウンターは有りません。",
   "NoneRemaining": "この遭遇には、倒されていない戦闘参加者が残っていません。",
   "NotStarted": "戦闘前",
-  "PanToCombatant": "戦闘参加者にパン",
-  "PingCombatant": "戦闘参加者をピン",
-  "WarnNonVisibleToken": "この戦闘参加者はあなたには見えません。",
   "Round": "第{round}ラウンド",
   "Rounds": "ラウンド",
   "RoundPrev": "前のラウンド",
@@ -524,53 +432,15 @@
     "Epic": "エピック",
     "MC": "戦闘解説者"
   },
-  "ToggleVis": "表示をトグル",
-  "ToggleDead": "打倒マークトグル",
   "Turn": "ターン",
   "Turns": "ターン",
   "TurnEnd": "ターン終了",
   "TurnNext": "次のターン",
   "TurnPrev": "前のターン",
-  "UnknownCombatant": "Unknown Combatant---(057)---",
   "CannotLinkToScene": "戦闘を、参加中の全ての戦闘参加者が含まれていないシーンにリンクすることはできません。",
-  "CombatantActor": "表示しているアクター",
-  "CombatantCreate": "Create Combatant---(058)---",
-  "CombatantDefeated": "打倒された",
-  "CombatantHidden": "非表示",
-  "CombatantImage": "サムネイル画像",
-  "CombatantInitiative": "イニシアチブの値",
-  "CombatantStatus": "状態",
-  "CombatantUpdate": "戦闘参加者の情報更新",
-  "CombatantUpdateNamed": "戦闘参加者の情報更新：{name}",
-  "CombatantName": "表示名",
-  "CombatantRemove": "戦闘参加者を取り除く",
-  "CombatantClear": "イニシアチブをクリア",
-  "CombatantReroll": "イニシアチブを振り直す",
-  "CombatantClearMovementHistory": "移動履歴のクリア",
-  "CombatantMovementHistoryCleared": "Cleared movement history for Token \"{name}\".---(345D026)---",
-  "CombatantToken": "使用しているトークン",
-  "CombatantScene": "Combatant Scene---(059)---",
-  "CombatantNotInScene": "The Combatant {name} is not present in your currently viewed scene.---(060)---",
   "ACTIONS": {
     "LinkToScene": "表示中のシーンにリンク",
     "UnlinkFromScene": "シーンからリンク解除"
-  },
-  "DURATION": {
-    "ROUNDS": {
-      "one": "ラウンド",
-      "two": "ラウンド",
-      "few": "ラウンド",
-      "many": "ラウンド",
-      "other": "ラウンド"
-    },
-    "TURNS": {
-      "one": "ターン",
-      "two": "ターン",
-      "few": "ターン",
-      "many": "ターン",
-      "other": "ターン"
-    },
-    "None": "None---(347D007)---"
   },
   "FIELDS": {
     "round": {
@@ -621,72 +491,117 @@
         }
       }
     }
-  },
-  "PingInvisibleToken": "You can't see this participant's token.---(347D010)---",
-  "ResourceHint": "Choose an attribute to track for each participant.---(347D011)---",
-  "SkipDefeatedHint": "Automatically bypass participants marked as defeated?---(347D012)---",
-  "TargetedBy": "Targeted by {list}---(347D013)---",
-  "ToggleTargeting": "Toggle Targeting---(347D014)---"
+  }
 },
 
-"COMPENDIUM.Name": "事典の名前",
-"COMPENDIUM.Create": "事典作成",
-"COMPENDIUM.CreateHint": "現在のワールドに新しい百科事典を作成する。",
-"COMPENDIUM.FilterDocuments": "ドキュメントを種類でフィルタ",
-"COMPENDIUM.ClearFilters": "フィルタをクリア",
-"COMPENDIUM.Delete": {
-  "Option": "事典を削除",
-  "Title": "事典を削除：{compendium}",
-  "Warning": "この百科事典は完全に削除されます。"
-},
-"COMPENDIUM.DeleteEntry": "項目を削除",
-"COMPENDIUM.Duplicate": {
-  "Option": "事典を複製",
-  "Title": "事典を複製：{compendium}",
-  "Label": "新しい事典の名前",
-  "Hint": "事典を自分のワールドに複製し、安全に編集可能なローカルコピーを作成できます。",
-  "Submit": "複製"
-},
-"COMPENDIUM.ErrorRequireTitle": "You must provide a title to create a World Compendium pack.---(062)---",
-"COMPENDIUM.ImportAll": {
-  "Option": "全ての内容をインポート",
-  "Title": "全ての内容をインポート：{compendium}",
-  "Submit": "インポート",
-  "Hint": "百科事典から全ての項目を新規もしくは既存のフォルダにインポートします。大量に百科事典をインポートするとアプリケーションの性能に悪影響が生じることに注意してください。",
-  "Start": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート中です。しばらくお待ちください。",
-  "Finish": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート完了しました。"
-},
-"COMPENDIUM.ImportEntry": "項目をインポート",
-"COMPENDIUM.Locked": "{title} [Locked]---(345D043)---",
-"COMPENDIUM.Migration": {
-  "Begin": "Beginning migration for Compendium pack {collection}, please be patient.---(347D015)---",
-  "Complete": "Successfully migrated Compendium pack {collection}.---(347D016)---"
-},
-"COMPENDIUM.SidebarTitle": "百科事典",
-"COMPENDIUM.Type": "ドキュメントの種類",
-"COMPENDIUM.TypeHint": "百科事典にはそれぞれ決まった種類のドキュメントが格納されます。",
-"COMPENDIUM.ToggleLocked": {
-  "Option": "書込禁止の切替",
-  "Title": "書込禁止の切替：{compendium}",
-  "Unlock": "ロック解除",
-  "Warning": "このワールドに属さない事典を編集するためにロックを解除しようとしています。この百科事典への変更した内容は、登録されているシステムやモジュールが更新された場合、失われる可能性があります。代わりに事典をワールドに複製することを推奨しますが、ロックを解除しますか？"
-},
-"COMPENDIUM.CannotViewWarning": "You do not have sufficient permission to view this Compendium pack.---(015)b299",
-"COMPENDIUM.OwnershipInheritBelow": "以下から継承",
-"COMPENDIUM.OwnershipReset": "既定値に戻す",
-"COMPENDIUM.ART": {
-  "CONFIG": {
-    "Hint": "矢印を使用して、アート・ソースの優先順位を調整します。一つのアクターに複数のソースから提供されたアートがある場合、最も優先順位の高いものが使用されます。",
-    "Portraits": "ポートレイト",
-    "PriorityDecrease": "優先度を下げる",
-    "PriorityIncrease": "優先度を上げる",
-    "Tokens": "トークン"
+"COMBATANT": {
+  "Status": "Combatant Status---(355E024)---",
+  "UpdateNamed": "Update Combatant: {name}---(355E025)---",
+  "Unknown": "Unknown Combatant---(355E026)---",
+  "PanTo": "Pan to Combatant---(355E027)---",
+  "Ping": "Ping Token---(355E028)---",
+  "ToggleVis": "視界切替",
+  "ToggleDead": "Mark Defeated---(355E030)---",
+  "MovementHistoryCleared": "Cleared movement history for Token \"{name}\".---(355E031)---",
+  "WarnNonVisibleToken": "This Combatant is not visible to you.---(355E032)---",
+
+  "FIELDS": {
+    "actorId.label": "Represented Actor---(355E033)---",
+    "tokenId.label": "Represented Token---(355E034)---",
+    "name.label": "Displayed Name---(355E035)---",
+    "defeated.label": "Defeated---(355E036)---",
+    "hidden.label": "Hidden---(355E037)---",
+    "img.label": "Thumbnail Image---(355E038)---",
+    "initiative.label": "Initiative Value---(355E039)---"
   },
-  "SETTING": {
-    "Hint": "システムやモジュールが提供するアートを使用する優先度を設定する。",
-    "Label": "アート設定",
-    "Title": "事典アート"
+
+  "ACTIONS": {
+    "Create": "Create Combatant---(355E040)---",
+    "Update": "Update Combatant---(355E041)---",
+    "Remove": "Remove Combatant---(355E042)---",
+    "Clear": "Clear Initiative---(355E043)---",
+    "Reroll": "Re-roll Initiative---(355E044)---",
+    "ClearMovementHistory": "Clear Movement History---(355E045)---"
   }
+},
+
+"COMMON": {
+  "AreYouSure": "本気か？",
+  "Cancel": "取消",
+  "Confirm": "Confirm---(355E048)---",
+  "Default": "既定値",
+  "Delete": "Delete---(355E050)---",
+  "Invalid": "Invalid---(355E051)---",
+  "No": "いいえ",
+  "None": "なし",
+  "Preview": "Preview---(355E054)---",
+  "Unknown": "Unknown---(355E055)---",
+  "Warning": "Warning---(355E056)---",
+  "Yes": "はい"
+},
+
+"COMPENDIUM": {
+  "Name": "事典の名前",
+  "Create": "事典作成",
+  "CreateHint": "現在のワールドに新しい百科事典を作成する。",
+  "FilterDocuments": "ドキュメントを種類でフィルタ",
+  "ClearFilters": "フィルタをクリア",
+  "Delete": {
+    "Option": "事典を削除",
+    "Title": "事典を削除：{compendium}",
+    "Warning": "この百科事典は完全に削除されます。"
+  },
+  "DeleteEntry": "項目を削除",
+  "Duplicate": {
+    "Option": "事典を複製",
+    "Title": "事典を複製：{compendium}",
+    "Label": "新しい事典の名前",
+    "Hint": "事典を自分のワールドに複製し、安全に編集可能なローカルコピーを作成できます。",
+    "Submit": "複製"
+  },
+  "ErrorRequireTitle": "You must provide a title to create a World Compendium pack.---(062)---",
+  "ImportAll": {
+    "Option": "全ての内容をインポート",
+    "Title": "全ての内容をインポート：{compendium}",
+    "Submit": "インポート",
+    "Hint": "百科事典から全ての項目を新規もしくは既存のフォルダにインポートします。大量に百科事典をインポートするとアプリケーションの性能に悪影響が生じることに注意してください。",
+    "Start": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート中です。しばらくお待ちください。",
+    "Finish": "フォルダ「{folder}」に{number}個の{type}ドキュメントと{folderNumber}個のフォルダをインポート完了しました。"
+  },
+  "ImportEntry": "項目をインポート",
+  "Locked": "{title} [Locked]---(345D043)---",
+  "Migration": {
+    "Begin": "Beginning migration for Compendium pack {collection}, please be patient.---(347D015)---",
+    "Complete": "Successfully migrated Compendium pack {collection}.---(347D016)---"
+  },
+  "SidebarTitle": "百科事典",
+  "Type": "ドキュメントの種類",
+  "TypeHint": "百科事典にはそれぞれ決まった種類のドキュメントが格納されます。",
+  "ToggleLocked": {
+    "Option": "書込禁止の切替",
+    "Title": "書込禁止の切替：{compendium}",
+    "Unlock": "ロック解除",
+    "Warning": "このワールドに属さない事典を編集するためにロックを解除しようとしています。この百科事典への変更した内容は、登録されているシステムやモジュールが更新された場合、失われる可能性があります。代わりに事典をワールドに複製することを推奨しますが、ロックを解除しますか？"
+  },
+  "CannotViewWarning": "You do not have sufficient permission to view this Compendium pack.---(015)b299",
+  "OwnershipInheritBelow": "以下から継承",
+  "OwnershipReset": "既定値に戻す",
+  "ART": {
+    "CONFIG": {
+      "Hint": "矢印を使用して、アート・ソースの優先順位を調整します。一つのアクターに複数のソースから提供されたアートがある場合、最も優先順位の高いものが使用されます。",
+      "Portraits": "ポートレイト",
+      "PriorityDecrease": "優先度を下げる",
+      "PriorityIncrease": "優先度を上げる",
+      "Tokens": "トークン"
+    },
+    "SETTING": {
+      "Hint": "システムやモジュールが提供するアートを使用する優先度を設定する。",
+      "Label": "事典アート",
+      "Title": "事典アート"
+    }
+  },
+  "CopyId": "Copy Compendium ID---(355E058)---",
+  "IdCopiedClipboard": "Compendium ID \"{id}\" copied to clipboard.---(355E059)---"
 },
 
 "CONTROLS": {
@@ -700,19 +615,10 @@
   "TargetSelect": "ターゲットを選択",
   "TargetSelectP": "見えているトークンをターゲットする。",
   "BasicMeasure": "距離測定",
-  "GroupMeasure": "計測操作",
-  "MeasureType": "型の種類",
-  "MeasureConfigHint": "計測の型を表示する方法と見せ方の設定",
-  "MeasureCircle": "球形の型",
-  "MeasureCone": "円錐形の型",
-  "MeasureRect": "矩形の型",
-  "MeasureRay": "光線の型",
-  "MeasureClear": "計測型の消去",
   "GroupTile": "タイル操作",
   "TileSelect": "タイルを選択",
   "TilePlace": "タイルを配置",
   "TilePlaceHeading": "Place---(021)b299",
-  "TileForeground": "前景レイヤ",
   "TileBrowser": "タイルブラウザ",
   "GroupDrawing": "描画ツール",
   "DrawingSelect": "図形を選択",
@@ -724,19 +630,18 @@
   "DrawingText": "文字を描画",
   "DrawingClear": "図形を消去",
   "DrawingConfig": "図形描画の設定",
-  "DrawingRole": "「情報」描画図形のトグル",
   "GroupWall": "壁の操作",
   "WallDraw": "壁の描画",
-  "WallBasic": "標準の壁",
-  "WallBasicBlocks": "移動、視界、音",
+  "WallSolid": "通常の壁",
+  "WallSolidBlocks": "移動、視界と音",
   "WallInvisible": "見えない壁",
   "WallInvisibleBlocks": "移動",
   "WallTerrain": "地形壁",
   "WallTerrainBlocks": "2番目の壁以降の視線、移動、音",
   "WallEthereal": "エーテル壁",
   "WallEtherealBlocks": "視界と音",
-  "WallDoors": "扉を描画",
-  "DoorBlocks": "閉じていると移動、視線、音",
+  "WallDoor": "扉",
+  "WallDoorBlocks": "閉じていると、移動、視界と音と",
   "WallSecret": "隠し扉",
   "WallSecretHidden": "隠されている",
   "WallSecretHiddenP": "隠し扉はプレイヤーには見えません",
@@ -744,13 +649,13 @@
   "CommonMoveWithoutSnapping": "スナップ無しで移動",
   "WallSelectEdit": "<span class=\"reference\">ダブルクリック</span>",
   "WallSnapP": "有効にすると壁の端点はグリッドにスナップ",
-  "WallClone": "壁の複製",
   "WallCloseDoors": "全ての扉を閉じる",
   "WallDoorsClosed": "扉を{number}箇所閉じた",
   "WallClear": "壁を消去",
   "WallWindow": "窓壁",
   "WallWindowBlocks": "視線、移動と一定距離以上の音",
   "GroupLighting": "ライト操作",
+  "LightSelect": "光源選択",
   "LightDraw": "光源を描画",
   "LightClear": "光源の消去",
   "LightReset": "戦場の霧をリセット",
@@ -766,6 +671,7 @@
   "FOWResetTitle": "戦場の霧の探索をリセットするか？",
   "FOWResetDesc": "このシーンの全プレイヤーの戦場の霧をリセットする。",
   "GroupSound": "環境音の調整",
+  "SoundSelect": "環境音選択",
   "SoundDraw": "環境音の描画",
   "SoundPreview": "環境音のプレビュー",
   "SoundPreviewP": "カーソルを周囲の音に合わせると、トークンがその位置にあるかのように聞こえます（アクティブ時）。",
@@ -778,8 +684,15 @@
   "GroupRegion": "領域の操作",
   "RegionSelect": "領域の選択",
   "RegionSelectP": "シーン内の一つ以上の領域を選択する。選択された領域は単色で選択されていない領域は縞模様になる。",
+  "RegionTemplateMode": "計測配置モード",
+  "RegionTemplateModeP": "有効にすると、領域は無視され、描画した図形ごとに新しい領域が作成されます。既存の領域に図形を追加することはできません。",
   "RegionRectangle": "矩形を描く",
+  "RegionCircle": "円（塗りつぶし）描画",
   "RegionEllipse": "楕円を描く",
+  "RegionRing": "リング描画",
+  "RegionEmanation": "放散描画",
+  "RegionCone": "円錐形描画",
+  "RegionLine": "直線描画",
   "RegionPolygon": "多角形を描く",
   "RegionHole": "穴を開ける",
   "RegionHoleP": "有効にすると、シェイプツールで領域に描いたシェイプは、領域の振る舞いが適用されない穴を開ける。",
@@ -787,7 +700,10 @@
   "RegionClear": "領域をクリア",
   "RegionPerformance": "<em>性能影響の注意</em>：描いたものはそれぞれ独立したシェイプです。複数のシェイプを完全にお互いに完全に包含する配置はしないように注意してください。単純なシェイプを組み合わせて複雑なシェイプを作るよりも、領域の多角形ツールを使うことをお勧めします。",
   "ClearAll": "全オブジェクト消去",
+  "ClearAllOwned": "Clear All Owned Objects===(359E006)===",
   "ClearAllHint": "このシーンから全ての{type}を削除しますか？",
+  "ClearAllOwnedHint": "Permanently delete all viewed {type} objects that you own?===(359E007)===",
+  "DeleteLockedObjects": "Delete Locked Objects===(359E008)===",
   "HeaderGame": "General Game Controls---(066)---",
   "HeaderGameNotes": "These controls generally apply across all aspects of Foundry functionality.---(067)---",
   "HeaderCanvas": "Canvas Layer Controls---(068)---",
@@ -868,6 +784,7 @@
   "ObjectRotateSlow": "オブジェクトを回転（遅い）",
   "ObjectRotateFast": "オブジェクトを回転（速い）",
   "ObjectNoSnap": "グリッドにスナップしない",
+  "Palette": "パレット",
   "MouseWheel": "マウスホイール",
   "DragDrop": "Drag and Drop---(100)---",
   "UnconstrainedMovement": "移動制約なし",
@@ -879,7 +796,6 @@
   "TooltipDismiss": "ツールチップのロック解除",
   "TooltipLock": "ツールチップをロック",
   "WallHeader": "Walls Layer Controls---(103)---",
-  "WallChain": "Chain Wall Creation---(104)---",
   "WallSelectChain": "繋がったものをすべて選択",
   "DrawingHeader": "Drawing Tool Controls---(106)---",
   "DrawingTextConfirm": "Confirm Drawing Text---(107)---",
@@ -926,14 +842,16 @@
   "SubmitRollPl": "Submit Rolls---(325C096)---",
   "WarnMissingData": "The attribute {match} was not present in the provided roll data.---(110)---",
   "CONFIG": {
+    "DefaultMethod": "既定手段",
     "Hint": "サイコロの振り方を設定する。",
-    "Label": "サイコロ設定",
+    "Label": "サイコロ",
     "Title": "サイコロの設定"
   },
   "FULFILLMENT": {
     "Default": "Foundry VTTデジタル・ロール",
     "Mersenne": "デジタル・ロール（メルセンヌ・ツイスタ）",
-    "Manual": "手入力"
+    "Manual": "手入力",
+    "UseDefault": "既定値を使用"
   }
 },
 
@@ -943,6 +861,7 @@
   "New": "新規「{type}」",
   "NewCount": "新規「{type}」（{count}個）",
   "Update": "「{type}」更新",
+  "Replace": "Replace {type}---(355E071)---",
   "SkipCreate": "Skip Creation---(111)---",
 
   "ImportData": "データのインポート",
@@ -951,6 +870,7 @@
   "ImportDataHint2": "この操作は{name}のデータを更新し、元に戻すことはできません。",
   "ImportSource": "ソースデータ",
   "Imported": "Jsonファイルから{document}「{name}」が正常にインポートされました。",
+  "ReplaceWarning": "There is already a Document {link} with ID <code>{id}</code> in this collection. Do you wish to replace it or create a copy?---(355E072)---",
 
   "SheetPermissionWarn": "この{document}シートを表示する権限がありません。",
   "UsePermissionWarn": "You do not have permission to use this {document}.---(113)---",
@@ -994,10 +914,10 @@
   "JournalEntryCategories": "カテゴリ",
   "JournalEntryPage": "ページ",
   "JournalEntryPages": "ページ",
+  "Level": "階層",
+  "Levels": "階層",
   "Macro": "マクロ",
   "Macros": "マクロ",
-  "MeasuredTemplate": "計測の型",
-  "MeasuredTemplates": "Measured Templates---(125)---",
   "Note": "ノート",
   "Notes": "ノート",
   "Playlist": "プレイリスト",
@@ -1008,6 +928,7 @@
   "Scenes": "シーン",
   "Setting": "設定",
   "Settings": "設定",
+  "Sheet": "シート",
   "RollTable": "ロール表",
   "RollTables": "ロール表",
   "Region": "領域",
@@ -1030,6 +951,8 @@
     "type.label": "種類",
     "img.label": "画像のパス",
     "description.label": "説明",
+    "folder.label": "Folder---(355E076)---",
+    "author.label": "作成者",
     "width.label": "幅",
     "height.label": "高さ",
     "hidden.label": "隠す",
@@ -1040,132 +963,249 @@
       "hint": "このドキュメントの並び順を設定する。小さい順に並ぶ。"
     },
     "x.label": "X",
-    "y.label": "Y"
+    "y.label": "Y",
+    "levels": {
+      "label": "階層",
+      "hint": "適用する階層を選択する。空の場合はすべての階層に適用される。"
+    }
   }
 },
 
-"DRAWING.ConfigDefaultTitle": "描画設定の既定値",
-"DRAWING.SubmitDefault": "既定値を設定",
-"DRAWING.SubmitCreate": "Create Drawing---(132)---",
-"DRAWING.SubmitUpdate": "図形を更新",
-"DRAWING.SubmitReset": "既定値設定の取消",
-"DRAWING.NotePosition": "図形の位置と見え方を設定",
-"DRAWING.NoteLines": "図形の外枠の線を設定する。",
-"DRAWING.NoteFill": "図形の内側の塗り潰し設定。",
-"DRAWING.NoteText": "図形に適用するテキストラベルの設定（ある場合）。",
-"DRAWING.Rotation": "回転",
-"DRAWING.ZIndex": "Ｚインデックス（重なり順）",
-"DRAWING.LineWidth": "線の太さ",
-"DRAWING.StrokeColor": "線の色",
-"DRAWING.LineOpacity": "線の不透明度",
-"DRAWING.SmoothingFactor": "平滑化係数",
-"DRAWING.SmoothingFactorHint": "平滑化係数は、手描のスプラインの滑らかさを制御します。",
-"DRAWING.FillTypes": "塗り潰しの種別",
-"DRAWING.FillTypeNone": "なし",
-"DRAWING.FillTypeSolid": "塗り潰し",
-"DRAWING.FillTypePattern": "パターン",
-"DRAWING.FillColor": "塗り潰しの色",
-"DRAWING.FillOpacity": "塗り潰しの不透明度",
-"DRAWING.FillTexture": "塗り潰しのテクスチャ",
-"DRAWING.TextLabel": "テキストラベル",
-"DRAWING.FontFamily": "フォントファミリ",
-"DRAWING.FontSize": "フォントサイズ",
-"DRAWING.TextColor": "テキストの色",
-"DRAWING.TextOpacity": "テキストの不透明度",
-"DRAWING.Role": "描画図形の役割",
-"DRAWING.RoleHint": "「オブジェクト」を表す描画図形はプライマリ・キャンバス・グループに描画され、明かりや霧の影響を受ける。「情報」を伝える描画図形はインターフェース・グループに描画され非表示で無ければ全てのプレイヤーに表示される。",
-"DRAWING.Object": "オブジェクト",
-"DRAWING.Information": "情報",
-"DRAWING.JointValidationError": "描画図形には、表示可能な文字または塗りつぶし、線が必要。",
-"DRAWING.JointValidationErrorUI": "描画図形には、表示可能な文字または塗りつぶし、線が必要です。描画図形設定の既定値を確認してください。",
-"DRAWING.TABS": {
-  "position": "位置",
-  "lines": "線",
-  "fill": "塗り潰し",
-  "text": "テキスト"
-},
-"DRAWING.FIELDS": {
-  "sort.label": "Sort---(345D069)---"
-},
-
-"EFFECT.MODE_CUSTOM": "カスタム",
-"EFFECT.MODE_MULTIPLY": "乗算",
-"EFFECT.MODE_ADD": "加算",
-"EFFECT.MODE_DOWNGRADE": "ダウングレード",
-"EFFECT.MODE_UPGRADE": "アップグレード",
-"EFFECT.MODE_OVERRIDE": "上書き",
-"EFFECT.TransferLegacy": "アクターに効果を転送",
-"EFFECT.TransferHintLegacy": "有効にすると、この効果の親アイテムがアクター上に作成されたときにこの効果はアクターに複製され、アイテムが削除されるとこの効果も削除されます。",
-"EFFECT.DurationTurns": "効果の持続時間（戦闘）",
-"EFFECT.StartTurns": "効果の開始",
-"EFFECT.ChangeKey": "属性キー",
-"EFFECT.ChangeMode": "変更モード",
-"EFFECT.ChangeValue": "効果値",
-"EFFECT.ChangePriority": "優先度",
-"EFFECT.Submit": "変更を保存",
-"EFFECT.FIELDS": {
-  "name.label": "効果の名称",
-  "img.label": "効果のアイコン",
-  "tint.label": "アイコンの色調",
-  "description.label": "効果の説明",
-  "disabled.label": "効果の停止",
-  "origin.label": "効果の発生源",
-  "transfer": {
-    "label": "アクターへ効果の適用",
-    "hint": "有効にすると、この効果は親アイテムを所有するアクターに適用されます。"
+"DRAWING": {
+  "ConfigDefaultTitle": "描画設定の既定値",
+  "SubmitDefault": "既定値を設定",
+  "NotePosition": "図形の位置と見え方を設定",
+  "NoteLines": "図形の外枠の線を設定する。",
+  "NoteFill": "図形の内側の塗り潰し設定。",
+  "NoteText": "図形に適用するテキストラベルの設定（ある場合）。",
+  "ZIndex": "Ｚインデックス（重なり順）",
+  "Object": "オブジェクト",
+  "Information": "情報",
+  "JointValidationError": "描画図形には、表示可能な文字または塗りつぶし、線が必要。",
+  "JointValidationErrorUI": "描画図形には、表示可能な文字または塗りつぶし、線が必要です。描画図形設定の既定値を確認してください。",
+  "TABS": {
+    "position": "位置",
+    "lines": "線",
+    "fill": "塗り潰し",
+    "text": "テキスト"
   },
-  "statuses.label": "Status Conditions---(347D018)---",
-  "duration": {
-    "seconds.label": "効果の持続時間（秒）",
-    "rounds.label": "ラウンド",
-    "turns.label": "ターン",
-    "startTime.label": "効果の開始時刻",
-    "startRound.label": "ラウンド",
-    "startTurn.label": "ターン",
-    "combat.label": "先頭遭遇"
+  "FILL_TYPES": {
+    "none": "なし",
+    "solid": "塗り潰し",
+    "pattern": "パターン"
+  },
+  "FIELDS": {
+    "bezierFactor": {
+      "label": "平滑化係数",
+      "hint": "平滑化係数は、手描のスプラインの滑らかさを制御します。"
+    },
+    "fillAlpha.label": "塗り潰しの不透明度",
+    "fillColor.label": "塗り潰しの色",
+    "fillType.label": "塗り潰しの種別",
+    "fontFamily.label": "フォントファミリ",
+    "fontSize.label": "フォントサイズ",
+    "interface": {
+      "label": "描画図形の役割",
+      "hint": "「オブジェクト」を表す描画図形はプライマリ・キャンバス・グループに描画され、明かりや霧の影響を受ける。「情報」を伝える描画図形はインターフェース・グループに描画され非表示で無ければ全てのプレイヤーに表示される。"
+    },
+    "name": {
+      "hint": "図形を識別しやすくするための任意の名前。",
+      "label": "名前"
+    },
+    "shape": {
+      "width.label": "幅",
+      "height.label": "高さ"
+    },
+    "sort.label": "ソート",
+    "strokeAlpha.label": "線の不透明度",
+    "strokeColor.label": "線の色",
+    "strokeWidth.label": "線の太さ",
+    "text.label": "テキストラベル",
+    "textAlpha.label": "テキストの不透明度",
+    "textColor.label": "テキストの色",
+    "texture.label": "塗り潰しのテクスチャ"
+  },
+  "ACTIONS": {
+    "resetDefaults": "既定値に戻す",
+    "submitCreate": "図形を作成",
+    "submitUpdate": "図形を更新"
   }
 },
-"EFFECT.TABS": {
-  "details": "詳細",
-  "duration": "持続時間",
-  "changes": "変化"
-},
 
-"EFFECT.StatusAsleep": "睡眠",
-"EFFECT.StatusDead": "死亡",
-"EFFECT.StatusUnconscious": "気絶",
-"EFFECT.StatusStunned": "朦朧",
-"EFFECT.StatusProne": "伏せ",
-"EFFECT.StatusRestrained": "拘束",
-"EFFECT.StatusParalysis": "麻痺",
-"EFFECT.StatusFlying": "飛行",
-"EFFECT.StatusBlind": "盲目",
-"EFFECT.StatusDeaf": "聴覚障害",
-"EFFECT.StatusSilenced": "沈黙",
-"EFFECT.StatusFear": "恐怖",
-"EFFECT.StatusBurning": "燃焼",
-"EFFECT.StatusFrozen": "凍結",
-"EFFECT.StatusShocked": "驚愕",
-"EFFECT.StatusCorrode": "腐敗",
-"EFFECT.StatusBleeding": "出血",
-"EFFECT.StatusDisease": "病気",
-"EFFECT.StatusPoison": "毒",
-"EFFECT.StatusRadiation": "放射能",
-"EFFECT.StatusRegen": "再生",
-"EFFECT.StatusDegen": "悪化",
-"EFFECT.StatusUpgrade": "強化",
-"EFFECT.StatusDowngrade": "弱体化",
-"EFFECT.StatusHover": "Hovering---(325C112)---",
-"EFFECT.StatusBurrow": "Burrowing---(325C113)---",
-"EFFECT.StatusInvisible": "不可視",
-"EFFECT.StatusTarget": "ターゲット",
-"EFFECT.StatusMarked": "マーク",
-"EFFECT.StatusCursed": "呪い",
-"EFFECT.StatusBlessed": "祝福",
-"EFFECT.StatusFireShield": "防御：火",
-"EFFECT.StatusIceShield": "防御：氷",
-"EFFECT.StatusMagicShield": "防御：魔法",
-"EFFECT.StatusHolyShield": "防御：聖",
+"EFFECT": {
+  "StatusAsleep": "睡眠",
+  "StatusBleeding": "出血",
+  "StatusBlessed": "祝福",
+  "StatusBlind": "盲目",
+  "StatusBurning": "燃焼",
+  "StatusBurrow": "Burrowing---(325C113)---",
+  "StatusCorrode": "腐敗",
+  "StatusCursed": "呪い",
+  "StatusDead": "死亡",
+  "StatusDeaf": "聴覚障害",
+  "StatusDegen": "悪化",
+  "StatusDisease": "病気",
+  "StatusDowngrade": "弱体化",
+  "StatusFear": "恐怖",
+  "StatusFireShield": "防御：火",
+  "StatusFlying": "飛行",
+  "StatusFrozen": "凍結",
+  "StatusHolyShield": "防御：聖",
+  "StatusHover": "Hovering---(325C112)---",
+  "StatusIceShield": "防御：氷",
+  "StatusInvisible": "不可視",
+  "StatusMagicShield": "防御：魔法",
+  "StatusMarked": "マーク",
+  "StatusParalysis": "麻痺",
+  "StatusPoison": "毒",
+  "StatusProne": "伏せ",
+  "StatusRadiation": "放射能",
+  "StatusRegen": "再生",
+  "StatusRestrained": "拘束",
+  "StatusShocked": "驚愕",
+  "StatusSilenced": "沈黙",
+  "StatusStunned": "朦朧",
+  "StatusTarget": "ターゲット",
+  "StatusUnconscious": "気絶",
+  "StatusUpgrade": "強化",
+  "Submit": "Submit Changes---(355E095)---",
+  "CHANGES": {
+    "PHASES": {
+      "initial": {
+        "label": "Initial---(355E096)---",
+        "hint": "After base-data attributes are initialized, but before derived data is prepared---(355E097)---"
+      },
+      "final": {
+        "label": "Final---(355E098)---",
+        "hint": "After derived-data attributes are computed---(355E099)---"
+      }
+    },
+    "TYPES": {
+      "custom": "カスタム",
+      "multiply": "乗算",
+      "add": "加算",
+      "subtract": "減算",
+      "downgrade": "ダウングレード",
+      "upgrade": "アップグレード",
+      "override": "上書き"
+    }
+  },
+  "DURATION": {
+    "Header": "Effect Duration---(355E100)---",
+    "Label": "Duration---(355E101)---",
+    "MaxOneWarning": "A duration in {units} will be treated as having a value of no greater than one.---(355E102)---",
+    "UNITS": {
+      "GROUPS": {
+        "time": "Time---(355E103)---",
+        "combat": "Combat---(355E104)---"
+      },
+      "years": "Years---(355E105)---",
+      "months": "Months---(355E106)---",
+      "weeks": "Weeks---(355E107)---",
+      "days": "Days---(355E108)---",
+      "hours": "Hours---(355E109)---",
+      "minutes": "Minutes---(355E110)---",
+      "seconds": "Seconds---(355E111)---",
+      "combats": "先頭遭遇",
+      "rounds": "ラウンド",
+      "turns": "ターン"
+    },
+    "ROUNDS": {
+      "one": "1 Round---(355E115)---",
+      "two": "2 Rounds---(355E116)---",
+      "few": "{rounds} Rounds---(355E117)---",
+      "many": "{rounds} Rounds---(355E118)---",
+      "other": "{rounds} Rounds---(355E119)---"
+    },
+    "ROUNDS_AGO": {
+      "one": "1 Round Ago===(359E009)===",
+      "two": "2 Rounds Ago===(359E010)===",
+      "few": "{rounds} Rounds Ago===(359E011)===",
+      "many": "{rounds} Rounds Ago===(359E012)===",
+      "other": "{rounds} Rounds Ago===(359E013)==="
+    },
+    "TURNS": {
+      "one": "1 Turn---(355E120)---",
+      "two": "2 Turns---(355E121)---",
+      "few": "{turns} Turns---(355E122)---",
+      "many": "{turns} Turns---(355E123)---",
+      "other": "{turns} Turns---(355E124)---"
+    },
+    "TURNS_AGO": {
+      "one": "1 Turn Ago===(359E014)===",
+      "two": "2 Turns Ago===(359E015)===",
+      "few": "{turns} Turns Ago===(359E016)===",
+      "many": "{turns} Turns Ago===(359E017)===",
+      "other": "{turns} Turns Ago===(359E018)==="
+    },
+    "EXPIRY_EVENTS": {
+      "combatStart": "Combat Start---(355E125)---",
+      "roundStart": "Round Start---(355E126)---",
+      "turnStart": "Turn Start---(355E127)---",
+      "combatEnd": "Combat End---(355E128)---",
+      "roundEnd": "Round End---(355E129)---",
+      "turnEnd": "Turn End---(355E130)---"
+    }
+  },
+  "FIELDS": {
+    "name.label": "効果の名称",
+    "img.label": "効果のアイコン",
+    "tint.label": "アイコンの色調",
+    "description.label": "効果の説明",
+    "disabled.label": "効果の停止",
+    "origin.label": "効果の発生源",
+    "transfer": {
+      "label": "アクターへ効果の適用",
+      "hint": "有効にすると、この効果は親アイテムを所有するアクターに適用されます。"
+    },
+    "statuses.label": "Status Conditions---(347D018)---",
+    "showIcon": {
+      "label": "Show Icon?---(355E133)---",
+      "hint": "Should the icon representing this Effect be displayed in the UI while this effect is active?---(355E134)---"
+    },
+    "changes": {
+      "element": {
+        "key.label": "Attribute Key---(355E135)---",
+        "type.label": "Type---(355E136)---",
+        "value.label": "Value---(355E137)---",
+        "priority.label": "優先度",
+        "phase": {
+          "label": "Phase---(355E139)---",
+          "hint": "The point in data preparation or another event a change is to be applied.---(355E140)---"
+        }
+      }
+    },
+    "start": {
+      "combatant.label": "Combatant---(355E141)---",
+      "round.label": "Round---(355E142)---",
+      "turn.label": "Turn---(355E143)---",
+      "initiative.label": "Initiative---(355E144)---",
+      "time.label": "Start Time---(355E145)---"
+    },
+    "duration": {
+      "value.label": "Duration Value---(355E146)---",
+      "units.label": "Duration Units---(355E147)---",
+      "expiry.label": "Expiry Event---(355E148)---"
+    }
+  },
+  "SHOW_ICON": {
+    "always": "Always---(355E149)---",
+    "conditional": "If Temporary---(355E150)---",
+    "never": "Never---(355E151)---"
+  },
+  "START": {
+    "Header": "Effect Start---(355E152)---",
+    "Time": "Start Time---(355E153)---",
+    "Combat": "Round {round}, Turn {turn}---(355E154)---",
+    "Combatant": "{combatant} (Initiative Roll: {initiative})---(355E155)---",
+    "NoInitiative": "Not Rolled---(355E156)---"
+  },
+  "TABS": {
+    "details": "詳細",
+    "duration": "持続時間",
+    "changes": "Changes---(347D026)---"
+  }
+},
 
 "ERROR": {
   "BrowserVersion": "Foundry Virtual Tabletop は最新の JavaScript 機能を使用していますが、{minimum} より古いバージョンの {browser} ではこれらの機能がサポートされていません。現在、{browser} のバージョン {version} をご利用中です。ブラウザをアップデートするか、別のブラウザをご利用ください。",
@@ -1182,6 +1222,10 @@
   "RequiresFullReinstall": "Foundry Virtual Tabletopのバージョン{version}が利用可能になりましたが、本体の依存関係の更新が必要なためアプリケーションからは更新できません、ウェブサイト<a href=\"https://foundryvtt.com/me/licenses\" target=\"_blank\">foundryvtt.com</a>からソフトウェアを再インストールすることで利用出来るようになります。",
   "RequiresGenerationReinstall": "Foundry Virtual Tabletopのバージョン{version}が利用可能になりましたが、アプリケーションが新しい世代に更新するため、ウェブサイト<a href=\"https://foundryvtt.com/me/licenses\" target=\"_blank\">foundryvtt.com</a>からソフトウェアを再インストールすることで利用出来るようになります。",
   "RequiresElectronReinstall": "Foundry Virtual Tabletopのバージョン{version}が利用可能になりましたが、Electronが新しいバージョンになるため、ウェブサイト<a href=\"https://foundryvtt.com/me/licenses\" target=\"_blank\">foundryvtt.com</a>からソフトウェアを再インストールすることで利用出来るようになります。",
+  "DETACHED": {
+    "PopupBlocked": "Unable to detach Application. You may have a popup-blocker active.---(355E157)---",
+    "TimedOut": "Operation timed out when detaching Application window. You may have a popup-blocker active.---(355E158)---"
+  },
   "RESOLUTION": {
     "Screen": "Foundry Virtual Tabletopをご利用いただくために{reqWidth}×{reqHeight}以上の画面解像度が必要です。現在のディスプレイ解像度は{curWidth}×{curHeight}です。解像度を上げるか、別のディスプレイ装置を使用しなければ、ソフトウェアの一部の機能が正しく動作しません。",
     "Scale": "Foundry Virtual Tabletopをご利用いただくウィンドウは{reqWidth}×{reqHeight}以上の解像度が必要です。現在の解像度は{curWidth}×{curHeight}です。OSやブラウザのズーム解像度では、ウィンドウの有効サイズが足りません。ウィンドウのサイズを大きくするか、ブラウザのズーム倍率を小さくしなければ、ソフトウェアの一部の機能が正しく動作しません。",
@@ -1189,10 +1233,12 @@
   }
 },
 
-"WARNING.GridConfigNoBG": "背景画像のないシーンにグリッド設定ツールを使用しています。現在これは推奨されておらず、予測できない結果が生じる可能性があります。",
-"WARNING.ForegroundDimensionsMismatch": "設定した前景レイヤ画像の解像度がこのシーンの背景レイヤ画像の解像度と一致しません。前景のサイズが変更され、望ましくない結果が生じる可能性があります。",
-"WARNING.ObjectDoesNotExist": "{name}「{identifier}」は存在しません。",
-"WARNING.TilingSpriteDeprecation": "モジュールまたはシステムがサポートが終了した古いTilingSpriteクラスを使用しています。",
+"WARNING": {
+  "GridConfigNoBG": "背景画像のないシーンにグリッド設定ツールを使用しています。現在これは推奨されておらず、予測できない結果が生じる可能性があります。",
+  "ForegroundDimensionsMismatch": "設定した前景レイヤ画像の解像度がこのシーンの背景レイヤ画像の解像度と一致しません。前景のサイズが変更され、望ましくない結果が生じる可能性があります。",
+  "ObjectDoesNotExist": "{name}「{identifier}」は存在しません。",
+  "TilingSpriteDeprecation": "モジュールまたはシステムがサポートが終了した古いTilingSpriteクラスを使用しています。"
+},
 
 "EULA": {
   "Acknowledge": "契約の承諾",
@@ -1204,74 +1250,98 @@
   "ErrorAgreeRequired": "進むには、この同意を承諾するチェックボックスを選択する必要があります。"
 },
 
-"EDITOR.Format": "書式",
-"EDITOR.Font": "フォント",
-"EDITOR.Inline": "装飾",
-"EDITOR.Block": "ブロック",
-"EDITOR.Headings": "段落",
-"EDITOR.Heading": "見出し {level}",
-"EDITOR.Alignment": "配置",
-"EDITOR.Paragraph": "パラグラフ",
-"EDITOR.Bold": "太字",
-"EDITOR.Italic": "斜体",
-"EDITOR.Code": "コード",
-"EDITOR.Underline": "下線",
-"EDITOR.Strikethrough": "取り消し線",
-"EDITOR.Superscript": "上付き",
-"EDITOR.Subscript": "下付き",
-"EDITOR.Blockquote": "ブロック引用",
-"EDITOR.CodeBlock": "コードブロック",
-"EDITOR.Secret": "シークレット",
-"EDITOR.AlignmentLeft": "左揃え",
-"EDITOR.AlignmentCenter": "中央揃え",
-"EDITOR.AlignmentJustify": "両端揃え",
-"EDITOR.AlignmentRight": "右揃え",
-"EDITOR.BulletList": "箇条書き",
-"EDITOR.NumberList": "段落番号",
-"EDITOR.HorizontalRule": "水平方向の罫線",
-"EDITOR.Link": "リンク",
-"EDITOR.ClearFormatting": "書式クリア",
-"EDITOR.EnableHighlightDocumentMatches": "ハイライト時のコンテンツリンクマッチングの切替",
-"EDITOR.SourceHTML": "ソースHTML",
-"EDITOR.Save": "保存",
-"EDITOR.SaveAndClose": "保存してエディタを閉じる",
-"EDITOR.DiscardHTML": "HTMLの変更を破棄",
-"EDITOR.EmbedFailed": "「{uuid}」からのコンテンツを埋め込むことに失敗しました。",
-"EDITOR.EditingHTMLWarning": "別のユーザが同じドキュメントを編集しています。あなたがHTMLに加えた変更は、そのユーザーの変更を消去するため、保存できません。",
-"EDITOR.Resync": "エディタの状態がサーバと非同期になったためリセットする必要があります。編集内容はクリップボードにコピーされました。",
-"EDITOR.NoUploadPermission": "画像コンテンツを挿入するにはファイルのアップロード権限が必要です。",
-"EDITOR.UploadingFile": "画像ファイルのアップロード中。",
-"EDITOR.UploadComplete": "アップロード完了。",
-"EDITOR.InsertImage": "画像挿入",
-"EDITOR.ImageSource": "画像の挿入元",
-"EDITOR.ImageAlt": "代替テキスト",
-"EDITOR.ImageDimensions": "解像度",
-"EDITOR.ImageDimensionsHint": "空白にすると、画像本来の解像度が使用されます。",
-"EDITOR.ImageInsert": "挿入",
-"EDITOR.LinkURL": "リンクURL",
-"EDITOR.LinkText": "リンクテキスト",
-"EDITOR.LinkTitle": "リンクタイトル",
-"EDITOR.LinkInsert": "リンクを挿入",
-"EDITOR.ProseMirrorBadArguments": "ProseMirrorインスタンスを作成するには、ドキュメントと名前の両方を指定する必要があります。",
-"EDITOR.TinyMCE": "TinyMCE",
-"EDITOR.Markdown": "マークダウン",
-"EDITOR.Reveal": "公開する",
-"EDITOR.Hide": "隠す",
-"EDITOR.CollaboratingUsers": "Collaborating users---(155)---",
-"EDITOR.Table": "表",
-"EDITOR.TableInsert": "表の挿入",
-"EDITOR.TableDelete": "表の削除",
-"EDITOR.TableAddColumnAfter": "列を右に追加",
-"EDITOR.TableAddColumnBefore": "列を左に追加",
-"EDITOR.TableDeleteColumn": "列を削除",
-"EDITOR.TableAddRowAfter": "行を下に追加",
-"EDITOR.TableAddRowBefore": "行を上に追加",
-"EDITOR.TableDeleteRow": "行を削除",
-"EDITOR.TableMergeCells": "セルを結合",
-"EDITOR.TableSplitCell": "セルを分割",
-"EDITOR.TableDimensions": "大きさ",
-"EDITOR.TableColumns": "列",
-"EDITOR.TableRows": "行",
+"EDITOR": {
+  "Format": "書式",
+  "Font": {
+    "Color": {
+      "Label": "フォントの色",
+      "Set": "フォントの色を設定",
+      "Title": "色"
+    },
+    "Size": {
+      "Huge": "巨大",
+      "Invalid": "無効なフォントサイズ",
+      "Label": "フォントサイズ",
+      "Large": "大",
+      "Normal": "通常",
+      "Placeholder": "12pt",
+      "Set": "フォントサイズを設定",
+      "Small": "小",
+      "Title": "サイズ"
+    },
+    "Title": "フォント"
+  },
+  "Inline": "インライン",
+  "Block": "ブロック",
+  "Headings": "段落",
+  "Heading": "見出し {level}",
+  "Alignment": "配置",
+  "Custom": "カスタム",
+  "Insert": "Insert---(355E173)---",
+  "Lists": "リスト",
+  "Paragraph": "パラグラフ",
+  "Bold": "ボールド",
+  "Italic": "イタリック",
+  "Code": "コード",
+  "Underline": "下線",
+  "Strikethrough": "取り消し線",
+  "Superscript": "上付き",
+  "Subscript": "下付き",
+  "Blockquote": "ブロック引用",
+  "CodeBlock": "コードブロック",
+  "Secret": "シークレット",
+  "AlignmentLeft": "左揃え",
+  "AlignmentCenter": "中央揃え",
+  "AlignmentJustify": "両端揃え",
+  "AlignmentRight": "右揃え",
+  "BulletList": "箇条書き",
+  "NumberList": "段落番号",
+  "HorizontalRule": "水平方向の罫線",
+  "Link": "リンク",
+  "ClearFormatting": "書式クリア",
+  "EnableHighlightDocumentMatches": "ハイライト時のコンテンツリンクマッチングの切替",
+  "SourceHTML": "ソースHTML",
+  "Save": "保存",
+  "SaveAndClose": "保存してエディタを閉じる",
+  "DiscardHTML": "HTMLの変更を破棄",
+  "EmbedFailed": "「{uuid}」からのコンテンツを埋め込むことに失敗しました。",
+  "EditingHTMLWarning": "別のユーザが同じドキュメントを編集しています。あなたがHTMLに加えた変更は、そのユーザーの変更を消去するため、保存できません。",
+  "Resync": "エディタの状態がサーバと非同期になったためリセットする必要があります。編集内容はクリップボードにコピーされました。",
+  "NoUploadPermission": "画像コンテンツを挿入するにはファイルのアップロード権限が必要です。",
+  "UploadingFile": "画像ファイルのアップロード中。",
+  "UploadComplete": "アップロード完了。",
+  "InsertImage": "画像挿入",
+  "ImageSource": "画像の挿入元",
+  "ImageAlt": "代替テキスト",
+  "ImageCaption": "Caption---(355E178)---",
+  "ImageDimensions": "解像度",
+  "ImageDimensionsHint": "空白にすると、画像本来の解像度が使用されます。",
+  "ImageInsert": "挿入",
+  "LinkURL": "リンクURL",
+  "LinkText": "リンクテキスト",
+  "LinkTitle": "リンクタイトル",
+  "LinkInsert": "リンクを挿入",
+  "ProseMirrorBadArguments": "ProseMirrorインスタンスを作成するには、ドキュメントと名前の両方を指定する必要があります。",
+  "Markdown": "マークダウン",
+  "HTML": "HTML",
+  "Reveal": "公開",
+  "Hide": "隠す",
+  "CollaboratingUsers": "Collaborating users---(155)---",
+  "Table": "表",
+  "TableInsert": "表の挿入",
+  "TableDelete": "表の削除",
+  "TableAddColumnAfter": "列を右に追加",
+  "TableAddColumnBefore": "列を左に追加",
+  "TableDeleteColumn": "列を削除",
+  "TableAddRowAfter": "行を下に追加",
+  "TableAddRowBefore": "行を上に追加",
+  "TableDeleteRow": "行を削除",
+  "TableMergeCells": "セルを結合",
+  "TableSplitCell": "セルを分割",
+  "TableDimensions": "大きさ",
+  "TableColumns": "列",
+  "TableRows": "行"
+},
 
 "ELEMENTS": {
   "DOCUMENT_TAGS": {
@@ -1280,8 +1350,12 @@
   },
   "TAGS": {
     "Add": "タグ追加",
+    "AddGridOffset": "Add Grid Offset===(359E019)===",
     "Remove": "タグ削除",
+    "RemoveGridOffset": "Remove Grid Offset===(359E020)===",
     "ErrorBlank": "タグは「HTMLStringTagsElement」要素で空白には出来ません。",
+    "ErrorInvalidGridOffset2D": "A 2D grid offset must have two integer coordinates, which are separated by a dot.===(359E021)===",
+    "ErrorInvalidGridOffset3D": "A 3D grid offset must have three integer coordinates, which are separated by dots.===(359E022)===",
     "ErrorNonUnique": "タグ「{tag}」は設定済みです。"
   }
 },
@@ -1379,101 +1453,122 @@
 "ITEM.ViewArt": "アイテム画像を表示",
 
 "HOTBAR": {
-  "LABEL": "Action Bar---(345D050)---",
-  "MUTE": "音声ミュート",
-  "UNMUTE": "音声ミュート解除",
-  "MENU": "メインメニュー",
-  "LOCK": "ホットバー固定",
-  "UNLOCK": "ホットバー固定解除",
-  "PAGE_NEXT": "次ページ",
-  "PAGE_PREV": "前ページ",
-  "EMPTY": "Empty Slot---(347D042)---",
-  "CLEAR": "ホットバークリア",
-  "CLEAR_CONFIRM": "ホットバーに登録したマクロをすべてクリアしますか？"
+  "Label": "Action Bar---(345D050)---",
+  "Empty": "Empty Slot---(347D042)---",
+  "ToggleSheet": "Display {document}---(355E179)---",
+  "ClearConfirm": "Clear all assigned Macros from your hotbar?---(355E180)---",
+  "ACTIONS": {
+    "Clear": "ホットバークリア",
+    "Mute": "音声ミュート",
+    "Unmute": "音声ミュート解除",
+    "Menu": "メインメニュー",
+    "Lock": "ホットバー固定",
+    "Unlock": "ホットバー固定解除",
+    "PageNext": "次ページ",
+    "PagePrev": "前ページ"
+  }
 },
 
-"HUD.Elevation": "標高",
-"HUD.OpenConfig": "設定を開く",
-"HUD.AssignStatusEffects": "状態・効果の設定",
-"HUD.SelectMovementAction": "移動アクション選択",
-"HUD.ToggleTargetState": "ターゲット状態切替",
-"HUD.ToggleCombatState": "コンバットトラッカー登録トグル",
-"HUD.ToggleVis": "トークン表示状態の切替",
-"HUD.ToggleLock": "ロック状態の切替",
-"HUD.ToFront": "手前に出す",
-"HUD.ToBack": "後ろへ送る",
-"HUD.TilePlay": "タイル動画の再生",
-"HUD.TilePause": "タイル動画の一時停止",
-"HUD.WarningEffectNoActor": "アクターに関連付けされていないトークンには状態・効果を割り当てることはできません。",
+"HUD": {
+  "ChangeLevel": "階層変更",
+  "Elevation": "高度",
+  "OpenConfig": "設定を開く",
+  "AssignStatusEffects": "状態・効果の設定",
+  "SelectMovementAction": "移動アクション選択",
+  "ToggleTargetState": "ターゲット状態切替",
+  "ToggleCombatState": "コンバットトラッカー登録トグル",
+  "ToggleVis": "トークン表示状態の切替",
+  "ToggleLock": "ロック状態の切替",
+  "ToFrontOrBack": "手前に出す／後ろに送る",
+  "TilePlay": "タイル動画の再生",
+  "TilePause": "タイル動画の一時停止",
+  "WarningEffectNoActor": "アクターに関連付けされていないトークンには状態・効果を割り当てることはできません。"
+},
 
 "HTMLDocumentTagsElement.PLACEHOLDER": "UUIDを入力するか、{type}をドロップ",
 
-"JOURNAL.ModeText": "説明文",
-"JOURNAL.ModeImage": "画像",
-"JOURNAL.ActionShow": "プレイヤーに見せる",
-"JOURNAL.ActionShowSuccess": "{title}の内容を{which}プレイヤーに表示しました。",
-"JOURNAL.ImageOptions": "画像オプション",
-"JOURNAL.ImageShowSuccess": "Image shown to {which} players.---(163)---",
-"JOURNAL.NavLabel": "Journal Entry Table of Contents---(164)---",
-"JOURNAL.AddPage": "ページを追加",
-"JOURNAL.EditPage": "ページを編集",
-"JOURNAL.NextPage": "次のページ",
-"JOURNAL.PrevPage": "前のページ",
-"JOURNAL.Submit": "エントリ保存",
-"JOURNAL.AnchorCenter": "中心",
-"JOURNAL.AnchorBottom": "下揃え",
-"JOURNAL.AnchorTop": "上揃え",
-"JOURNAL.AnchorLeft": "左揃え",
-"JOURNAL.AnchorRight": "右揃え",
-"JOURNAL.EntryTitle": "項目のタイトル",
-"JOURNAL.ModeMultiple": "複数ページモード",
-"JOURNAL.ModeSingle": "単一ページモード",
-"JOURNAL.ViewMultiple": "複数ページ表示",
-"JOURNAL.ViewSingle": "単一ページ表示",
-"JOURNAL.ViewCollapse": "サイドバーを畳む",
-"JOURNAL.ViewExpand": "サイドバーを広げる",
-"JOURNAL.ShowTo": "表示相手",
-"JOURNAL.ShowEntry": "「{name}」を見せる",
-"JOURNAL.ShowBadPermissions": "自分が所有しているジャーナルエントリやページだけしか表示できません。",
-"JOURNAL.ShowNoPlayers": "表示させるプレイヤーは誰も接続していません。",
-"JOURNAL.ShowOwnershipHint": "このドキュメントを見せたプレーヤーの所有権を更新できます。プレーヤーの権限が高い場合は、ダウングレードされません。",
-"JOURNAL.LockModeLocked": "目次がロックされています。クリックでロック解除。",
-"JOURNAL.LockModeUnlocked": "目次がロックされていません。クリックでロック。",
-"JOURNAL.ConfigureCategories": "カテゴリ設定",
-"JOURNAL.ConfigureCategoriesTitle": "{name}：カテゴリ",
-"JOURNAL.CategoryName": "Category name---(345D068)---",
-"JOURNAL.Uncategorized": "未分類",
-"JOURNAL.UnnamedCategory": "<Unnamed Category>---(345D070)---",
+"JOURNAL": {
+  "ModeText": "説明文",
+  "ModeImage": "画像",
+  "ActionShow": "プレイヤーに見せる",
+  "ActionShowSuccess": "{title}の内容を{which}プレイヤーに表示しました。",
+  "ImageOptions": "Image Options---(345D059)---",
+  "ImageShowSuccess": "Image shown to {which} players.---(163)---",
+  "NavLabel": "Journal Entry Table of Contents---(164)---",
+  "AddPage": "ページを追加",
+  "EditPage": "ページを編集",
+  "NextPage": "次のページ",
+  "PrevPage": "前のページ",
+  "Submit": "エントリ保存",
+  "AnchorCenter": "中心",
+  "AnchorBottom": "下揃え",
+  "AnchorTop": "上揃え",
+  "AnchorLeft": "左揃え",
+  "AnchorRight": "右揃え",
+  "ModeMultiple": "複数ページモード",
+  "ModeSingle": "単一ページモード",
+  "ViewMultiple": "複数ページ表示",
+  "ViewSingle": "単一ページ表示",
+  "ViewCollapse": "サイドバーを畳む",
+  "ViewExpand": "サイドバーを広げる",
+  "ShowTo": "表示相手",
+  "ShowEntry": "「{name}」を見せる",
+  "ShowBadPermissions": "自分が所有しているジャーナルエントリやページだけしか表示できません。",
+  "ShowNoPlayers": "表示させるプレイヤーは誰も接続していません。",
+  "ShowOwnershipHint": "このドキュメントを見せたプレーヤーの所有権を更新できます。プレーヤーの権限が高い場合は、ダウングレードされません。",
+  "SHOW": {
+    "all": "all---(355E183)---",
+    "authorized": "authorized---(355E184)---",
+    "selected": "selected---(355E185)---"
+  },
+  "LockModeLocked": "目次がロックされています。クリックでロック解除。",
+  "LockModeUnlocked": "目次がロックされていません。クリックでロック。",
+  "ConfigureCategories": "カテゴリ設定",
+  "ConfigureCategoriesTitle": "{name}：カテゴリ",
+  "CategoryName": "Category name---(345D068)---",
+  "Uncategorized": "未分類",
+  "UnnamedCategory": "<Unnamed Category>---(345D070)---",
+  "FIELDS": {
+    "name": {
+      "label": "項目のタイトル"
+    }
+  }
+},
 
-"JOURNALENTRYPAGE.DefaultPageSheet": "既定の{page}ページシート",
-"JOURNALENTRYPAGE.Format": "フォーマット",
-"JOURNALENTRYPAGE.Page": "ページ",
-"JOURNALENTRYPAGE.PageTitle": "ページ名",
-"JOURNALENTRYPAGE.Source": "ソース",
-"JOURNALENTRYPAGE.Type": "タイプ",
-"JOURNALENTRYPAGE.TypeImage": "画像",
-"JOURNALENTRYPAGE.TypePDF": "PDF",
-"JOURNALENTRYPAGE.TypeText": "テキスト",
-"JOURNALENTRYPAGE.TypeVideo": "動画",
-"JOURNALENTRYPAGE.ImageSource": "画像ファイル",
-"JOURNALENTRYPAGE.ImageCaption": "画像のキャプション",
-"JOURNALENTRYPAGE.VideoAutoplay": "Autoplay Video---(345D071)---",
-"JOURNALENTRYPAGE.VideoControls": "動画操作表示",
-"JOURNALENTRYPAGE.VideoDimensions": "動画解像度",
-"JOURNALENTRYPAGE.VideoLoop": "映像をループ",
-"JOURNALENTRYPAGE.VideoStartTime": "動画の再生開始場所",
-"JOURNALENTRYPAGE.VideoSource": "動画ファイル",
-"JOURNALENTRYPAGE.VideoSourceHint": "これは、ローカルファイル、リモートビデオファイルまたはYouTubeのURLにしてください。",
-"JOURNALENTRYPAGE.VideoVolume": "映像の音量",
-"JOURNALENTRYPAGE.PDFLoad": "PDFを読み込む",
-"JOURNALENTRYPAGE.PDFSource": "PDFファイル",
-"JOURNALENTRYPAGE.ShowImageOnly": "画像のみ表示",
-"JOURNALENTRYPAGE.ShowImageTitle": "画像のタイトルを表示",
-"JOURNALENTRYPAGE.ShowImageCaption": "画像のキャプションを表示",
-"JOURNALENTRYPAGE.ShowTitle": "タイトル表示",
-"JOURNALENTRYPAGE.HeadingLevel": "見出しレベル",
-"JOURNALENTRYPAGE.Category": "Page Category---(345D072)---",
-"JOURNALENTRYPAGE.Level": "レベル{level}",
+"JOURNALENTRYPAGE": {
+  "DefaultPageSheet": "既定の{page}ページシート",
+  "Page": "ページ",
+  "VideoDimensions": "動画解像度",
+  "VideoStartTime": "動画の再生開始場所",
+  "VideoSourceHint": "これは、ローカルファイル、リモートビデオファイルまたはYouTubeのURLにしてください。",
+  "PDFLoad": "PDFを読み込む",
+  "ShowImageOnly": "画像のみ表示",
+  "ShowImageTitle": "画像のタイトルを表示",
+  "ShowImageCaption": "画像のキャプションを表示",
+  "Level": "レベル {level}",
+
+  "FIELDS": {
+    "category.label": "ページのカテゴリ",
+    "image": {
+      "caption.label": "画像のキャプション"
+    },
+    "name.label": "ページ名",
+    "src.label": "ファイルパス",
+    "text": {
+      "format.label": "フォーマット"
+    },
+    "title": {
+      "level.label": "見出しレベル",
+      "show.label": "タイトル表示"
+    },
+    "video": {
+      "autoplay.label": "Autoplay Video---(345D071)---",
+      "controls.label": "動画操作表示",
+      "loop.label": "映像をループ",
+      "volume.label": "映像の音量"
+    }
+  }
+},
 
 "KEYBINDINGS": {
   "Title": "操作設定",
@@ -1509,16 +1604,26 @@
   "BringToFront": "オブジェクトを手前へ",
   "ToggleCharacterSheet": "キャラクターシート表示切替",
   "PTTKey": "プッシュ・トゥ・トーク／ミュート",
-  "PanUp": "上に移動またはパン",
-  "PanLeft": "左に移動またはパン",
-  "PanDown": "下に移動またはパン",
-  "PanRight": "右に移動またはパン",
-  "PanUpLeft": "左上に移動またはパン",
-  "PanUpRight": "右上に移動またはパン",
-  "PanDownLeft": "左下に移動またはパン",
-  "PanDownRight": "右下に移動またはパン",
-  "ZoomIn": "垂直に上昇またはキャンバスをズームイン",
-  "ZoomOut": "垂直に降下キャンバスをズームアウト",
+  "MoveUp": "上に移動",
+  "MoveLeft": "左に移動",
+  "MoveDown": "下に移動",
+  "MoveRight": "右に移動",
+  "MoveUpLeft": "左上に移動",
+  "MoveUpRight": "右上に移動",
+  "MoveDownLeft": "左下に移動",
+  "MoveDownRight": "右下に移動",
+  "Ascend": "垂直に上昇",
+  "Descend": "垂直に下降",
+  "PanUp": "上にパン",
+  "PanLeft": "左にパン",
+  "PanDown": "下にパン",
+  "PanRight": "右にパン",
+  "PanUpLeft": "左上にパン",
+  "PanUpRight": "右上にパン",
+  "PanDownLeft": "左下にパン",
+  "PanDownRight": "右下にパン",
+  "ZoomIn": "ズームイン",
+  "ZoomOut": "ズームアウト",
   "RulerWaypoint": "定規の中間点を設置",
   "ExecuteMacro": "ホットバースロット{number} を実行",
   "SwapMacroPage": "ホットバーをページ{page} に切替",
@@ -1536,126 +1641,133 @@
   }
 },
 
-"LIGHT.FIELDS": {
-  "alpha": {
-    "label": "色の濃度",
-    "hint": "この光源が発する色の強さを変更する。"
+"LIGHT": {
+  "COLORATION": {
+    "Legacy": "過去互換の着色",
+    "AdaptiveLuminance": "輝度順応",
+    "InternalHalo": "円光",
+    "ExternalHalo": "光輪",
+    "ColorBurn": "焼き込み",
+    "InternalBurn": "周辺を焼き込み",
+    "ExternalBurn": "External Color Burn===(359E023)===",
+    "LowAbsorption": "Low Absorption===(359E024)===",
+    "HighAbsorption": "高吸収",
+    "InvertAbsorption": "逆吸収",
+    "NaturalLight": "自然光",
+    "NaturalAttenuation": "自然な減光",
+    "AdaptiveAttenuation": "適応的な減光"
   },
-  "animation": {
-    "label": "光源のアニメーション",
-    "type": {
-      "label": "光源のアニメーションタイプ"
+  "ANIMATION": {
+    "Torch": "たいまつ",
+    "Pulse": "脈動",
+    "ReactivePulse": "音に反応する脈動",
+    "Chroma": "彩度",
+    "Wave": "波打つ波",
+    "Fog": "渦巻く雲",
+    "Sunburst": "太陽光放射",
+    "LightDome": "光のドーム",
+    "Emanation": "神秘的な放射",
+    "EnergyField": "エネルギーフィールド",
+    "HexaDome": "六角ドーム",
+    "GhostLight": "亡者の明かり",
+    "RoilingMass": "回転する塊",
+    "BlackHole": "ブラックホール",
+    "Vortex": "渦巻",
+    "BewitchingWave": "魅了する波",
+    "SwirlingRainbow": "渦巻く虹",
+    "RadialRainbow": "虹色の放射",
+    "FairyLight": "妖精の明かり",
+    "Flame": "たいまつ",
+    "ForceGrid": "力の格子",
+    "StarLight": "星の明かり",
+    "SmokePatch": "煙のパッチ",
+    "Revolving": "廻る光",
+    "Siren": "回転灯",
+    "MagicalGloom": "Magical Gloom---(325C130)---",
+    "DenseSmoke": "Dense Smoke---(345D082)---"
+  },
+  "FIELDS": {
+    "alpha": {
+      "label": "色の濃度",
+      "hint": "この光源が発する色の強さを変更する。"
     },
-    "speed": {
-      "label": "アニメーション速度",
-      "hint": "アニメーションの再生速度を上げる。"
+    "animation": {
+      "label": "光源のアニメーション",
+      "type": {
+        "label": "光源のアニメーションタイプ",
+        "any": "Any===(359E025)===",
+        "none": "No Animation===(359E026)==="
+      },
+      "speed": {
+        "label": "アニメーション速度",
+        "hint": "アニメーションの再生速度を上げる。"
+      },
+      "intensity": {
+        "label": "アニメーションの強さ",
+        "hint": "アニメーションの強さを上げると、アニメーションがより強調される"
+      },
+      "reverse": {
+        "label": "逆方向"
+      }
     },
-    "intensity": {
-      "label": "アニメーションの強さ",
-      "hint": "アニメーションの強さを上げると、アニメーションがより強調される"
+    "angle": {
+      "label": "照射角度",
+      "hint": "光源の照射角度と照射角度を回転させて設定する。"
     },
-    "reverse": {
-      "label": "逆方向"
-    }
-  },
-  "angle": {
-    "label": "照射角度",
-    "hint": "光源の照射角度と照射角度を回転させて設定する。"
-  },
-  "attenuation": {
-    "label": "減衰",
-    "hint": "明るい、薄暗い、暗いの間で徐々に照明を変化させる。"
-  },
-  "color": {
-    "label": "光源の色",
-    "hint": "光源の色を決め、その濃度を設定する。"
-  },
-  "coloration": {
-    "label": "着色方法",
-    "hint": "光源に設定した着色方法は見え方に対して、加法混色で適用する。"
-  },
-  "contrast": {
-    "label": "コントラスト",
-    "hint": "光源が照らす面のコントラストを調整。通常、光源の既定値は０．"
-  },
-  "dim": {
-    "label": "薄暗い"
-  },
-  "bright": {
-    "label": "明るい"
-  },
-  "luminosity": {
-    "label": "輝度",
-    "hint": "光源の明るさの設定、高く設定するといと暗くなっても明るさが維持される。通常の光源は既定値が0.5に設定。"
-  },
-  "negative": {
-    "label": "闇源か",
-    "hint": "闇源は効果範囲内にある光や視界の光源を抑制する。"
-  },
-  "priority": {
-    "label": "優先度",
-    "hint": "光源と闇源の相互作用を決定する。優先順位の高い光は優先順位の低い闇をはじくが、優先順位が一致するときは闇が優先される。"
-  },
-  "saturation": {
-    "label": "彩度",
-    "hint": "光源が照らす面の彩度を調整。通常、光源の既定値は0。"
-  },
-  "shadows": {
-    "label": "影",
-    "hint": "光源に照らされている暗い色の強調または強度を指定。通常、光源の既定値は0。"
-  },
-  "darkness": {
-    "label": "暗さの有効範囲",
-    "hint": "この光源が見える暗さの範囲を設定する。",
-    "min": {
-      "label": "下限"
+    "attenuation": {
+      "label": "減衰",
+      "hint": "明るい、薄暗い、暗いの間で徐々に照明を変化させる。"
     },
-    "max": {
-      "label": "上限"
+    "color": {
+      "label": "光源の色",
+      "hint": "光源の色を決め、その濃度を設定する。"
+    },
+    "coloration": {
+      "label": "着色方法",
+      "hint": "光源に設定した着色方法は見え方に対して、加法混色で適用する。"
+    },
+    "contrast": {
+      "label": "コントラスト",
+      "hint": "光源が照らす面のコントラストを調整。通常、光源の既定値は０．"
+    },
+    "dim": {
+      "label": "薄暗い"
+    },
+    "bright": {
+      "label": "明るい"
+    },
+    "luminosity": {
+      "label": "輝度",
+      "hint": "光源の明るさの設定、高く設定するといと暗くなっても明るさが維持される。通常の光源は既定値が0.5に設定。"
+    },
+    "negative": {
+      "label": "闇源か",
+      "hint": "闇源は効果範囲内にある光や視界の光源を抑制する。"
+    },
+    "priority": {
+      "label": "優先度",
+      "hint": "光源と闇源の相互作用を決定する。優先順位の高い光は優先順位の低い闇をはじくが、優先順位が一致するときは闇が優先される。"
+    },
+    "saturation": {
+      "label": "彩度",
+      "hint": "光源が照らす面の彩度を調整。通常、光源の既定値は0。"
+    },
+    "shadows": {
+      "label": "影",
+      "hint": "光源に照らされている暗い色の強調または強度を指定。通常、光源の既定値は0。"
+    },
+    "darkness": {
+      "label": "暗さの有効範囲",
+      "hint": "この光源が見える暗さの範囲を設定する。",
+      "min": {
+        "label": "下限"
+      },
+      "max": {
+        "label": "上限"
+      }
     }
   }
 },
-
-"LIGHT.LegacyColoration": "過去互換の着色",
-"LIGHT.AdaptiveLuminance": "輝度順応",
-"LIGHT.InternalHalo": "円光",
-"LIGHT.ExternalHalo": "光輪",
-"LIGHT.ColorBurn": "焼き込み",
-"LIGHT.InternalBurn": "周辺を焼き込み",
-"LIGHT.ExternalBurn": "外側を焼き込み",
-"LIGHT.LowAbsorption": "低吸収",
-"LIGHT.HighAbsorption": "高吸収",
-"LIGHT.InvertAbsorption": "逆吸収",
-"LIGHT.NaturalLight": "自然光",
-
-
-"LIGHT.AnimationTorch": "たいまつ",
-"LIGHT.AnimationPulse": "脈動",
-"LIGHT.AnimationReactivePulse": "音に反応する脈動",
-"LIGHT.AnimationChroma": "彩度",
-"LIGHT.AnimationWave": "波打つ波",
-"LIGHT.AnimationFog": "渦巻く雲",
-"LIGHT.AnimationSunburst": "太陽光放射",
-"LIGHT.AnimationLightDome": "光のドーム",
-"LIGHT.AnimationEmanation": "神秘的な放射",
-"LIGHT.AnimationEnergyField": "エネルギーフィールド",
-"LIGHT.AnimationHexaDome": "六角ドーム",
-"LIGHT.AnimationGhostLight": "亡者の明かり",
-"LIGHT.AnimationRoilingMass": "回転する塊",
-"LIGHT.AnimationBlackHole": "ブラックホール",
-"LIGHT.AnimationVortex": "渦巻",
-"LIGHT.AnimationBewitchingWave": "魅了する波",
-"LIGHT.AnimationSwirlingRainbow": "渦巻く虹",
-"LIGHT.AnimationRadialRainbow": "虹色の放射",
-"LIGHT.AnimationFairyLight": "妖精の明かり",
-"LIGHT.AnimationFlame": "炎",
-"LIGHT.AnimationForceGrid": "格子の力場",
-"LIGHT.AnimationStarLight": "スターライト",
-"LIGHT.AnimationSmokePatch": "継接ぎの煙",
-"LIGHT.AnimationRevolving": "廻る光",
-"LIGHT.AnimationSiren": "回転灯",
-"LIGHT.AnimationMagicalGloom": "Magical Gloom---(325C130)---",
-"LIGHT.AnimationDenseSmoke": "Dense Smoke---(345D082)---",
 
 "MACRO": {
   "Delete": "マクロの削除",
@@ -1679,43 +1791,66 @@
   }
 },
 
+"MEASUREMENT": {
+  "ABBR": {
+    "Pixels": "px"
+  },
+  "Angle": "角度",
+  "Coordinates": "座標",
+  "Degrees": "度",
+  "Direction": "方向",
+  "Distance": "距離",
+  "GridSpaces": "マス目",
+  "GridUnits": "グリッド単位",
+  "Height": "高さ",
+  "Pixels": "ピクセル",
+  "Ratio": "比率",
+  "Scale": "倍率",
+  "Width": "幅"
+},
+
 "MENU.NavLabel": "Main Menu---(183)---",
 "MENU.Reload": "再読み込み",
 "MENU.Logout": "ログアウト",
 "MENU.Players": "ユーザ管理",
+"MENU.Close": "Close Main Menu---(355E186)---",
 
-"MODMANAGE.Bugs": "バグや問題の報告",
-"MODMANAGE.DeactivateAll": "全モジュールを選択解除",
-"MODMANAGE.Readme": "モジュールの説明",
-"MODMANAGE.Title": "モジュール管理",
-"MODMANAGE.Instructions": "現在のワールドで有効にするモジュールを設定します。モジュール設定を保存すると、セッションは再読み込みされます。",
-"MODMANAGE.View": "現在のワールドで有効になっているモジュールの一覧。",
-"MODMANAGE.None": "No Modules are available within this World.---(186)---",
-"MODMANAGE.Search": "フィルタ",
-"MODMANAGE.Submit": "モジュール設定を保存",
-"MODMANAGE.Dependencies": "依存関係",
-"MODMANAGE.RequiredDepError": "必須とされているため、このモジュールは無効化できません：",
-"MODMANAGE.RequiredDependencies": "要求された依存関係",
-"MODMANAGE.RecommendedDependencies": "Recommended Dependencies---(114)b299",
-"MODMANAGE.OptionalDependencies": "任意の依存関係",
-"MODMANAGE.DependencyResolution": "依存関係解決",
-"MODMANAGE.DepRequiredEnable": "選択したモジュールの動作には、以下の依存関係が必要です：",
-"MODMANAGE.DepOptionalEnable": "選択したモジュールの任意の依存関係を以下に列挙します：",
-"MODMANAGE.DepEnableCheck": "モジュールと選択された依存関係を有効にしますか？",
-"MODMANAGE.DepDisable": "以下の依存関係は使用されなくなるため、無効に出来ます：",
-"MODMANAGE.DepDisableCheck": "選択されたパッケージを一緒に無効化しますか？",
-"MODMANAGE.DepNotInstalled": "依存関係{missing}がインストールされていません！",
-"MODMANAGE.DepMissing": "モジュール{module}を有効化しましたが、依存関係{missing}が有効になっていません！",
-"MODMANAGE.FilterAll": "全てのモジュール",
-"MODMANAGE.FilterActive": "有効なモジュール",
-"MODMANAGE.FilterInactive": "無効なモジュール",
-"MODMANAGE.RequiredModule": "このモジュールは有効にしておく必要が有ります",
-"MODMANAGE.DependencyIssues": "必要な依存関係に問題があるため、有効にできません",
-"MODMANAGE.SystemCompatibilityIssueMinimum": "This module requires a minimum system version of {minimum} but your version is {version}. Please update the system.---(117)b299",
-"MODMANAGE.SystemCompatibilityIssueMaximum": "This module requires a maximum system version of {maximum} but your version is {version}.---(118)b299",
-"MODMANAGE.NavLabel": "Module Management Navigation---(188)---",
-"MODMANAGE.UpstreamPackages": "このパッケージが有効であることを必要としているパッケージが{number}個あります。このパッケージを無効にすると、それらのパッケージも無効になります。",
-"MODMANAGE.UnavailableDocuments": "The following documents will be rendered unavailable if you disable these modules.---(325C135)---",
+"MODMANAGE": {
+  "Bugs": "バグや問題の報告",
+  "DeactivateAll": "全モジュールを選択解除",
+  "Readme": "モジュールの説明",
+  "Title": "モジュール管理",
+  "Instructions": "現在のワールドで有効にするモジュールを設定します。モジュール設定を保存すると、セッションは再読み込みされます。",
+  "View": "現在のワールドで有効になっているモジュールの一覧。",
+  "None": "No Modules are available within this World.---(186)---",
+  "Search": "フィルタ",
+  "Submit": "モジュール設定を保存",
+  "Dependencies": "依存関係",
+  "RequiredDepError": "必須とされているため、このモジュールは無効化できません：",
+  "RequiredDependencies": "要求された依存関係",
+  "RecommendedDependencies": "推奨される依存関係",
+  "OptionalDependencies": "任意の依存関係",
+  "DependencyResolution": "依存関係解決",
+  "DepRequiredEnable": "選択したモジュールの動作には、以下の依存関係が必要です：",
+  "DepOptionalEnable": "選択したモジュールの任意の依存関係を以下に列挙します：",
+  "DepEnableCheck": "モジュールと選択された依存関係を有効にしますか？",
+  "DepDisable": "以下の依存関係は使用されなくなるため、無効に出来ます：",
+  "DepDisableCheck": "選択されたパッケージを一緒に無効化しますか？",
+  "DepNotInstalled": "依存関係{missing}がインストールされていません！",
+  "DepMissing": "モジュール{module}を有効化しましたが、依存関係{missing}が有効になっていません！",
+  "FilterAll": "全てのモジュール",
+  "FilterActive": "有効なモジュール",
+  "FilterInactive": "無効なモジュール",
+  "RequiredModule": "このモジュールは有効にしておく必要が有ります",
+  "DependencyIssues": "必要な依存関係に問題があるため、有効にできません",
+  "SystemCompatibilityIssueMinimum": "This module requires a minimum system version of {minimum} but your version is {version}. Please update the system.---(117)b299",
+  "SystemCompatibilityIssueMaximum": "This module requires a maximum system version of {maximum} but your version is {version}.---(118)b299",
+  "NavLabel": "Module Management Navigation---(188)---",
+  "UpstreamPackages": "このパッケージが有効であることを必要としているパッケージが{number}個あります。このパッケージを無効にすると、それらのパッケージも無効になります。",
+  "UnavailableDocuments": "The following documents will be rendered unavailable if you disable these modules.---(325C135)---",
+  "Activate": "有効化",
+  "Deactivate": "無効化"
+},
 
 "NOTE.Create": "マップノートの作成",
 "NOTE.CreateJournal": "対応するジャーナルエントリを作成しますか？",
@@ -1806,7 +1941,7 @@
 "PLAYLIST.SoundStop": "サウンドの再生停止",
 "PLAYLIST.BulkImport": {
   "Title": "サウンドの一括インポート",
-  "Hint": "Select a folder containing the sounds to be imported.---(???D???)---",
+  "Hint": "インポートするサウンドを選択してください。",
   "Button": "一括インポート",
   "Warning": "要求したディレクトリ「{path}」から、適切なプレイリストサウンドがインポートできませんでした"
 },
@@ -1840,23 +1975,36 @@
 "SCENE.AccessibilityGM" : "GMのみ",
 "SCENE.AccessibilityAll" : "プレイヤー",
 "SCENE.Activate": "シーンの有効化",
+"SCENE.Audio": "音声",
 "SCENE.BackgroundScale": "背景画像の倍率",
 "SCENE.BackgroundScaleHint": "Shift＋マウスホイールかShift＋↑キーとShift＋↓キーで背景画像サイズを調節する。",
 "SCENE.CaptureInitialViewPosition": "シーン設定で初期表示位置としてキャンバスの位置を取り込み。",
 "SCENE.Configure": "設定",
+"SCENE.CurrentLevel": "現在の階層",
+"SCENE.Darkness": "暗さ",
+"SCENE.Details": "詳細",
 "SCENE.Dimensions": "シーンの解像度",
 "SCENE.DimensionsHint": "背景画像の初回設定時に、シーン寸法が背景画像の寸法と一致するように自動的に設定されます。",
 "SCENE.DimensionChangeTitle": "シーンの解像度を変更しますか？",
 "SCENE.DimensionChangeWarning": "このシーンの根本的な解像度を変更しようとしています。このシーンに既にオブジェクトを配置している場合、この操作によってこれらのオブジェクトの位置が背景画像に対して移動することがあります。",
 "SCENE.DimensionLinked": "シーンの解像度は現在リンクされており、片方を変更するともう片方も変更され、縦横比が維持されます。クリックするとリンクが解除されます。",
+"SCENE.DeterminingDimensions": "Determining Scene dimensions.===(359E027)===",
 "SCENE.DimensionUnlinked": "シーンの解像度は現在リンクされておらず、片方を変更してももう片方は変更されません。クリックするとリンクされます。",
 "SCENE.DistortedDimensionsTitle": "歪んだシーンの解像度",
 "SCENE.DistortedDimensionsWarning": "オリジナルとは異なる縦横比の新しい寸法を選択されています。トークンなどの配置されたオブジェクトを自動的に再配置しますか？その結果、歪んで見えることがあります。",
+"SCENE.Environment.Base": "基本環境",
+"SCENE.Environment.Dark": "暗さの環境",
+"SCENE.Environment.DarkHint": "基本環境と同じ項目だが、シーンの暗さレベルが1に近づくほど反映される。",
+"SCENE.Environment.Reset": "Reset to Default Options---(355E196)---",
+"SCENE.FogOfWar": "戦場の霧",
 "SCENE.GenerateThumb": "サムネイル画像の生成",
 "SCENE.GenerateThumbNoCanvas": "Scene thumbnail cannot be generated with 'Disable Game Canvas' setting active.---(200)---",
 "SCENE.GenerateThumbUploadDenied": "The scene thumbnail could not be generated because the user does not have permission to upload files.---(345D097)---",
 "SCENE.GenerateThumbProgress": "シーン「{name}」のサムネイル画像を生成しています。",
 "SCENE.GenerateThumbSuccess": "シーン「{name}」のサムネイル画像を生成しました。",
+"SCENE.GlobalIllumination": "全域照明",
+"SCENE.GridAppearance": "見え方",
+"SCENE.GridAppearanceHint": "グリッドの線の見え方を設定する。",
 "SCENE.GridConfigTool": "グリッド設定ツール",
 "SCENE.GridConfigToolHint": "グリッドと背景画像の位置を設定します。マウスホイールとカーソルキーを使用するか以下の入力欄に入力する。",
 "SCENE.GridGridless": "グリッドなし",
@@ -1865,29 +2013,68 @@
 "SCENE.GridHexEvenR": "ヘックス　行整列－偶数",
 "SCENE.GridHexOddQ": "ヘックス　列整列－奇数",
 "SCENE.GridHexEvenQ": "ヘックス　列整列－偶数",
+"SCENE.GridMeasurement": "距離計測",
+"SCENE.GridMechanics": "仕組み",
 "SCENE.GridSizeError": "このリサイズ操作はグリッドサイズを最小の50px以下に縮小しています。このサイズまで小さくしたい場合は、まず「グリッドなし」に切り替えて、リサイズ後に新しいグリッドを再設定してください。",
 "SCENE.GridResizeHint" : "Alt+マウスホイールかAlt＋上とAltキーとAlt下キーで、グリッドサイズを調整する。",
 "SCENE.GridPosition": "背景画像オフセット",
 "SCENE.GridPositionHint": "矢印キーを使用して背景画像のオフセットを調整する。",
-"SCENE.GridScale": "グリッドの倍率",
 "SCENE.GridReset": "変更の取消",
+"SCENE.InheritedField": "このフィールドの値は階層「{level}」から継承されています。直接編集するにはここをクリックしてください。",
+"SCENE.InitialLevel": "初期階層",
 "SCENE.InitialView": "初期表示位置",
 "SCENE.InitialViewButton": "現在の表示状態を取り込む",
 "SCENE.InitialViewHint": "シーンの初回表示時に表示される既定位置設定。",
 "SCENE.InvalidDimension": "The dimension provided would result in a non-integer value for the other dimension. Please try a different value or unlink the dimensions.---(132)b299",
 "SCENE.Loading": "{name}：読み込み中",
 "SCENE.Notes": "シーンメモ",
-"SCENE.Pixels" : "ピクセル",
+"SCENE.Perception": "Perception---(355E205)---",
 "SCENE.Preload": "シーン事前読込",
-"SCENE.View": "シーンを表示",
-"SCENE.ShiftBG": "背景のオフセット",
+"SCENE.Presentation": "表示",
+"SCENE.Properties": "シーンの設定情報",
+"SCENE.View": "View Scene",
+"SCENE.ShiftBG": "シフト",
 "SCENE.ToggleNav": "ナビゲーション表示切替",
-"SCENE.Ambience": {
-  "Base": "基本アンビエンス",
-  "Dark": "暗さのアンビエンス",
-  "ResetEnvironment": "オプション設定初期化"
+"SCENE.FogModeChangeMessage": "Fog exploration mode has changed. This will reload fog exploration and reset vision.---(355E209)---",
+"SCENE.Transition": {
+  "Animation": "遷移アニメーション",
+  "Preview": "プレビュー",
+  "Config": "Configure---(355E212)---",
+  "Types": {
+    "fade": "フェード",
+    "swirl": "渦巻き",
+    "waterDrop": "水滴",
+    "morph": "モーフ",
+    "crosshatch": "クロスハッチ",
+    "wind": "風",
+    "waves": "波",
+    "whiteNoise": "ホワイトノイズ",
+    "hologram": "ホログラム",
+    "hole": "ホール",
+    "holeSwirl": "穴渦巻き",
+    "glitch": "グリッチ",
+    "dots": "ドット"
+  }
 },
 "SCENE.FIELDS": {
+  "initialLevel": {
+    "hint": "ユーザーがこの階層で視界を持つならば、シーンが初めて有効または、ゲーム参加時にシーンが有効な状態である場合、そのユーザーはこの階層に配置されます。",
+    "label": "初期階層"
+  },
+  "transition": {
+    "type": {
+      "label": "遷移の種類",
+      "hint": "シーンが読み込まれるときに再生する遷移アニメーションの種類"
+    },
+    "duration": {
+      "label": "時間",
+      "hint": "遷移アニメーションの時間をミリ秒で指定。"
+    },
+    "activeOnly": {
+      "label": "有効時限定",
+      "hint": "遷移アニメーションの再生は、シーンが有効化されたとき、またはゲーム参加時に有効な場合に限定。"
+    }
+  },
   "name.label": "シーン名",
   "navigation.label": "ナビゲーションに表示",
   "navName" : {
@@ -1903,24 +2090,17 @@
     "offsetY.label": "垂直"
   },
   "backgroundColor.label": "背景色",
-  "foreground": {
-    "label": "前景画像",
-    "hint": "シーンで他のオブジェクトの上に描画される前景画像（任意設定）"
-  },
-  "foregroundElevation": {
-    "label": "前景の高さ",
-    "hint": "前景画像と頭上タイルの標高差の単位数。"
-  },
   "initial.scale.label": "ズーム",
   "grid": {
     "type.label": "グリッド種別",
     "size": {
       "label" : "グリッドサイズ",
-      "hint" : "各グリッドのサイズをピクセル単位で指定。グリッド設定ツールで視覚的に調整できます。"
+      "hint" : "グリッドのピクセルサイズは一個のマス目のサイズ。グリッド設定ツールで視覚的に調整できます。"
     },
     "thickness.label": "グリッド・太さ",
     "color.label": "グリッドの色",
     "alpha.label": "グリッドの不透明度",
+    "distance.hint": "このシーンにおいて、各マス目が表す距離、単位はゲームシステムに適したものを使用する。",
     "distance.label": "距離",
     "units.label": "単位",
     "style.label": "グリッド・スタイル"
@@ -1929,26 +2109,34 @@
     "label" : "余白の割合",
     "hint": "シーンの背景画像周辺に余白を追加し、キャンバスとして使える領域が用意されます。"
   },
+  "shiftX.hint": "シーンのプレイ可能エリアに適用するオフセット値、既定値はキャンバスの中心に配置。",
+  "shiftX.label": "X-Shift---(355E235)---",
+  "shiftY.label": "Y-Shift---(355E236)---",
   "tokenVision": {
     "label": "トークンの視覚",
     "hint": "シーン内の視界を操作中のトークンの視界に制限する。無効にすると、シーン全体が見える。"
   },
   "fog": {
-    "exploration": {
-      "label" : "視界の霧",
-      "hint" : "この設定を有効にすると、ユーザーごとに視界の霧が管理され、シーンを探索するごとにデータベースに保存される。無効にすると、霧の探索は行われず、トークンは現在見えるものだけに制限されます。"
+    "MODES": {
+      "DISABLED": "なし",
+      "INDIVIDUAL": "個別",
+      "SHARED": "共有"
     },
-    "overlay": {  
-      "label" : "戦場の霧画像",
+    "mode": {
+      "label" : "探索モード",
+      "hint" : "専業の霧の探索モード設定：「なし」は無効化（トークンは現在視認できる範囲が見える）、「個別」はユーザーごとに探索状態を個別管理し、「共有」はすべてのユーザーが共通の探索状態を使う。"
+    },
+    "overlay": {
+      "label" : "探索の画像",
       "hint": "シーンの未探索部分の上に描かれる戦場の霧の画像（オプション）"
     },
     "colors": {
       "explored": {
-        "label": "探査済みの霧の色",
+        "label": "探査済みの色",
         "hint": "シーン内の探索済みだが現在の視界から外れている領域に適用される色。"
       },
       "unexplored": {
-        "label": "未探査の霧の色",
+        "label": "未探査の色",
         "hint": "シーンの未探査地域すべてに適用されるソリッドカラー。"
       }
     }
@@ -1956,11 +2144,11 @@
   "environment": {
     "globalLight": {
       "enabled": {
-        "label" : "全域照明",
+        "label" : "有効",
         "hint": "シーンに、全域に共通の明るさを提供するグローバル光源が存在する。"
       },
       "darkness.max": {
-        "label": "全域照明の閾値",
+        "label": "閾値",
         "hint": "暗さレベルの閾値（０～１）。シーンの暗さレベルがこの閾値を超えると、全域照明は自動的に無効化されます。"
       }
     },
@@ -2024,12 +2212,73 @@
   "SHEET": {
     "basics": "基本",
     "grid": "グリッド",
-    "lighting": "照明",
-    "ambience": "アンビエンス"
+    "visibility": "視界",
+    "environment": "環境",
+    "misc": "その他",
+    "levels": "階層"
+  }
+},
+
+"SCENE_LEVEL": {
+  "Actions": {
+    "Add": {
+      "hint": "シーンは複数の垂直な階層をレサポートします。新しいレベルを追加すると、このシーンは複数階層シーンに変換されます。",
+      "label": "Add Level---(355E242)---"
+    },
+    "Down": "Down one level---(355E243)---",
+    "Edit": "Edit level---(355E244)---",
+    "Remove": "Remove level---(355E245)---",
+    "Up": "Up one level---(355E246)---",
+    "View": "View level---(355E247)---"
   },
-  "AMBIENCE": {
-    "basic": "基本設定",
-    "environment": "環境の照明"
+  "FIELDS": {
+    "background": {
+      "label": "背景",
+      "src.label": "テクスチャ",
+      "color.label": "色",
+      "tint.label": "色調",
+      "alphaThreshold": {
+        "label": "アルファ閾値",
+        "hint": "Pixels in the background texture with alpha values below this threshold do not restrict light or weather.===(359E028)==="
+      }
+    },
+    "elevation": {
+      "label": "高度の範囲",
+      "bottom.label": "背景の高度",
+      "top.label": "前景の高度"
+    },
+    "foreground": {
+      "label": "前景",
+      "src.label": "テクスチャ",
+      "tint.label": "色調",
+      "alphaThreshold.label": "アルファ閾値"
+    },
+    "fog": {
+      "label": "霧の探索",
+      "src.label": "未探索のテクスチャ",
+      "tint.label": "テクスチャ色調"
+    },
+    "textures": {
+      "label": "Positioning---(355E263)---",
+      "anchor": "Anchor---(355E264)---",
+      "anchorX.label": "X",
+      "anchorY.label": "Y",
+      "offset": "Offset---(355E267)---",
+      "offsetX.label": "X",
+      "offsetY.label": "Y",
+      "fit.label": "Fit Mode---(355E270)---",
+      "scale": "Scale---(355E271)---",
+      "scaleX.label": "X",
+      "scaleY.label": "Y",
+      "rotation.label": "Rotation---(355E274)---"
+    },
+    "visibility": {
+      "label": "Level Visibility---(355E275)---",
+      "levels": {
+        "label": "見える階層",
+        "hint": "この階層から完全または部分的に見える他の階層群を設定する。"
+      }
+    }
   }
 },
 
@@ -2104,6 +2353,10 @@
       "label": "ポート",
       "hint": "Foundry Virtual TabletopがTCP接続に使用するポートを選択することで、Universal Plug and Play (UPnP) を有効または無効にすることができます。"
     },
+    "unixSocket": {
+      "label": "Unixソケット",
+      "hint": "ポート番号の代わりに、Unixドメインソケットのファイルパスを入力できます。ポートとソケットの両方が入力されている場合は、ソケットパスが使用されます。"
+    },
     "compressStatic": {
       "label": "固定ファイルを圧縮",
       "hint": "Foundry Virtual Tabletopのウェブサーバがクライアントに送信するファイルを事前に圧縮することでデータ量を削減する。"
@@ -2136,9 +2389,7 @@
   }
 },
 
-"SETTINGS.Configure": "設定変更",
-"SETTINGS.CombatConfigN": "コンバットトラッカー",
-"SETTINGS.CombatConfigL": "コンバットトラッカーの設定",
+"SETTINGS.CombatConfigL": "遭遇トラッカー",
 "SETTINGS.CombatConfigH": "戦闘とトラッカーに関する設定。",
 "SETTINGS.CombatThemeN": "戦闘テーマ",
 "SETTINGS.CombatThemeL": "戦闘が始まると、自分のターンや次が自分のターンのときに再生されるサウンドのセット。",
@@ -2154,7 +2405,7 @@
 "SETTINGS.ShowToolclipsH": "サイドバーのツールにカーソルを合わせたときに、ツールクリップを表示させるかどうかを設定する。",
 "SETTINGS.None": "なし",
 "SETTINGS.AnimVisionN": "トークンの視界アニメーション",
-"SETTINGS.AnimVisionL": "トークンの移動中に、トークンの視覚と光の照射範囲の変化をアニメーション化します。これを無効にすると、性能が低い機器でパフォーマンスが向上します。",
+"SETTINGS.AnimVisionL": "トークンの移動中に、トークンの視覚、光、attached regionの変化をアニメーション化します。これを無効にすると、性能が低い機器でパフォーマンスが向上します。",
 "SETTINGS.AnimLightN": "光源のアニメーション",
 "SETTINGS.AnimLightL": "光源アニメーションを許可する。無効にすると、低性能の機器でのパフォーマンスが向上します。",
 "SETTINGS.FPSMeterN": "FPSメータの表示",
@@ -2174,10 +2425,10 @@
 "SETTINGS.MaxFPSN": "フレームレートの上限",
 "SETTINGS.MaxFPSL": "FVTTがキャンバスの描画を更新するフレームレートの上限を制限する。この値を下げると、性能の低いハードウェアでアプリケーションのパフォーマンスが向上する場合があります。",
 "SETTINGS.DefaultSheetsN": "既定のドキュメントシート",
-"SETTINGS.DefaultSheetsL": "既定のシート設定",
+"SETTINGS.DefaultSheetsL": "既定のドキュメントシート",
 "SETTINGS.DefaultSheetsH": "ワールドで利用可能な全てのドキュメントについて、既定のシートを設定する",
 "SETTINGS.FontConfigN": "追加フォント",
-"SETTINGS.FontConfigL": "追加フォントの設定",
+"SETTINGS.FontConfigL": "追加フォント",
 "SETTINGS.FontConfigH": "このワールドで使用できる追加フォントを設定する。",
 "SETTINGS.PhotosensitiveModeN": "光過敏性モード",
 "SETTINGS.PhotosensitiveModeL": "このモードを有効にすると、点滅、速い動き、繰り返しのアニメーションやエフェクトの頻度と強度を低減します。",
@@ -2202,7 +2453,7 @@
 "SETTINGS.TokenDragPreviewL": "有効な場合、トークンの視界と光源がトークンのドラッグ中リアルタイムに表示される。この設定はメタプレイの助長が望ましくないため、既定値は無効になっている。",
 "SETTINGS.PrototypeTokenOverrides": {
   "Name": "トークンのプロトタイプの上書き",
-  "Label": "プロトタイプ設定の上書き",
+  "Label": "トークンのプロトタイプの上書き",
   "Hint": "全てのアクターにトークンのプロトタイプの上書きを設定する。",
   "Reset": {
     "Label": "初期設定に戻す",
@@ -2243,7 +2494,7 @@
 "SETTINGS.UI": {
   "MENU": {
     "name": "ユーザインターフェース設定",
-    "label": "インターフェース設定",
+    "label": "ユーザインターフェース",
     "hint": "Foundry Virtual Tabletopのユーザーインターフェースの見た目や動作に影響を与える設定。"
   },
   "HEADERS": {
@@ -2251,6 +2502,9 @@
     "size": "インターフェースサイズ",
     "fade": "インターフェースのフェード",
     "other": "その他の設定"
+  },
+  "ACTIONS": {
+    "Reset": "リセット"
   },
   "FIELDS": {
     "uiScale": {
@@ -2313,6 +2567,7 @@
   "NueWorldDescription": "<p>ワールドの設定については、<a href='https://foundryvtt.com/article/game-worlds/' target='_blank'>ワールド</a>のドキュメントをご覧ください。",
   "SeeTutorial": "Foundry Virtual Tabletopの詳細な説明が必要であれば、我々の<a href=\"https://foundryvtt.com/kb/\" target=\"_blank\" title=\"Knowledge Base\">ナレッジベース</a>にある<a href=\"https://foundryvtt.com/article/tutorial/\" target=\"_blank\" title=\"Gamemaster Tutorial\">ゲームマスタ・チュートリアル</a>シリーズをご覧ください。",
   "Title": "設定とセットアップ",
+  "Software": "Software---(355E243)---",
   "Update": "ソフトウェア更新",
   "UpdateNewGeneration": "手動でのインストールが必要です",
   "PreviewCompatibility": "互換性のプレビュー",
@@ -2339,14 +2594,26 @@
   "UpdateStable": "安定版",
   "UpdateStableHint": "安定版：慎重にテストされたリリースで、普段のゲームで使用に推奨。",
   "ForceUpdateHint": "強制更新のオプションを選択すると、設定されたソフトウェア更新チャンネルの最新バージョンに、現在のソフトウェアが上書きされます。このオプションの適用は慎重に判断してください。",
+  "Install": "インストール",
   "Uninstall": "削除",
   "Reinstall": "再インストール",
   "ReinstallPackageNotFound": "Package reinstallation failed as a package with that ID could not be found at the central package repository. You will need to manually reinstall it via its manifest link.---(147)b299",
+  "WorldBlank": "Blank World---(355E245)---",
+  "WorldCancelConfirm": "If you return to setup now, you will lose any changes you have made here.---(355E246)---",
   "WorldCreate": "ワールド作成",
+  "WorldCreating": "Creating World...---(355E247)---",
+  "WorldCreateCancel": "Cancel World Creation---(355E248)---",
+  "WorldCreateDependencyFail": "The World could not be created as required dependencies were not installed.---(355E249)---",
+  "WorldCreateNoSystem": "You must select a Game System for the World before continuing.===(359E031)===",
+  "WorldCreateNoTitle": "You must provide a title for the World before continuing.===(359E032)===",
+  "WorldCreateSuccess": "Creation successful, launching...---(355E250)---",
   "WorldDelete": "ワールド削除",
-  "WorldEdit": "ワールド編集",
+  "WorldEdit": "ワールド設定",
+  "WorldFilterAdventures": "Filter adventures---(355E252)---",
+  "WorldFilterSystems": "Filter systems---(355E253)---",
   "WorldLaunch": "ワールド起動",
   "WorldLaunchFailure": "World launch failed: {message}. See the console (F12) for more details.---(148)b299",
+  "WorldContinue": "続行",
   "WorldUnavailable": "利用不能",
   "Worlds": "ゲームワールド",
   "RequireUpdate": "更新が必要",
@@ -2354,9 +2621,12 @@
   "RequireDep": "依存関係が必要：{dependencies}",
   "IncompatibleDep": "互換性のない依存関係：{dependencies}",
   "IncompatibleSystems": "互換性のないシステム：{systems}",
+  "InstallingDependencies": "Installing dependencies---(355E255)---",
+  "InstallDependenciesSuccess": "依存関係のインストールに成功しました",
   "NoSupportedSystem": "サポートされているシステムが未インストール",
   "RequireCoreUpgrade": "本体の更新が必要",
   "RequireCoreUnstable": "不安定版が必要",
+  "RequireCoreUnknown": "Requires Unknown Version---(355E257)---",
   "RequireCoreDowngrade": "本体のバージョンに対応していません",
   "LockHint": "パッケージをロックし、アンインストールや削除を防ぐ",
   "FavoritePackage": "お気に入り",
@@ -2437,6 +2707,7 @@
   "PackageDependenciesSuccess": "{title}と{number}個の依存関係のインストールすることに成功しました。",
   "PackageUpdateCoreUpdateNeeded": "{title}の更新が可能ですが、ソフトウェア本体のバージョンが少なくとも{vmin}の必要があるため、インストールできません。現在、使用しているバージョンは{vcur}です。",
   "PackageUpdateCoreUnstable": "{title}の更新が利用可能ですが、まだ安定していないソフトウェア本体のバージョン{vmin}が必要なため、インストールできない可能性があります。",
+  "PackageUpdateCoreUnknown": "An update is available for {title} but it may not be installed because it requires unknown core software version {vmin}.---(355E258)---",
   "PackageUpdateCoreInsufficient": "{title}の更新が利用可能ですが、機能するにはソフトウェア本体は古いバージョン{vmax}が必要です。現在、使用しているバージョンは{vcur}です。",
   "PackageDeleteTitle": "{type}の削除：{title}",
   "PackageDeleteConfirm": "本当に「<strong>{title}</strong>」の{type}を削除しますか？",
@@ -2458,10 +2729,13 @@
   "PackageProgressCleanup": "パッケージのクリーンアップ",
   "PackageProgressComplete": "パッケージのインストール完了",
   "PackageProgressError": "エラー",
-  "PackageIncompatibleSystemsPrompt": "このモジュールの更新は、以下のインストール済みシステムと互換性がありません。続行しますか？",
-  "PackageIncompatibleSystemsBulkPrompt": "以下のモジュールは、更新すると1つ以上のインストール済みシステムと互換性がなくなるため、更新されませんでした。それでも更新しますか？",
-  "PackageIncompatibleWithSystems": "「{module}」<em>は</em>「{systems}」<em>と互換性なし</em>",
+  "PackageIncompatibleSystemsPrompt": "This module update is incompatible with the following installed systems, do you want to continue?---(325C179)---",
+  "PackageIncompatibleSystemsBulkPrompt": "The following modules were not updated because doing so would have made them incompatible with one or more installed systems. Do you want to update them regardless?---(325C180)---",
+  "PackageIncompatibleWithSystems": "{module} <em>incompatible with</em> {systems}---(325C181)---",
   "ConfirmCodeLabel": "Type '{code}' exactly to proceed---(005)b309",
+
+  "ImportingAdventure": "Importing Adventure---(355E259)---",
+  "QuickstartFailure": "Quick-Start of module '{title}' failed: {message}. See the console (F12) for more details.---(355E260)---",
 
   "WorldLaunchConnect": "ワールドデータのロード中",
   "WorldLaunchMigrate": "ワールドデータの移行中",
@@ -2522,6 +2796,13 @@
   "FeaturedContent": "注目のコンテンツ",
   "NoFeaturedContent": "ウェブサーバfoundryvtt.comから、お薦めコンテンツはありませんでした。",
 
+  "ACTIONS": {
+    "Configure": "設定",
+    "Logout": "ログアウト",
+    "Update": "更新",
+    "Warnings": "警告"
+  },
+
   "BACKUPS": {
     "Backup": "バックアップ",
     "BackingUp": "バックアップ中",
@@ -2547,6 +2828,7 @@
     "DeleteBackupTitle": "「{title}」のバックアップ削除",
     "DeleteBackupWarning": "バックアップ削除は元に戻せません。続行しますか？",
     "DeleteBackupWarningPl": "<strong>{count}</strong>個のバックアップが削除対象として選択されています。この操作は取り消すことが出来ませんが、続行しますか？",
+    "DeleteSelected": "Delete Selected---(355E248)---",
     "DeletingSnapshot": "スナップショット削除中",
     "DeleteSnapshotComplete": "スナップショットを削除しました。",
     "DeleteSnapshotCompletePl": "{count}個のスナップショットを削除しました。",
@@ -2581,6 +2863,7 @@
     "RestoreSnapshotWarning": "Restoring a snapshot resets the state of your Foundry VTT installation back to the state at which the snapshot was taken. All versions and world states will be rolled back. This process cannot be undone.---(030)b311",
     "RestoreSnapshotUnchangedPackages": "<strong>1</strong> package was added after the snapshot was taken and will remain unchanged after the snapshot is restored.---(031)b311",
     "RestoreSnapshotUnchangedPackagesPl": "<strong>{count}</strong> packages were added after the snapshot was taken and will remain unchanged after the snapshot is restored.---(032)b311",
+    "SelectAll": "Select All---(355E249)---",
     "Snapshot": "スナップショット",
     "TakeBackup": "バックアップする",
     "VersionFormat": "バージョン {version}",
@@ -2617,24 +2900,24 @@
     "UnverifiedTooltip": "旧バージョンで確認されたパッケージ、バージョン「{version}」で互換性があるかもしれません。",
     "LearnMore": "このツールの詳細",
     "INCOMPATIBLE": {
-    "INCOMPATIBLE.Latest": "このパッケージの最新版は「{version}」の更新に互換性なし",
-    "INCOMPATIBLE.World": "このワールドのシステムは「{version}」の更新に互換性があるバージョンがありません"
+        "Latest": "The latest version of this package is not compatible with the {version} update===(359E033)===",
+        "World": "There is no compatible version of this world's system available for the {version} update===(359E034)==="
     },
     "COMPATIBLE": {
-    "COMPATIBLE.Latest": "このパッケージの最新版は「{version}」の更新に互換性あり",
-    "COMPATIBLE.World": "このワールドのシステムは「{version}」の更新に互換性があるバージョンが利用できます"
+        "Latest": "The latest version of this package is compatible with the {version} update===(359E035)===",
+        "World": "This world's system has a compatible version available for the {version} update===(359E036)==="
     },
     "RISK": {
-    "RISK.Latest": "このパッケージの最新版は本体のバージョン「{version}」で確認済",
-    "RISK.World": "このワールドのシステムは本体のバージョン「{version}」で確認済"
+        "Latest": "The latest version of this package was last verified for core software version {verified}===(359E037)===",
+        "World": "This world's system was last verified for core software version {verified}===(359E038)==="
     }
   },
   "INSTALL_PACKAGE": {
     "ManifestIncompatible": {
       "Title": "Compatibility Warning---(345D164)---",
       "Warning": [
-        "The {packageType} at the provided URL is not compatible with the current version of Foundry Virtual Tabletop.---(345D165)---",
-        "Are you sure you wish to proceed with the installation?---(345D166)---"
+        "The {packageType} at the provided URL is not compatible with the current version of Foundry Virtual Tabletop.",
+        "Are you sure you wish to proceed with the installation?"
       ]
     },
     "ManifestWrongPackageType": "指定されたURLには「{packageType}」が示されていません。"
@@ -2690,6 +2973,7 @@
   "AlreadyUpdated": "{name}は更新済みです。",
   "AllUpdated": "全ての{type}が更新されました！",
   "UpdateAllInProgress": "「全て更新」の処理が実行中です。完了するまで、他のパッケージ更新はできません。",
+  "Description": "説明",
   "ModuleCreate": "モジュール作成",
   "ModuleCreateHint": "このフォームを使用して、複数のワールド間で共有したり、他のユーザーに配布するためにパッケージ化されたモジュールを作成できます。このフォームは、パッケージ設定可能なサブセットをサポートしています。作成した後、JSONマニフェストファイルを変更することで、パッケージをさらに管理および編集できます。",
   "ModuleCreateSuccess": "モジュール「{id}」が作成され、利用可能になりました！",
@@ -2714,6 +2998,13 @@
     "GALLERY": "ギャラリービュー",
     "TILES": "タイル表示",
     "DETAILS": "詳細表示"
+  },
+  "RESULT": {
+    "Label": "結果",
+    "Update": "更新",
+    "Error": "エラー",
+    "Warning": "警告",
+    "Information": "情報"
   },
   "ACTIONS": {
     "AddAuthor": "作成者を追加",
@@ -2808,7 +3099,8 @@
   "ErrorUserDoesNotExist": "要求されたユーザ「{user}」は存在しません！",
   "ErrorInvalidPassword": "入力された{user}のパスワードは無効です！",
   "ErrorBanned": "{user}はワールドにアクセスする権限が有りません！",
-  "LoginSuccess": "{user}は正常にログインできました、ゲームに参加します！"
+  "LoginSuccess": "{user}は正常にログインできました、ゲームに参加します！",
+  "WorldPendingSetup": "This World is not ready yet. Please wait for the Gamemaster to log in and complete setup before attempting to join.---(355E258)---"
 },
 
 "SHEETS.ConfigureSheet": "シートの設定",
@@ -2822,7 +3114,6 @@
 "SHEETS.DocumentSheetPrivate": "この{type}を表示するために必要な権限がありません。",
 "SHEETS.Save": "シート設定を保存",
 "SHEETS.FormNavLabel": "ナビゲーションバーより",
-"SHEETS.CopyUuid": "ドキュメントのUUIDをコピー",
 "SHEETS.Theme": "テーマ",
 "SHEETS.ThemeHint": "それぞれのシートに全てのテーマが用意されているわけではありません。",
 
@@ -2893,12 +3184,13 @@
   "Save": "変更を保存"
 },
 
-"PERMISSION.Title": "権限設定",
-"PERMISSION.Configure": "権限設定",
-"PERMISSION.ConfigureLabel": "権限設定を開く",
+"PERMISSION.Title": "ユーザー権限設定",
+"PERMISSION.Configure": "ユーザー権限設定",
+"PERMISSION.ConfigureLabel": "ユーザー権限",
 "PERMISSION.ConfigureHint": "ユーザにRole毎の権限を詳細に設定します。",
 "PERMISSION.Instructions": "ユーザの役割毎にそれぞれの操作に実行権限を有するか設定します。ゲームマスターであるユーザは、無効にできない操作があることに注意してください。一部の変更は、ゲームをリロードするまで有効にならない場合があります。",
 "PERMISSION.Permission": "権限",
+"PERMISSION.Setting": "Permissions---(355E257)---",
 "PERMISSION.Permissions": "User Role Permissions---(253)---",
 "PERMISSION.Reset": "既定値に戻す",
 "PERMISSION.Submit": "設定を保存",
@@ -2932,14 +3224,14 @@
 "PERMISSION.PingCanvasHint": "ピンを打つアニメーションでキャンバス上のポイントに注目させることを許可する。",
 "PERMISSION.PlaylistCreate": "プレイリスト作成と操作",
 "PERMISSION.PlaylistCreateHint": "ユーザへワールドに新しいプレイリストを作成を許可する。",
+"PERMISSION.RegionCreate": "領域の作成",
+"PERMISSION.RegionCreateHint": "ユーザへ領域の作成を許可する。",
 "PERMISSION.SettingsModify": "コンフィグ設定の修正",
 "PERMISSION.SettingsModifyHint": "ユーザにモジュールの有効／無効とゲーム設定の変更する権限を許可する。",
 "PERMISSION.ShowCursor": "マウスカーソル表示",
 "PERMISSION.ShowCursorHint": "接続中のユーザにプレイヤーのプレイヤーのマウスカーソル位置を表示する。",
 "PERMISSION.ShowRuler": "距離測定の表示",
 "PERMISSION.ShowRulerHint": "接続中のプレイヤーにトークンや距離計測ツールの定規を表示する。",
-"PERMISSION.TemplateCreate": "計測型の作成",
-"PERMISSION.TemplateCreateHint": "プレイヤーに効果範囲用の計測型を作成する権限を許可する。",
 "PERMISSION.TokenCreate": "トークンの作成",
 "PERMISSION.TokenCreateHint": "ゲームキャンバスにアクターのトークンを配置を許可する。",
 "PERMISSION.TokenDelete": "トークンの削除",
@@ -2952,52 +3244,81 @@
 "PERMISSION.QueryUserHint": "この権限を持つユーザには、他のユーザに問合せを許可する。",
 "PERMISSION.WarningNoCreate": "{document}の作成に十分な権限がありません。",
 
+"PLACEABLE_PALETTE": {
+  "Apply": "Apply---(355E259)---",
+  "CloneSettings": "Clone---(355E260)---",
+  "MultipleValues": "<Multiple Values>---(355E261)---",
+  "Selected": "「{document}」パレット[{count}]",
+  "Title": "「{document}」パレット"
+},
+
 "REGION": {
   "TABS": {
-    "identity": "識別",
+    "appearance": "見え方",
     "shapes": "シェイプ",
+    "placement": "配置",
     "behaviors": "振る舞い"
+  },
+  "SECTIONS": {
+    "restriction": "壁による制限"
   },
   "FIELDS": {
     "color": {
       "label": "色",
-      "hint": "領域の可視化の際に適用される色。"
+      "hint": "領域の可視化の際に適用される色。",
+      "placeholder": "Random Color===(359E039)==="
     },
     "shapes": {
-      "label": "Shapes---(325C202)---",
-      "hint": "The shapes of the Region.---(325C203)---"
+      "label": "シェイプ",
+      "hint": "領域のシェイプ。"
     },
     "elevation": {
       "label": "高度",
       "hint": "領域の高度の範囲",
       "bottom": {
-        "label": "底",
-        "hint": "高度の範囲の底"
+        "label": "底面",
+        "hint": "高度の範囲の底面"
       },
       "top": {
-        "label": "頂上",
-        "hint": "高度の範囲の頂上"
+        "label": "天井",
+        "hint": "高度の範囲の天井"
       }
     },
+    "attachment": {
+      "token": {
+        "label": "Attached Token===(359E040)===",
+        "hint": "The Token the Region is attached to. When this Token is moved, the Region is moved with it.===(359E041)==="
+      }
+    },
+    "restriction": {
+      "enabled": {
+        "label": "制限あり",
+        "hint": "この領域のシェイプが壁によって制約されるか設定する。"
+      },
+      "type.label": "制限の種類",
+      "priority.label": "優先度の閾値"
+    },
     "behaviors": {
-      "label": "Behaviors---(325C210)---",
-      "hint": "The behaviors of the Region.---(325C211)---"
+      "label": "振る舞い",
+      "hint": "領域の振る舞い。"
     },
     "visibility": {
       "label": "可視性",
       "hint": "領域の可視性を設定する。"
+    },
+    "highlightMode": {
+      "label": "ハイライトモード",
+      "hint": "領域のシェイプそのものをハイライトするか、領域が覆うマスをハイライトするかを設定する。"
+    },
+    "displayMeasurements": {
+      "label": "計測の表示",
+      "hint": "領域に計測を表示するかどうか設定する。"
     }
   },
   "ACTIONS": {
-    "create": "Create Region---(325C214)---",
+    "create": "領域を作成",
     "update": "領域を更新",
-    "delete": "Delete Region---(325C216)---",
-    "shapeCreateFromWalls": "制御中の壁からシェイプを作成",
-    "shapeMakeHole": "穴を開ける",
-    "shapeFillHole": "穴を塞ぐ",
-    "shapeMoveUp": "シェイプを前面へ移動",
-    "shapeMoveDown": "シェイプを背面へ移動",
-    "shapeRemove": "シェイプを削除",
+    "delete": "領域を削除",
     "behaviorCreate": "振る舞いを作成する",
     "behaviorEdit": "振る舞いを編集する",
     "behaviorDelete": "振る舞いを削除する",
@@ -3005,19 +3326,43 @@
     "behaviorDisable": "振る舞いを無効にする"
   },
   "VISIBILITY": {
+    "LAYER_UNLOCKED": {
+      "label": "領域のレイヤーが解放されたときのみ"
+    },
     "LAYER": {
       "label": "領域内のみ"
     },
     "GAMEMASTER": {
-      "label": "ゲームマスタには常時"
+      "label": "ゲームマスターに常時"
+    },
+    "OBSERVER": {
+      "label": "観測者に常時"
     },
     "ALWAYS": {
       "label": "全員に常時"
     }
   },
+  "HIGHLIGHT_MODES": {
+    "shapes": {
+      "label": "シェイプ"
+    },
+    "coverage": {
+      "label": "カバーするマス"
+    }
+  },
+  "RESTRICTION_TYPES": {
+    "light.label": "光を遮る壁、および優先度が閾値以上の闇源",
+    "darkness.label": "闇を遮る壁、および優先度が閾値を超える光源",
+    "sight.label": "視界を遮る壁、および優先度が閾値以上の闇源",
+    "sound.label": "音を遮る壁",
+    "move.label": "移動を遮る壁"
+  },
   "EVENTS": {
     "regionBoundary": {
       "label": "領域の境界が変更された"
+    },
+    "regionAnimation": {
+      "label": "領域のアニメーション状態が変化した"
     },
     "behaviorActivated": {
       "label": "振る舞いが有効化された"
@@ -3065,14 +3410,7 @@
       "label": "トークンのラウンド終了"
     }
   },
-  "SHAPES": {
-    "rectangle": "矩形",
-    "circle": "円",
-    "ellipse": "楕円",
-    "polygon": "多角形"
-  },
   "Behavior": "振る舞い",
-  "Shape": "シェイプ",
   "LEGEND": {
     "control": "領域を操作",
     "config": "領域の設定",
@@ -3083,17 +3421,24 @@
     "lock": "領域をロック",
     "title": "領域の凡例",
     "unlock": "領域をアンロック",
-    "elevationBottom": "高度（底）",
-    "elevationTop": "高度（頂上）"
+    "elevationBottom": "高度（底面）",
+    "elevationTop": "高度（天井）"
   },
   "SHEET": {
     "title": "領域の設定"
   },
   "NOTIFICATIONS": {
-    "ControlWalls": "壁のグループをシェイプの境界として定義する。",
-    "DrawingMultipleRegionsControlled": "シェイプを描くときは、領域を1つだけ、あるいは1つもコントロールしてはならない！",
-    "EmptyEnclosedArea": "壁で囲まれた領域が有りません！外側の壁が閉じたシェイプを形成し、端点と端点がつながっていることを確認してください。",
-    "NoControlledWalls": "操作中の壁がありません！"
+    "PlacedRegionRotationNotAllowed": "配置された領域のシェイプを回転する権限がありません。",
+    "PlacedRegionNotAttachedToToken": "The placed Region must be attached to a Token.===(359E042)===",
+    "CopiedShape": "領域のシェイプをコピーしました。",
+    "CutShape": "領域のシェイプを切り取りました。",
+    "PastedShape": "領域のシェイプを貼り付けました。",
+    "PastedShapeWithoutControlledRegion": "シェイプを貼り付ける領域を操作していません。"
+  },
+  "TOOLTIPS": {
+    "CannotChangeLevelsIfAttached": "この領域は追従先のトークンと同じレベルに存在する必要があります。",
+    "CannotSelectMultipleLevelsIfRestricted": "制限が有効な場合、この領域は複数のレベルに含めることはできません。",
+    "CannotEnableRestriction": "この領域は複数のレベルに含まれているため、制限を有効にできません。"
   }
 },
 
@@ -3156,6 +3501,43 @@
         }
       }
     },
+    "applyActiveEffect": {
+      "FIELDS": {
+        "effects": {
+          "label": "エフェクト",
+          "hint": "領域内のトークンに適用されるエフェクト。"
+        }
+      }
+    },
+    "changeLevel": {
+      "Confirm": "「{token}」を「{level}」へ移動しますか？",
+      "ConfirmSelect": "「{token}」を移動するレベルを選択してください。",
+      "Move": "移動",
+      "MoveDown": "下のレベルへ",
+      "MoveUp": "上のレベルへ"
+    },
+    "defineSurface": {
+      "FIELDS": {
+        "placement.label": "配置",
+        "light.label": "光と闇を制限",
+        "move.label": "移動を制限",
+        "sight.label": "視界を制限",
+        "sound.label": "音を制限",
+        "occlusion": {
+          "label": "遮蔽",
+          "hint": "遮蔽対象のトークンがサーフェスの下にいる場合、遮蔽モードが SURFACE に設定されたタイル、および同じ高度またはそれ以上にある前景・背景のレベルテクスチャが遮蔽されます。"
+        },
+        "exposure": {
+          "label": "高架サーフェスの部分表示",
+          "hint": "このサーフェスの可視エリアを、サーフェスの下や外にいる観測者に部分的に表示する。表示範囲は観測者とサーフェス境界の角度によって変わり、角度が急なほど狭くなる。屋根・バルコニー・その他の頭上プラットフォームに有効。"
+        }
+      },
+      "PLACEMENTS": {
+        "bottom.label": "底面",
+        "top.label": "天井",
+        "both.label": "底面と天井"
+      }
+    },
     "displayScrollingText": {
       "FIELDS": {
         "color": {
@@ -3212,17 +3594,53 @@
     },
     "teleportToken": {
       "FIELDS": {
-        "destination": {
+        "destinations": {
           "label": "転送先",
-          "hint": "トークンが領域に入ったときの転送先の領域。"
+          "hint": "トークンがこの領域に入ったときの転送先の領域。複数の目的地領域が設定されている場合、選択が許可され、かつこの転送装置が公開されているか、トークンを移動したユーザーがGMでない限り、転送先は無作為に選択される。"
+        },
+        "placement": {
+          "label": "配置",
+          "hint": "転送先領域内のトークンの配置を選ぶ。"
+        },
+        "snap": {
+          "label": "スナップ",
+          "hint": "テレポート先の位置をスナップする。"
         },
         "choice": {
-          "label": "許可選択",
-          "hint": "トークンを移動したユーザに、転送するかどうかを選択できるようにする。"
+          "label": "選択を許可",
+          "hint": "トークンを移動したユーザに、転送するかどうかを選択できるようにする。転送先が複数設定されている場合、転送装置が公開されているか、ユーザーがGMである場合に限り、ユーザーは転送先を選択できる。"
+        },
+        "revealed": {
+          "label": "公開",
+          "hint": "転送先を全員に公開する。"
+        },
+        "dialog.revealed": {
+          "label": "ダイアログ（公開時）",
+          "hint": "転送先が公開されているかユーザーがGMの場合に表示される確認ダイアログのテキスト。{token}はトークン名、{region}は転送先が一つの場合は転送先領域名、{scene}は転送先が同一シーン内の場合は転送先シーン名に置換される。"
+        },
+        "dialog.unrevealed": {
+          "label": "ダイアログ（非公開時）",
+          "hint": "転送先が非公開でユーザーがGMでない場合に表示される確認ダイアログのテキスト。{token}はトークン名に置換される。"
+        },
+        "transition.type": {
+          "label": "遷移の種類",
+          "hint": "テレポート時に再生される遷移アニメーションの種類。"
+        },
+        "transition.duration": {
+          "label": "遷移時間",
+          "hint": "遷移アニメーションの長さ（ミリ秒）。"
         }
       },
+      "PLACEMENTS": {
+        "random.label": "ランダム",
+        "center.label": "中央",
+        "relative.label": "相対位置"
+      },
       "Confirm": "「{token}」を転送しますか？",
-      "ConfirmGM": "「{scene}」の「{region}」に「{token}」を転送しますか？"
+      "ConfirmRevealed": "「{token}」を{region}に転送しますか？",
+      "ConfirmSelectSameScene": "{token}が転送する先を{scene}内の転送先で選択する。",
+      "ConfirmSelectDifferentScene": "{token}が転送する先を選択する。",
+      "ConfirmSelectOption": "{scene}内の{region}"
     },
     "toggleBehavior": {
       "FIELDS": {
@@ -3248,6 +3666,7 @@
 "SIDEBAR.NavLabel": "Sidebar Tabs---(254)---",
 "SIDEBAR.TabJournal": "ジャーナル",
 "SIDEBAR.TabCompendium": "事典",
+"SIDEBAR.TabPlaceables": "配置物",
 "SIDEBAR.TabSettings": "ゲーム設定",
 "SIDEBAR.TabTables": "ロール表",
 "SIDEBAR.TokenArt": "トークン画像を表示",
@@ -3270,6 +3689,7 @@
 "SIDEBAR.Wiki": "Foundry VTTコミュニティWiki",
 
 "SIDEBAR.ACTIONS.CREATE": {
+  "ActiveEffect": "Create Active Effect---(355E316)---",
   "Actor": "アクター作成",
   "Adventure": "アドベンチャー作成",
   "Cards": "カード・スタック作成",
@@ -3288,20 +3708,73 @@
   "Locked": "Locked---(345D167)---"
 },
 
+"SIDEBAR.PLACEABLES": {
+  "ACTIONS": {
+    "ChangeLevel": "Change Level---(355E317)---",
+    "Clear": "クリア",
+    "Configure": "設定",
+    "Create": "Create {name}---(355E320)---",
+    "Delete": "削除",
+    "Hidden": "Hidden---(355E322)---",
+    "Hide": "隠す",
+    "InLevel": "Included in Level---(355E324)---",
+    "Lock": "ロック",
+    "Locked": "Locked---(355E326)---",
+    "NotInLevel": "Not Included in Level---(355E327)---",
+    "Show": "見せる",
+    "Unlock": "Unlock---(355E329)---",
+    "Unlocked": "Unlocked---(355E330)---",
+    "Visible": "Visible---(355E331)---"
+  },
+  "Categories": {
+    "NoAuthor": "No Author---(355E332)---",
+    "NoLevel": "No Level===(359E043)==="
+  },
+  "Meta": {
+    "empty": "Empty---(355E333)---",
+    "visible": "Visible to some players---(355E334)---",
+    "hidden": "Hidden from players---(355E335)---",
+    "locked": "Locked---(355E336)---"
+  },
+  "Filter": {
+    "ACTIONS": {
+      "Clear": "クリア"
+    },
+    "Bottom": "Bottom---(355E338)---",
+    "Title": "高度なフィルター",
+    "Level": "Filter by Level===(359E044)===",
+    "Tooltip": "高度なフィルター。右クリックでクリア",
+    "Top": "Top---(355E341)---"
+  },
+  "Search": {
+    "placeholder": "フィルター「{name}」"
+  },
+  "WALLS": {
+    "door": "扉",
+    "ethereal": "エーテル壁",
+    "filterByCategory": "カテゴリでフィルタ",
+    "invisible": "見えない壁",
+    "normal": "通常の壁",
+    "secret": "隠し扉",
+    "terrain": "地形壁",
+    "window": "窓"
+  }
+},
+
 "SIDEBAR.SETTINGS": {
   "LABELS": {
     "Build": "ビルドバージョン",
-    "Demo": "Demo Mode---(345D169)---",
+    "Demo": "デモモード",
     "Modules": "有効モジュール"
   },
   "HEADERS": {
-    "Settings": "ゲーム設定",
+    "Settings": "設定",
     "Docs": "ヘルプドキュメント",
     "Access": "ゲームアクセス"
   },
   "ACTIONS": {
-    "Configure": "設定変更",
-    "Docs": "説明書を読む",
+    "Configure": "ゲーム設定",
+    "Docs": "ドキュメント",
     "Invite": "招待リンク",
     "Keybindings": "操作設定",
     "Logout": "ログアウト",
@@ -3309,17 +3782,16 @@
     "Players": "ユーザ管理",
     "Support": "サポートと課題",
     "Tours": "ツアー管理",
-    "ViewModules": "有効なモジュールを表示",
-    "Wiki": "コミュニティのWikiページ"
+    "ViewModules": "有効なモジュール",
+    "Wiki": "コミュニティWiki"
   }
 },
 
 "SUPPORT": {
-  "Title": "サポートの詳細",
+  "Title": "サポートと課題",
   "Places": "サポートを受けられる場所",
-  "Discord": "Foundry VTTを使う他のユーザ達や我々の素晴らしいコミュニティのヘルパーが参加するDiscordに参加するにはここから：",
-  "":"Foundry VTTを使用している他の人と一緒に参加したり、素晴らしいコミュニティ・ヘルパーからサポートを受けるには、私たちのDiscordに参加してください。",
-  "BugReporting": "バグ報告する場合、お問い合わせページのバグ報告カテゴリをご利用ください：",
+  "Discord": "Foundry VTTを使用している他の人と一緒に参加したり、素晴らしいコミュニティ・ヘルパーからサポートを受けるには、私たちの<a href=\"https://discord.gg/foundryvtt\" target=\"_blank\" rel=\"nofollow\">Discord</a>に参加してください。",
+  "BugReporting": "バグを報告したい場合は、当社の<a href=\"https://foundryvtt.com/contact-us?category=bug\" target=\"_blank\" rel=\"nofollow\">お問い合わせページ</a>にある「バグ報告」カテゴリをご利用ください。",
   "ReportPrelude": "DiscordやGithubで助けを求める場合、あなたのワールドの情報が役に立ちます。以下をコピーペースとしてレポートに貼付してください。",
   "CopyReport": "クリップボードにレポートをコピー",
   "ReportCopied": "Report Copied---(281)b299",
@@ -3347,6 +3819,8 @@
   "WorldData": "ワールドデータ",
   "CompendiumData": "Compendium Data---(325C303)---",
   "ActiveModules": "有効なモジュール",
+  "Errors": "エラー",
+  "Warnings": "警告",
   "TABS": {
     "support": "サポートの詳細",
     "documents": "ドキュメントの問題",
@@ -3413,38 +3887,14 @@
   }
 },
 
-"TEMPLATE.ConeTypeSetting": "円錐形テンプレートの種類",
-"TEMPLATE.ConeTypeSettingHint": "円錐形テンプレートの効果範囲を選択。",
-"TEMPLATE.ConeTypeFlat": "直線",
-"TEMPLATE.ConeTypeRound": "円弧",
-"TEMPLATE.SubmitCreate": "計測の型を作成",
-"TEMPLATE.SubmitUpdate": "計測の型を更新",
-"TEMPLATE.GridTemplatesSetting": "グリッドベースのテンプレート形状",
-"TEMPLATE.GridTemplatesSettingHint": "テンプレートの効果範囲をユークリッドベースではなくグリッドベースに設定する。",
-"TEMPLATE.TYPES": {
-  "circle": "円",
-  "cone": "円錐形",
-  "ray": "光線",
-  "rect": "矩形"
-},
-"TEMPLATE.FIELDS": {
-  "sort.label": "Sort---(345D212)---",
-  "t.label": "種類",
-  "direction.label": "方向",
-  "angle.label": "角度",
-  "distance.label": "距離",
-  "borderColor.label": "境界線色",
-  "fillColor.label": "塗り潰し色",
-  "texture.label": "テクスチャ"
-},
-
 "TILE.ConfigTitle": "Tile Configuration---(261)---",
 "TILE.Dimensions": "大きさ",
+"TILE.Anchor": "タイルアンカー",
 "TILE.Scale": "倍率",
 "TILE.ScaleHint": "X軸またはY軸で画像の倍率を調整します。画像が境界四角からはみ出る場合があります。負値を設定すると、画像が反転します。",
 "TILE.OcclusionModeNone": "なし（常時表示）",
 "TILE.OcclusionModeFade": "隠す（全タイル）",
-"TILE.OcclusionModeRoof": "屋根（視界と光を遮る）",
+"TILE.OcclusionModeSurface": "サーフェス",
 "TILE.OcclusionModeRadial": "放射状（トークン周辺）",
 "TILE.OcclusionModeVision": "視界（トークンの視界の範囲）",
 "TILE.VideoOptions": "Video Options---(345D221)---",
@@ -3459,7 +3909,8 @@
 "TILE.TABS": {
   "position": "位置",
   "appearance": "見え方",
-  "overhead": "オーバーヘッド"
+  "overhead": "オーバーヘッド",
+  "video": "映像"
 },
 "TILE.FIELDS": {
   "sort.label": "ソート",
@@ -3467,14 +3918,30 @@
     "src.label": "画像または映像",
     "scaleX.label": "水平",
     "scaleY.label": "垂直",
-    "tint.label": "色調"
+    "tint.label": "色調",
+    "alphaThreshold": {
+      "label": "アルファ閾値",
+      "hint": "タイル画像内でこの閾値未満のアルファ値を持つピクセルは、光や天候を遮らず、ホバー時のフェードもトリガーしない。"
+    }
   },
   "alpha.label": "タイルの不透明度",
+  "name": {
+    "hint": "タイル識別用のオプション名称",
+    "label": "名前"
+  },
   "occlusion": {
-    "mode.label": "遮蔽モード",
+    "modes.label": "遮蔽モード",
     "alpha.label": "遮蔽アルファ"
   },
+  "OCCLUSION_MODES": {
+    "FADE.label": "Fade===(359E050)===",
+    "NONE.label": "None===(359E051)===",
+    "RADIAL.label": "Radial===(359E052)===",
+    "SURFACE.label": "Surface===(359E053)===",
+    "VISION.label": "Vision===(359E054)==="
+  },
   "restrictions": {
+    "label": "Restrictions===(359E055)===",
     "light": {
       "label": "光の制限",
       "hint": "このタイルの標高を基準とした高さで光源は遮られるか？"
@@ -3491,39 +3958,56 @@
   }
 },
 
-
 "TIME": {
   "Day": {
     "one": "日",
+    "two": "日",
+    "few": "日",
+    "many": "日",
     "other": "日",
-    "abbr": "日"
+    "abbr": "d"
   },
   "Hour": {
     "one": "時間",
+    "two": "時間",
+    "few": "時間",
+    "many": "時間",
     "other": "時間",
-    "abbr": "時間"
+    "abbr": "h"
   },
   "Millisecond": {
     "one": "ミリ秒",
+    "two": "ミリ秒",
+    "few": "ミリ秒",
+    "many": "ミリ秒",
     "other": "ミリ秒",
     "abbr": "ms"
   },
   "Minute": {
     "one": "分",
+    "two": "分",
+    "few": "分",
+    "many": "分",
     "other": "分",
-    "abbr": "分"
+    "abbr": "m"
   },
-  "Now": "現在",
+  "Now": "今",
   "Second": {
     "one": "秒",
+    "two": "秒",
+    "few": "秒",
+    "many": "秒",
     "other": "秒",
-    "abbr": "秒"
+    "abbr": "s"
   },
   "Since": "{since}前",
   "Year": {
     "one": "年",
+    "two": "年",
+    "few": "年",
+    "many": "年",
     "other": "年",
-    "abbr": "年"
+    "abbr": "y"
   }
 },
 
@@ -3533,7 +4017,9 @@
 "TOKEN.BarAttributes": "アトリビュートバー",
 "TOKEN.BarValues": "単一の値",
 "TOKEN.DeleteCombatantWarning": "戦闘に参加中のトークンを削除しようとしている。その戦闘参加者は完全に削除されます。",
-"TOKEN.Dimensions": "寸法",
+"TOKEN.DeleteAttachedRegionWarning": "You are deleting a Token that has a Region attached to it. Its attached Region(s) will be permanently deleted.---(355E352)---",
+"TOKEN.Size": "大きさ",
+"TOKEN.Anchor": "アンカー",
 "TOKEN.AnchorHint": "アンカーで固定する場所の既定は(0.5, 0.5)でトークン画像の中央です。",
 "TOKEN.ImageAlts": "代替アクタートークン",
 "TOKEN.Mirror": "反転",
@@ -3545,6 +4031,9 @@
 "TOKEN.Update": "更新",
 "TOKEN.WarningNoActor": "このトークンはワールド内に存在しないアクターを参照しています。",
 "TOKEN.WarningNoVision": "このシーンにはトークンが無いため、エリアを視認することができません。",
+"TOKEN.PROTOTYPE": {
+  "OverridesWarning": "This field is defined by Prototype Token Overrides and cannot be edited directly.---(355E354)---"
+},
 "TOKEN.TABS": {
   "identity": "識別",
   "appearance": "見え方",
@@ -3557,9 +4046,16 @@
   "animation": "光源のアニメーション",
   "advanced": "高度な設定"
 },
+"TOKEN.NOTIFICATIONS": {
+  "PlacedTokenRotationNotAllowed": "You are not allowed to rotate the placed Token.===(359E057)==="
+},
 "TOKEN.FIELDS": {
   "name.label": "トークン名",
   "sort.label": "ソート",
+  "width.label": "X-Size===(359E058)===",
+  "height.label": "Y-Size===(359E059)===",
+  "depth.label": "Z-Size===(359E060)===",
+  "level.label": "階層",
   "movementAction.label": "移動アクション",
   "actorId.label": "表示元アクター",
   "actorLink.label": "アクターデータとリンク",
@@ -3659,7 +4155,7 @@
   "turnMarker": {
     "mode": {
       "label": "モード",
-      "hint": "戦闘設定の規定値を使用する場合は「規定値」、ターンマーカーを非表示にする場合は「無効」、個別にターンマーカーの動作を指定する場合は「カスタム」を選択する。"
+      "hint": "銭湯設定の規定値を使用する場合は「規定値」、ターンマーカーを非表示にする場合は「無効」、個別にターンマーカーの動作を指定する場合は「カスタム」を選択する。"
     },
     "animation": {
       "label": "アニメーション",
@@ -3807,7 +4303,7 @@
 "TOKEN.DetectionMode": "感知モード",
 "TOKEN.DetectionRange": "範囲",
 "TOKEN.DetectionEnabled": "有効",
-"TOKEN.DetectionAdd": "探知モードを追加",
+"TOKEN.DetectionOverride": "探知モードを上書き",
 "TOKEN.DetectionRemove": "探知モードを削除",
 
 "TOKEN.RING": {
@@ -3816,7 +4312,7 @@
     "RING_GRADIENT": "グラデーション",
     "RING_PULSE": "リングの明滅",
     "INVISIBILITY": "怪奇的な明滅",
-    "COLOR_OVER_SUBJECT": "Color Over Subject---(345D276)---"
+    "COLOR_OVER_SUBJECT": "対象に色を重ねる"
   },
   "SHEET": {
     "legend": "動的トークン・リング"
@@ -3855,6 +4351,15 @@
     "fly.label": "飛行",
     "swim.label": "泳ぐ",
     "walk.label": "歩行"
+  },
+  "NOTIFICATIONS": {
+    "PLAN": {
+      "DirectViolation": "You are not allowed to place waypoints while planning this movement.===(359E062)===",
+      "MinCostViolation": "The planned movement path does not meet the minimum required cost.===(359E063)===",
+      "MaxCostViolation": "The planned movement path exceeds the maximum allowed cost.===(359E064)===",
+      "MinDistanceViolation": "The planned movement path does not meet the minimum required distance.===(359E065)===",
+      "MaxDistanceViolation": "The planned movement path exceeds the maximum allowed distance.===(359E066)==="
+    }
   }
 },
 
@@ -3877,6 +4382,9 @@
   },
   "RegionBehavior": {
     "adjustDarknessLevel": "暗さレベル調整",
+    "applyActiveEffect": "アクティブ効果の適用",
+    "changeLevel": "階層変更",
+    "defineSurface": "サーフェスを定義",
     "displayScrollingText": "スクロール・テキストの表示",
     "executeMacro": "マクロの実行",
     "executeScript": "スクリプトの実行",
@@ -3889,6 +4397,22 @@
   "TableResult": {
     "document": "ドキュメント",
     "text": "テキスト"
+  },
+  "HINTS": {
+    "RegionBehavior": {
+      "adjustDarknessLevel": "領域内のシーンの暗さレベルを上書き・明るく・暗くする。",
+      "applyActiveEffect": "トークンが領域内にいる間、アクティブ効果を適用する。",
+      "changeLevel": "領域に進入したトークンを、この領域が含まれる別のレベルへ移動できるようにする。",
+      "defineSurface": "光・移動・視界・音を制限できるサーフェスを定義する。",
+      "displayScrollingText": "登録イベントが発生したとき、トークンの上にスクロールテキストを表示する。",
+      "executeMacro": "登録イベントが発生したとき、マクロを実行する。",
+      "executeScript": "登録イベントが発生したとき、スクリプトを実行する。",
+      "modifyMovementCost": "領域内のトークンの移動コストを変更する。",
+      "pauseGame": "プレイヤーがトークンを領域内に移動させたとき、ゲームを一時停止する。",
+      "suppressWeather": "領域内の天候エフェクトを抑制する。",
+      "teleportToken": "領域に移動してきたトークンを別の領域へテレポートさせる。",
+      "toggleBehavior": "登録イベントが発生したとき、他の領域の振る舞いを有効化・無効化する。"
+    }
   }
 },
 
@@ -3907,6 +4431,7 @@
 "TEXTURE_DATA.FIT.height": "高さに合わせる",
 
 "TOURS": {
+  "Title": "ツアー管理",
   "NavLabel": "Tour Management Tabs---(269)---",
   "ShowMeHow": "やり方を見る",
   "TourCategories": "ツアーカテゴリ",
@@ -3980,14 +4505,17 @@
 "USERS.KeyShow": "パスワードを表示",
 "USERS.Create": "ユーザ追加",
 "USERS.Delete": "ユーザ削除",
+"USERS.LoginAs": "ユーザとしてログイン",
+"USERS.LoginAsGMRequired": "他のユーザとしてログインするにはゲームマスタ権限が必要です。",
 "USERS.DeleteName": "ユーザ削除：{name}",
 "USERS.Launch": "保存して戻る",
+"USERS.FirstLaunch": "保存して続行",
 "USERS.ManageTitle": "ユーザ管理",
 "USERS.UpdateSuccess": "ゲームユーザの更新を完了し、ゲームワールドに戻ります。",
 "USERS.NoGMError": "ワールドには最低１人はゲームマスタが必要です。",
 "USERS.DeleteWarning": "このユーザをゲームワールドから完全に削除します。",
 "USERS.DeleteGMWarning": "ゲームマスタのユーザを削除しようとしています！",
-
+"USERS.PasswordWarning": "ゲームマスターアカウントにはパスワードの設定を強く推奨します。",
 
 "VISION.ModeBlindness": "Blindness---(273)---",
 "VISION.ModeBasicVision": "基本的な視界",
@@ -3999,7 +4527,7 @@
 
 "WALL.FIELDS": {
   "c.label": "壁の座標",
-  "light.label": "照明",
+  "light.label": "照明と暗闇",
   "move.label": "移動",
   "sight.label": "視界",
   "sound.label": "音",
@@ -4064,6 +4592,8 @@
 "WALL.DoorSounds.Industrial": "工業的",
 "WALL.DoorSounds.IndustrialCreaky": "工業的、軋み",
 "WALL.DoorSounds.Jail": "牢屋",
+"WALL.DoorSounds.JailCreaky": "Jail, Creaky---(355E361)---",
+"WALL.DoorSounds.JailHeavy": "Jail, Heavy---(355E362)---",
 "WALL.DoorSounds.MagicDoor": "魔法の扉",
 "WALL.DoorSounds.MagicWall": "魔法の壁",
 "WALL.DoorSounds.Metal": "金属",
@@ -4080,7 +4610,7 @@
 
 "WEBRTC": {
   "Title": "音声／映像　設定",
-  "MenuLabel": "音声／映像　設定",
+  "MenuLabel": "音声／映像",
   "MenuHint": "組み込まれた音声／ビ映像のWebRTCコンポーネント固有の設定。",
   "UnknownDevice": "〈不明なデバイス〉",
   "DeviceUnavailableWarning": "Audio/Video communication was unable to start because one of the configured input devices was unavailable.---(275)---",
@@ -4218,7 +4748,7 @@
     "id.label": "データ保存先",
     "system.label": "ゲームシステム",
     "background.label": "背景画像",
-    "joinTheme.label": "参加ページテーマ",
+    "joinTheme.label": "参加ページのテーマ",
     "nextSession.label": "次回のセッション",
     "resetKeys.label": "ユーザパスワードの初期化",
     "safeMode": {
@@ -4226,6 +4756,127 @@
       "hint": "全てのモジュールとアクティブなシーンを無効化、オーディオ再生の停止"
     },
     "description.label": "ワールドの説明"
+  }
+},
+
+"SHAPE": {
+  "label": "シェイプ",
+  "labelPlural": "シェイプ",
+  "TYPES": {
+    "base": {
+      "FIELDS": {
+        "type.label": "種類",
+        "hole.label": "穴",
+        "gridBased": {
+          "label": "グリッド基準",
+          "hint": "グリッド基準のシェイプはゲーム設定の「グリッドの対角線（斜め移動）」で定義された距離計算ルールに準ずる。"
+        },
+        "x.label": "X原点",
+        "y.label": "Y原点",
+        "rotation.label": "回転"
+      },
+      "origin.label": "原点"
+    },
+    "rectangle": {
+      "name": "矩形",
+      "FIELDS": {
+        "width.label": "幅",
+        "height.label": "高さ",
+        "anchorX.label": "Xアンカー",
+        "anchorY.label": "Yアンカー"
+      },
+      "anchor.label": "アンカー"
+    },
+    "circle": {
+      "name": "円",
+      "FIELDS": {
+        "radius.label": "半径"
+      }
+    },
+    "ellipse": {
+      "name": "楕円",
+      "FIELDS": {
+        "radiusX.label": "X半径",
+        "radiusY.label": "Y半径"
+      }
+    },
+    "cone": {
+      "name": "円錐形",
+      "FIELDS": {
+        "radius.label": "半径",
+        "angle.label": "角度",
+        "curvature.label": "カーブ"
+      },
+      "CURVATURES": {
+        "round.label": "円弧",
+        "flat.label": "直線",
+        "semicircle.label": "半円"
+      }
+    },
+    "ring": {
+      "name": "リング",
+      "FIELDS": {
+        "radius.label": "半径",
+        "innerWidth.label": "内側の幅",
+        "outerWidth.label": "外側の幅"
+      }
+    },
+    "line": {
+      "name": "直線",
+      "FIELDS": {
+        "width.label": "幅",
+        "length.label": "長さ"
+      }
+    },
+    "emanation": {
+      "name": "放散",
+      "FIELDS": {
+        "base.label": "基準",
+        "radius.label": "半径"
+      }
+    },
+    "polygon": {
+      "name": "多角形",
+      "FIELDS": {
+        "points.label": "頂点",
+        "origin.label": "原点"
+      }
+    },
+    "token": {
+      "name": "トークン",
+      "FIELDS": {
+        "x.label": "X",
+        "y.label": "Y",
+        "width.label": "幅",
+        "height.label": "高さ",
+        "shape.label": "シェイプ"
+      },
+      "position.label": "位置",
+      "size.label": "Size===(359E069)==="
+    },
+    "grid": {
+      "name": "Grid Spaces===(359E070)===",
+      "FIELDS": {
+        "offsets.label": "Grid Offsets===(359E071)===",
+        "origin.label": "Origin===(359E072)==="
+      }
+    }
+  },
+  "ACTIONS": {
+    "createFromWalls": "制御中の壁からシェイプを作成",
+    "makeHole": "穴を開ける",
+    "fillHole": "穴を塞ぐ",
+    "moveUp": "シェイプを前面へ移動",
+    "moveDown": "シェイプを背面へ移動",
+    "edit": "シェイプを編集",
+    "remove": "シェイプを削除",
+    "removeAll": "すべてのシェイプを削除"
+  },
+  "NOTIFICATIONS": {
+    "DrawingMultipleObjectsControlled": "シェイプを描くときは、{type}を1つだけ、または何も操作しない状態にしてください！",
+    "ControlWalls": "シェイプの境界を定義する壁のグループを操作してください。",
+    "EmptyEnclosedArea": "操作中の壁で囲まれたエリアが空です！外側の壁が閉じたループを形成し、端点同士で接続されているか確認してください。",
+    "NoControlledWalls": "壁を1つも操作していません！"
   }
 }
 }
