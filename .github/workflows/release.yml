@@ -44,9 +44,7 @@ jobs:
           GENERATED=$(gh api "repos/${{ github.repository }}/releases/generate-notes" \
             -f tag_name="$GITHUB_REF_NAME" \
             --jq '.body')
-          NOTES="**変更履歴**: [README.md（${GITHUB_REF_NAME}）](${README_URL})
-
-${GENERATED}"
+          NOTES="**変更履歴**: [README.md（${GITHUB_REF_NAME}）](${README_URL})$(printf '\n\n%s' "$GENERATED")"
           gh release create "$GITHUB_REF_NAME" \
             module.json \
             --title "$GITHUB_REF_NAME" \
