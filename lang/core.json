@@ -1122,7 +1122,7 @@
     "startTime.label": "効果の開始時刻",
     "startRound.label": "ラウンド",
     "startTurn.label": "ターン",
-    "combat.label": "先頭遭遇"
+    "combat.label": "戦闘遭遇"
   }
 },
 "EFFECT.TABS": {
