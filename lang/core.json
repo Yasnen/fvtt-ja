@@ -1081,7 +1081,7 @@
   "StatusTarget": "ターゲット",
   "StatusUnconscious": "気絶",
   "StatusUpgrade": "強化",
-  "Submit": "Submit Changes---(355E095)---",
+  "Submit": "変更を適用",
   "CHANGES": {
     "Unregistered": "変更タイプ「{type}」は登録されていません。",
     "PHASES": {
@@ -1105,22 +1105,22 @@
     }
   },
   "DURATION": {
-    "Header": "Effect Duration---(355E100)---",
-    "Label": "Duration---(355E101)---",
+    "Header": "効果の期間",
+    "Label": "期間",
     "MaxOneWarning": "A duration in {units} will be treated as having a value of no greater than one.---(355E102)---",
     "UNITS": {
       "GROUPS": {
-        "time": "Time---(355E103)---",
-        "combat": "Combat---(355E104)---"
+        "time": "時間",
+        "combat": "戦闘"
       },
-      "years": "Years---(355E105)---",
-      "months": "Months---(355E106)---",
-      "weeks": "Weeks---(355E107)---",
-      "days": "Days---(355E108)---",
-      "hours": "Hours---(355E109)---",
-      "minutes": "Minutes---(355E110)---",
-      "seconds": "Seconds---(355E111)---",
-      "combats": "先頭遭遇",
+      "years": "年",
+      "months": "月",
+      "weeks": "週",
+      "days": "日",
+      "hours": "時間",
+      "minutes": "分",
+      "seconds": "秒",
+      "combats": "戦闘遭遇",
       "rounds": "ラウンド",
       "turns": "ターン"
     },
@@ -1153,12 +1153,12 @@
       "other": "{turns} Turns Ago===(359E018)==="
     },
     "EXPIRY_EVENTS": {
-      "combatStart": "Combat Start---(355E125)---",
-      "roundStart": "Round Start---(355E126)---",
-      "turnStart": "Turn Start---(355E127)---",
-      "combatEnd": "Combat End---(355E128)---",
-      "roundEnd": "Round End---(355E129)---",
-      "turnEnd": "Turn End---(355E130)---"
+      "combatStart": "戦闘開始",
+      "roundStart": "ラウンド開始",
+      "turnStart": "ターン開始",
+      "combatEnd": "戦闘終了",
+      "roundEnd": "ラウンド終了",
+      "turnEnd": "ターン終了"
     }
   },
   "FIELDS": {
@@ -1174,14 +1174,14 @@
     },
     "statuses.label": "Status Conditions---(347D018)---",
     "showIcon": {
-      "label": "Show Icon?---(355E133)---",
-      "hint": "Should the icon representing this Effect be displayed in the UI while this effect is active?---(355E134)---"
+      "label": "アイコンを表示？",
+      "hint": "効果が有効な間、この効果のアイコンをUIに表示するか？"
     },
     "changes": {
       "element": {
-        "key.label": "Attribute Key---(355E135)---",
-        "type.label": "Type---(355E136)---",
-        "value.label": "Value---(355E137)---",
+        "key.label": "能力値キー",
+        "type.label": "種類",
+        "value.label": "値",
         "priority.label": "優先度",
         "phase": {
           "label": "Phase---(355E139)---",
@@ -1197,15 +1197,15 @@
       "time.label": "Start Time---(355E145)---"
     },
     "duration": {
-      "value.label": "Duration Value---(355E146)---",
-      "units.label": "Duration Units---(355E147)---",
-      "expiry.label": "Expiry Event---(355E148)---"
+      "value.label": "期間の値",
+      "units.label": "期間の単位",
+      "expiry.label": "終了イベント"
     }
   },
   "SHOW_ICON": {
-    "always": "Always---(355E149)---",
-    "conditional": "If Temporary---(355E150)---",
-    "never": "Never---(355E151)---"
+    "always": "常に表示",
+    "conditional": "一時的の場合",
+    "never": "表示しない"
   },
   "START": {
     "Header": "Effect Start---(355E152)---",
@@ -1217,7 +1217,7 @@
   "TABS": {
     "details": "詳細",
     "duration": "持続時間",
-    "changes": "Changes---(347D026)---"
+    "changes": "変化"
   }
 },
 
@@ -2053,7 +2053,7 @@
 "SCENE.Preload": "シーン事前読込",
 "SCENE.Presentation": "表示",
 "SCENE.Properties": "シーンの設定情報",
-"SCENE.View": "View Scene",
+"SCENE.View": "シーンを表示",
 "SCENE.ShiftBG": "シフト",
 "SCENE.PullEveryone": "全員の表示をこのシーンに同期",
 "SCENE.ToggleNav": "ナビゲーション表示切替",
