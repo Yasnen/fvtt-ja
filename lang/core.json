@@ -187,7 +187,7 @@
     "Expand": "開く",
     "Close": "閉じる",
     "CopyUuid": "ドキュメントのUUIDをコピー",
-    "ImportDocument": "Import---(355E016)---",
+    "ImportDocument": "インポート",
     "DeleteDocument": "Delete Document---(355E017)---"
   },
   "TOOLS": {
@@ -964,7 +964,7 @@
     "type.label": "種類",
     "img.label": "画像のパス",
     "description.label": "説明",
-    "folder.label": "Folder---(355E076)---",
+    "folder.label": "フォルダ",
     "author.label": "作成者",
     "width.label": "幅",
     "height.label": "高さ",
@@ -2245,9 +2245,9 @@
   "Actions": {
     "Add": {
       "hint": "シーンは複数の垂直な階層をレサポートします。新しいレベルを追加すると、このシーンは複数階層シーンに変換されます。",
-      "label": "Add Level---(355E242)---"
+      "label": "階層を追加"
     },
-    "Edit": "Edit level---(355E244)---",
+    "Edit": "階層を編集",
     "Delete": "レベルを削除"
   },
   "FIELDS": {
@@ -2258,7 +2258,7 @@
       "tint.label": "色調",
       "alphaThreshold": {
         "label": "アルファ閾値",
-        "hint": "Pixels in the background texture with alpha values below this threshold do not restrict light or weather.===(359E028)==="
+        "hint": "背景テクスチャにおいて、アルファ値がこの閾値を下回るピクセルは、光や天候を遮らない。"
       }
     },
     "elevation": {
@@ -2277,18 +2277,18 @@
       "src.label": "未探索のテクスチャ"
     },
     "textures": {
-      "label": "Positioning---(355E263)---",
-      "anchor": "Anchor---(355E264)---",
+      "label": "位置",
+      "anchor": "アンカー",
       "anchorX.label": "X",
       "anchorY.label": "Y",
-      "offset": "Offset---(355E267)---",
+      "offset": "オフセット",
       "offsetX.label": "X",
       "offsetY.label": "Y",
-      "fit.label": "Fit Mode---(355E270)---",
-      "scale": "Scale---(355E271)---",
+      "fit.label": "フィット・モード",
+      "scale": "スケール",
       "scaleX.label": "X",
       "scaleY.label": "Y",
-      "rotation.label": "Rotation---(355E274)---"
+      "rotation.label": "回転"
     },
     "visibility": {
       "label": "Level Visibility---(355E275)---",
@@ -2616,22 +2616,22 @@
   "Install": "インストール",
   "Uninstall": "削除",
   "Reinstall": "再インストール",
-  "ReinstallPackageNotFound": "Package reinstallation failed as a package with that ID could not be found at the central package repository. You will need to manually reinstall it via its manifest link.---(147)b299",
-  "WorldBlank": "Blank World---(355E245)---",
-  "WorldCancelConfirm": "If you return to setup now, you will lose any changes you have made here.---(355E246)---",
+  "ReinstallPackageNotFound": "指定したIDのパッケージが中央パッケージリポジトリで見つからなかったため、パッケージの再インストールに失敗しました。マニフェストリンクから手動で再インストールしてください。",
+  "WorldBlank": "空のワールド",
+  "WorldCancelConfirm": "今セットアップ画面に戻ると、ここで行った変更はすべて失われます。",
   "WorldCreate": "ワールド作成",
-  "WorldCreating": "Creating World...---(355E247)---",
-  "WorldCreateCancel": "Cancel World Creation---(355E248)---",
-  "WorldCreateDependencyFail": "The World could not be created as required dependencies were not installed.---(355E249)---",
-  "WorldCreateNoSystem": "You must select a Game System for the World before continuing.===(359E031)===",
-  "WorldCreateNoTitle": "You must provide a title for the World before continuing.===(359E032)===",
-  "WorldCreateSuccess": "Creation successful, launching...---(355E250)---",
+  "WorldCreating": "ワールド作成中……",
+  "WorldCreateCancel": "ワールド作成取消",
+  "WorldCreateDependencyFail": "必要な依存関係がインストールされていないため、ワールドを作成できませんでした。",
+  "WorldCreateNoSystem": "続行する前に、ワールドのゲームシステムを選択する必要があります。",
+  "WorldCreateNoTitle": "続行する前に、ワールドのタイトルを入力する必要があります。",
+  "WorldCreateSuccess": "作成成功、起動中……",
   "WorldDelete": "ワールド削除",
   "WorldEdit": "ワールド設定",
-  "WorldFilterAdventures": "Filter adventures---(355E252)---",
-  "WorldFilterSystems": "Filter systems---(355E253)---",
+  "WorldFilterAdventures": "アドベンチャーを絞り込む",
+  "WorldFilterSystems": "システムを絞り込む",
   "WorldLaunch": "ワールド起動",
-  "WorldLaunchFailure": "World launch failed: {message}. See the console (F12) for more details.---(148)b299",
+  "WorldLaunchFailure": "ワールドの起動に失敗しました：{message}. 詳細はコンソール (F12) を確認してください。",
   "WorldContinue": "続行",
   "WorldUnavailable": "利用不能",
   "Worlds": "ゲームワールド",
@@ -2640,7 +2640,7 @@
   "RequireDep": "依存関係が必要：{dependencies}",
   "IncompatibleDep": "互換性のない依存関係：{dependencies}",
   "IncompatibleSystems": "互換性のないシステム：{systems}",
-  "InstallingDependencies": "Installing dependencies---(355E255)---",
+  "InstallingDependencies": "依存関係をインストール中……",
   "InstallDependenciesSuccess": "依存関係のインストールに成功しました",
   "NoSupportedSystem": "サポートされているシステムが未インストール",
   "RequireCoreUpgrade": "本体の更新が必要",
@@ -2664,12 +2664,12 @@
 
   "CurrentVersion": "現在のバージョン",
   "ForceUpdate": "強制更新？",
-  "DependencyNotInstalled": "This dependency is not installed---(221)---",
+  "DependencyNotInstalled": "この依存関係はインストールされていません",
   "CompatibilityUnknown": "互換性不明",
   "CompatibilityRiskUnknown": "互換性リスク：互換性情報がありません",
   "CompatibilityRiskWithVersion": "互換性リスク：バージョン{version}に対して最終確認済み",
-  "CompatibilityRequireUpgrade": "This dependency is older than the minimum required version {version}---(222)---",
-  "CompatibilityRequireDowngrade": "This dependency is newer than the minimum required version {version}---(223)---",
+  "CompatibilityRequireUpgrade": "この依存関係は、必要な最小バージョン {version} よりも古いです",
+  "CompatibilityRequireDowngrade": "この依存関係は、必要な最小バージョン {version} よりも新しいです",
   "ManifestURL": "マニフェストURL",
   "InstallHint": "マニフェストのURLを直接指定して、パッケージをインストールすることもできます。",
   "InstallModule": "モジュールインストール",
