@@ -10,7 +10,7 @@ Hooks.once("init", async () => {
 // ready：言語ファイルフォルダの変更検知 → 言語ファイル追加機能 → 設定オーバーライドの実行
 Hooks.on("ready", async () => {
     let langPath = game.settings.get("fvtt-ja", "langPath");
-    FvttJa.resetLangFiles(langPath, false);
+    FvttJa.resetLangFiles(langPath);
 
     if (game.settings.get("fvtt-ja", "langFileAddition")) {
         await FvttJa.processLangFileAdditions();
@@ -32,6 +32,10 @@ class FvttJa {
             config: false
         });
         // langPath：独自言語ファイルを格納するフォルダ（ユーザー設定）
+        // requiresReload: true により、リロードは設定フォーム送信完了後に Foundry 標準の
+        // 確認ダイアログへ委ねる。onChange 内で独自に window.location.reload() を呼ぶと、
+        // 同一フォームで同時に変更した他の設定の保存処理（非同期）をリロードが中断し、
+        // 保存されないことがあったため（onChange は game.settings.set() から await されない）。
         game.settings.register("fvtt-ja", 'langPath', {
             name: "FVTTJa.Settings.langPath.name",
             hint: "FVTTJa.Settings.langPath.hint",
@@ -39,9 +43,10 @@ class FvttJa {
             default: "",
             scope: 'world',
             config: true,
+            requiresReload: true,
             filePicker: "folder",
             onChange: directory => {
-                FvttJa.resetLangFiles(directory, true)
+                FvttJa.scanLangFiles(directory)
             }
         });
         // langFileAddition：英語元ファイルに差分キーがある場合に参照用コピーを自動作成するオプション
@@ -351,27 +356,33 @@ class FvttJa {
 
     // ── 既存メソッド群 ────────────────────────────────────────────────────────────
 
-    // 言語ファイルフォルダをスキャンし、前回からの変更があれば設定を更新してリロードを促す
+    // 言語ファイルフォルダをスキャンし、前回からの変更があれば langFiles 設定を更新する
     // フォルダ直下（フラット）とサブフォルダ1段階（モジュールIDフォルダ）を対象とする
-    static async resetLangFiles(directory, reload = false) {
-        if (directory != "") {
-            let langFiles = game.settings.get("fvtt-ja", "langFiles");
-            let ret = await foundry.applications.apps.FilePicker.implementation.browse("data", directory);
+    // リロードは行わない（呼び出し元の責務）。戻り値は変更の有無
+    static async scanLangFiles(directory) {
+        if (directory == "") return false;
 
-            let allFiles = [...ret.files];
-            for (const subdir of ret.dirs) {
-                let subRet = await foundry.applications.apps.FilePicker.implementation.browse("data", subdir);
-                allFiles = allFiles.concat(subRet.files);
-            }
+        let langFiles = game.settings.get("fvtt-ja", "langFiles");
+        let ret = await foundry.applications.apps.FilePicker.implementation.browse("data", directory);
 
-            if (JSON.stringify(langFiles.sort()) != JSON.stringify(allFiles.sort())) {
-                await game.settings.set("fvtt-ja", "langFiles", allFiles);
-                if (reload || confirm("言語ファイルが変更されています\nリロードしますか？")) {
-                    window.location.reload()
-                }
+        let allFiles = [...ret.files];
+        for (const subdir of ret.dirs) {
+            let subRet = await foundry.applications.apps.FilePicker.implementation.browse("data", subdir);
+            allFiles = allFiles.concat(subRet.files);
+        }
+
+        const changed = JSON.stringify(langFiles.sort()) != JSON.stringify(allFiles.sort());
+        if (changed) await game.settings.set("fvtt-ja", "langFiles", allFiles);
+        return changed;
+    }
+
+    // ready フック用：scanLangFiles を実行し、変更があればリロードを確認する
+    static async resetLangFiles(directory) {
+        if (await FvttJa.scanLangFiles(directory)) {
+            if (confirm("言語ファイルが変更されています\nリロードしますか？")) {
+                window.location.reload()
             }
         }
-        if (reload) window.location.reload()
     }
 
     // 言語ファイル追加機能：init で積まれたキューを処理する

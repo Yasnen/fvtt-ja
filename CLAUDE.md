@@ -77,6 +77,8 @@ The script runs inside FVTT's browser environment using FVTT's global `Hooks`, `
 Key behaviors:
 - **`init` hook**: Registers settings (`langPath`, `langFiles`), then injects custom language files (from the configured folder) into the appropriate modules/systems before FVTT loads translations. Also enforces that this module is set as the default language module and that the conflicting `foundryVTTja` module is not installed.
 - **`ready` hook**: Calls `FvttJa.resetLangFiles()` to detect any new/removed files in the configured folder and prompts for reload if changes are found.
-- **`FvttJa.resetLangFiles(directory, reload)`**: Browses the configured folder via FVTT's FilePicker API, compares the file list to the stored setting, saves any changes, and optionally reloads the page.
+- **`FvttJa.scanLangFiles(directory)`**: Browses the configured folder via FVTT's FilePicker API, compares the file list to the stored `langFiles` setting, and saves any changes. Never reloads — that's the caller's responsibility. Returns whether the file list changed.
+- **`FvttJa.resetLangFiles(directory)`**: Calls `scanLangFiles`, then prompts the user to reload if the list changed. Used from the `ready` hook only.
+- **`langPath` setting**: registered with `requiresReload: true` and an `onChange` that only calls `scanLangFiles` (no reload). This lets FVTT's own settings-form reload confirmation fire once, after the whole form's save loop has finished — calling `window.location.reload()` directly from `onChange` previously raced with (and could abort) the save of other settings changed in the same form submission, since `onChange` is not awaited by `game.settings.set()`.
 
 Custom language file naming convention: `{module-id}.json` or `{module-id}-ja.json`.
