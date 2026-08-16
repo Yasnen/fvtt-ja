@@ -5,6 +5,12 @@ on:
     tags:
       - 'v[0-9]*'
 
+# main/v13 を同時にリリースした際、FVTT公式レジストリへの通知が同時に飛んで
+# 429 (Too Many Requests) になることがあったため、ブランチをまたいで直列化する。
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
