@@ -533,9 +533,9 @@
 "COMMON": {
   "AreYouSure": "本気か？",
   "Cancel": "取消",
-  "Confirm": "Confirm---(355E048)---",
+  "Confirm": "確定",
   "Default": "既定値",
-  "Delete": "Delete---(355E050)---",
+  "Delete": "削除",
   "FoundryVirtualTabletop": "FVTT（MRyas私家版）",
   "Invalid": "Invalid---(355E051)---",
   "No": "いいえ",
@@ -874,7 +874,7 @@
   "New": "新規「{type}」",
   "NewCount": "新規「{type}」（{count}個）",
   "Update": "「{type}」更新",
-  "Replace": "Replace {type}---(355E071)---",
+  "Replace": "「{type}」置換",
   "SkipCreate": "Skip Creation---(111)---",
 
   "ImportData": "データのインポート",
@@ -883,14 +883,14 @@
   "ImportDataHint2": "この操作は{name}のデータを更新し、元に戻すことはできません。",
   "ImportSource": "ソースデータ",
   "Imported": "Jsonファイルから{document}「{name}」が正常にインポートされました。",
-  "ReplaceWarning": "There is already a Document {link} with ID <code>{id}</code> in this collection. Do you wish to replace it or create a copy?---(355E072)---",
+  "ReplaceWarning": "既にID「<code>{id}</code>」でドキュメント「{link}」が存在する。置き換えるか複製するか？",
 
   "SheetPermissionWarn": "この{document}シートを表示する権限がありません。",
   "UsePermissionWarn": "You do not have permission to use this {document}.---(113)---",
   "IdCopiedClipboard": "{label} {type} 「{id}」をクリップボードにコピーしました。",
 
   "ActiveEffect": "アクティブ効果",
-  "ActiveEffects": "Active Effects---(115)---",
+  "ActiveEffects": "アクティブ効果",
   "ActorDelta": "Actor Delta---(076)b299",
   "ActorDeltas": "Actor Deltas---(077)b299",
   "Actor": "アクター",
@@ -1190,11 +1190,11 @@
       }
     },
     "start": {
-      "combatant.label": "Combatant---(355E141)---",
-      "round.label": "Round---(355E142)---",
-      "turn.label": "Turn---(355E143)---",
-      "initiative.label": "Initiative---(355E144)---",
-      "time.label": "Start Time---(355E145)---"
+      "combatant.label": "戦闘参加者",
+      "round.label": "ラウンド",
+      "turn.label": "ターン",
+      "initiative.label": "イニシアティブ",
+      "time.label": "開始時間"
     },
     "duration": {
       "value.label": "期間の値",
@@ -1208,8 +1208,8 @@
     "never": "表示しない"
   },
   "START": {
-    "Header": "Effect Start---(355E152)---",
-    "Time": "Start Time---(355E153)---",
+    "Header": "効果の開始",
+    "Time": "開始時間",
     "Combat": "Round {round}, Turn {turn}---(355E154)---",
     "Combatant": "{combatant} (Initiative Roll: {initiative})---(355E155)---",
     "NoInitiative": "Not Rolled---(355E156)---"
