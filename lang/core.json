@@ -537,12 +537,12 @@
   "Default": "既定値",
   "Delete": "削除",
   "FoundryVirtualTabletop": "FVTT（MRyas私家版）",
-  "Invalid": "Invalid---(355E051)---",
+  "Invalid": "無効",
   "No": "いいえ",
   "None": "なし",
-  "Preview": "Preview---(355E054)---",
-  "Unknown": "Unknown---(355E055)---",
-  "Warning": "Warning---(355E056)---",
+  "Preview": "プレビュー",
+  "Unknown": "不明",
+  "Warning": "警告",
   "Yes": "はい"
 },
 
@@ -1227,7 +1227,7 @@
   "NoWebGL": "お使いのブラウザは現在、Foundry Virtual Tabletopで必要なWebGLに対応していません。ブラウザでハードウェア・レンダリングとWebGLが有効になっていることを確認してください。",
   "NoWebGL2": "お使いのブラウザは現在、Foundry Virtual Tabletopが推奨するWebGL 2.0のレンダリングに対応していません。",
   "BackgroundTextureSize": "現在、{width}px × {height}px のシーン背景テクスチャを使用しています。これらのサイズのうち、いずれか一方、あるいは両方が、お使いのデバイスでサポートされている最大テクスチャサイズである {max}px を超えています。",
-  "InvalidAdminKey": "入力された管理者パスワードは無効です。設定したパスワードを忘れた場合、ユーザデータの「<strong>Config/admin.txt</strong>」ファイルを削除する必要があります。",
+  "InvalidAdminCredentials": "入力された管理者のユーザ名またはパスワードが無効です。設定した認証情報を忘れた場合、ユーザデータの「<strong>Config/admin.txt</strong>」ファイルを削除する必要があります。",
   "LoadPackages": "既存のパッケージを閲覧しようとした際、Foundryサーバーへの接続に失敗しました。アプリケーションでアウトバウンド接続が許可されていることを確認してください。",
   "NoTargetUsersForWhisper": "Whisper対象のユーザが存在しません。入力を確認するか「/w [ユーザ名]」を試してください。",
   "CantWhisper": "他のプレイヤーにwhisperを送信する権限が有りません。",
@@ -1458,6 +1458,7 @@
 "INVITATIONS.Copied": "ゲームの招待リンクをクリップボードにコピーしました。",
 "INVITATIONS.Instructions": "下のリンクをゲームに招待するユーザへ共有してください。ローカル接続はあなたのローカルネットワーク用で、イソターネット接続で設定されているポートにイソターネット経由で接続します。",
 "INVITATIONS.Internet": "イソターネット",
+"INVITATIONS.InternetV6": "インターネット（IPv6）",
 "INVITATIONS.Local": "ローカル接続",
 "INVITATIONS.Title": "ゲームの招待リンク",
 "INVITATIONS.OpenConnection": "接続は開いている様です。",
@@ -2304,7 +2305,12 @@
 "SCENE_NAVIGATION": {
   "COLLAPSE": "ナビゲーションを畳む",
   "EXPAND": "ナビゲーションを開く",
-  "LABEL": "Scene Navigation---(345D111)---"
+  "LABEL": "Scene Navigation---(345D111)---",
+  "SCENE": {
+    "Viewing": "表示中",
+    "Active": "アクティブ",
+    "Hidden": "非表示"
+  }
 },
 
 "GRID.STYLES":{
@@ -2343,6 +2349,10 @@
     "OtherSettings": "その他の設定"
   },
   "FIELDS": {
+    "adminUsername": {
+      "label": "管理者ユーザ名",
+      "hint": "Foundry Virtual Tabletopのこの設定変更エリアへのアクセスを保護するために、管理者ユーザ名が使用されます。管理者ユーザ名の設定は必須ではありませんが推奨されます。"
+    },
     "adminPassword": {
       "label": "管理者パスワード",
       "hint": "Foundry Virtual Tabletopのこの設定変更エリアへのアクセスを保護するために、管理者パスワードが使用されます。サーバーに管理者パスワードを設定することが強く推奨されます。"
@@ -2549,6 +2559,10 @@
         "hint": "ユーザーインターフェイスをライトとダークどちらのテーマでレンダリングするかを指定する。"
       }
     },
+    "chatBackground": {
+      "hint": "チャットカードをキャンバスに重ねて表示するのではなく、背景を付けてチャットログを表示します。",
+      "label": "チャットの背景"
+    },
     "chatNotifications": {
       "label": "チャットの通知",
       "hint": "新しいチャットメッセージの通知を完全なチャットカードとして表示するか、チャットタブ上の小さい丸印でのみ表示するかを選択する。",
@@ -2651,16 +2665,18 @@
   "FavoritePackage": "お気に入り",
   "Verified": "パッケージはこのバージョンのFoundryで検証済み",
   "ErrorTimeout": "要求された「{url}」は{timeout}秒でタイムアウトしました",
+  "GoBack": "戻る",
+
+  "ShuttingDown": {
+    "Confirm": "サーバーをシャットダウンしてもよろしいですか？",
+    "Title": "シャットダウン中",
+    "Message": "サーバーをシャットダウンしています。再度アクセスするにはサーバーの再起動が必要です。",
+    "Unavailable": "サーバーはまだ利用できません。再起動されているか確認するか、数秒後に再度お試しください。"
+  },
 
   "WarningsTitle": "パッケージの警告",
   "WarningsNone": "警告は有りません！",
   "WarningsManage": "パッケージの管理",
-
-  "ManifestUpdate": "更新版が新しいインストールURLで入手可能",
-  "ManifestUpdateAvailable": "「{package}」の新バージョンはインストール用URLが変更されています。パッケージが提供されるホストの場所が変更されたか、作成者が変更しています。",
-  "PriorManifestUrl": "以前のマニフェストのURL（バージョン{version}）",
-  "UpdatedManifestUrl": "交信されたマニフェストのURL（バージョン{version}）",
-  "SwapToTheUpdatedManifest": "新しいマニフェストURLに切り替えますか？(推奨)",
 
   "CurrentVersion": "現在のバージョン",
   "ForceUpdate": "強制更新？",
@@ -2691,12 +2707,15 @@
   "PackageInstalled": "インストール済",
   "PackageNotOwned": "未購入",
   "PackageName": "パッケージ名",
+  "PackageOwnershipUnknown": "所有権不明",
+  "PackageOwnershipUnknownHint": "foundryvtt.comからパッケージの権利情報を取得できなかったため、このパッケージを所有しているかどうかが不明です。",
   "PackageProtected": "保護",
   "PackageRequiresDowngradeHint": "You must downgrade to Foundry VTT version {vmax} in order to install this package.---(345D155)---",
   "PackageRequiresDowngradeLabel": "Requires Downgrade---(345D156)---",
   "PackageRequiresUpgradeHint": "You must upgrade to Foundry VTT version {vmin} in order to install this package.---(345D157)---",
   "PackageRequiresUpgradeLabel": "Requires Upgrade---(345D158)---",
   "PackageVisAll": "全パッケージ",
+  "PackageVisOwned": "所有しているパッケージ",
   "PackageVisInst": "インストール済",
   "PackageVisUnin": "未インストール",
   "PackageVisCompatible": "互換性あり",
@@ -2777,8 +2796,8 @@
   "UpdateCompleteAuto": "更新は正常に終了しました。Foundry VTTアプリケーションを再起動します。",
   "UpdateNoInternetError": "Foundry Virtual Tabletopを更新するには、有効なイソターネット接続が必要です。",
   "UpdateWebsiteUnreachableError": "現在、https://foundryvtt.com にアクセスできません。しばらくしてからお試しください。",
+  "UpdateRequestRefusedError": "https://foundryvtt.com がこの更新要求を拒否しました。これはライセンスキーの問題ではありません。しばらくしてから再度お試しください。",
   "UpdateWebsiteSlowWarning": "https://foundryvtt.com は現在高負荷になっているようです。暫くしてからお試しください。",
-  "UpdateWarningWillDisable": "この更新は、Foundry Virtual Tabletop ソフトウェアの新しいメジャーバージョンです。更新すると、インストール済みのモジュールのうち互換性がない可能性のあるモジュールを無効にする必要があります。",
   "UpdateButtonDownload": "更新のダウンロード{display}",
   "UpdateInfoAvailable": "Foundry Virtual Tabletop {display} へのバージョンアップが利用可能です！",
   "UpdateNotAvailable": "確認したチャネルに更新はありません。",
@@ -2805,7 +2824,7 @@
 
   "AdminAccess": "管理者アクセスが必要",
   "AdminPasswordPrompt": "このサーバーでは、現在アクティブなゲームはありません。設定メニューにアクセスするには、サーバー管理者のパスワードを入力する必要があります。",
-  "AdminPasswordForgot": "管理者パスワードを忘れた場合、サーバー管理者は<a href='https://foundryvtt.com/article/reset-admin-password/' target='_blank'>以下の手順に従って</a>リセットすることが出来ます。",
+  "AdminCredentialsForgot": "管理者のユーザ名またはパスワードを忘れた場合、サーバー管理者は<a href=\"https://foundryvtt.com/article/reset-admin-password/\" target=\"_blank\">以下の手順に従って</a>リセットすることができます。",
   "AdminLogIn": "ログイン",
   "AdminLogout": "管理者ログアウト",
 
@@ -2819,11 +2838,15 @@
     "Configure": "設定",
     "Logout": "ログアウト",
     "Update": "更新",
-    "Warnings": "警告"
+    "Warnings": "警告",
+    "ShutDownServer": "シャットダウン"
   },
 
   "BACKUPS": {
     "Backup": "バックアップ",
+    "BackupBeforeRestore": "現在の状態をバックアップする",
+    "BackupBeforeRestoreHint": "この復元自体をロールバックできるよう、現在の状態のパッケージのバックアップを取ります。",
+    "BackupBeforeRestoreNote": "復元前の自動バックアップ",
     "BackingUp": "バックアップ中",
     "BulkActions": "Bulk Actions---(007)b311",
     "Extracting": "バックアップを展開中",
@@ -2871,7 +2894,8 @@
     "Restoring": "バックアップから普及中",
     "RestoreLatest": "最新復旧する",
     "RestoreLatestBackup": "最新のバックアップを復元する",
-    "RestoreBackupWarning": "バックアップから復旧すると、現在のパッケージは消去されます。この操作は戻せません。続行しますか？",
+    "RestoreBackupWarning": "バックアップから復旧すると、現在のパッケージは消去されます。下のチェックボックスをオンにしてバックアップを取らない限り、この操作は元に戻せません。続行しますか？",
+    "RestoreBackupWarningNoBackups": "バックアップから復旧すると、現在のパッケージは消去されます。この操作は戻せません。続行しますか？",
     "RestoreBackupTitle": "「{title}」をバックアップから復旧する",
     "RestoreBackupFailure": "Failed to restore backup for {title}. See the console (F12) for details.---(040)b309",
     "RestoreBackupComplete": "{date}にバックアップされた「{title}」から復旧が成城に完了しました。",
@@ -2941,6 +2965,20 @@
     },
     "ManifestWrongPackageType": "指定されたURLには「{packageType}」が示されていません。"
   },
+  "PROVIDER_FILTER": {
+    "Label": "提供元",
+    "Placeholder": "提供元を検索"
+  },
+  "SYSTEM_FILTER": {
+    "Label": "システム",
+    "Systems": "必要なシステム",
+    "RequiresN": "{count}件のシステム",
+    "MODES": {
+      "installed": "インストール済みのシステムで利用可能",
+      "none": "制限なし",
+      "specific": "特定のシステムが必要"
+    }
+  },
   "UPDATE_NOTES": {
     "Title": "リリースノート：{release}",
     "FullList": "リリースノート<a href=\"{url}\" target=\"_blank\">一覧</a>をご覧ください。",
@@ -2968,6 +3006,30 @@
   "Compatibility": {
     "Label": "互換性",
     "Hint": "このパッケージが、Foundry Virtual Tabletopの一定範囲のバージョンでのみ互換性があることを示せるオプションです。互換性は、「13.339」 のような特定のビルドバージョン、または「13」のような幅広い世代に対して宣言することができます。"
+  },
+  "TAGS": {
+    "adventures": "アドベンチャー",
+    "ai-content": "AIコンテンツを含む",
+    "ai-tools": "AIツール",
+    "analytics": "分析・トラッキング",
+    "archived": "アーカイブ済み",
+    "audio": "オーディオ機能強化",
+    "automation": "自動化の強化",
+    "chat": "チャットログとメッセージング",
+    "combat": "戦闘機能の強化",
+    "content": "コンテンツパック",
+    "dice": "ダイスロール",
+    "importer": "コンテンツインポーター",
+    "integration": "外部連携",
+    "journal": "ジャーナルとノート",
+    "overhaul": "大規模改修・機能スイート",
+    "paid-features": "有料機能を含む",
+    "patches": "パッチ・バグ修正",
+    "sheets": "アクターおよびアイテムシート",
+    "tools": "ツールとコントロール",
+    "translation": "翻訳とローカライズ",
+    "visuals": "視覚効果",
+    "zero-ai": "AI不使用"
   },
   "TagJavaScript": "JavaScript",
   "TagCSS": "CSS",
@@ -3115,7 +3177,7 @@
   "UserKey": "パスワード",
   "AuthAdmin": "サーバ管理者として認証済み。",
   "ErrorMustSelectUser": "You must select a User in order to log in.---(325C185)---",
-  "ErrorUserDoesNotExist": "要求されたユーザ「{user}」は存在しません！",
+  "ErrorUserDoesNotExist": "要求されたユーザ「{user}」は存在しません。",
   "ErrorInvalidPassword": "入力された{user}のパスワードは無効です！",
   "ErrorBanned": "{user}はワールドにアクセスする権限が有りません！",
   "LoginSuccess": "{user}は正常にログインできました、ゲームに参加します！",
@@ -3453,7 +3515,6 @@
   },
   "NOTIFICATIONS": {
     "PlacedRegionRotationNotAllowed": "配置された領域のシェイプを回転する権限がありません。",
-    "PlacedRegionNotAttachedToToken": "The placed Region must be attached to a Token.===(359E042)===",
     "CopiedShape": "領域のシェイプをコピーしました。",
     "CutShape": "領域のシェイプを切り取りました。",
     "PastedShape": "領域のシェイプを貼り付けました。",
